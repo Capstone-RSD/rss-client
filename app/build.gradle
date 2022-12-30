@@ -1,5 +1,7 @@
 plugins {
     id 'com.android.application'
+    id 'com.google.gms.google-services'
+    id "com.google.protobuf"
 }
 
 android {
@@ -33,7 +35,68 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.7.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'com.google.firebase:firebase-storage:20.1.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
+
+    // Protobuf
+//    implementation 'com.google.protobuf:protobuf-lite:3.0.0'
+//    implementation 'com.google.protobuf:protobuf-javalite:3.21.7'
+//    implementation 'com.google.protobuf:protobuf-javalite:3.8.0'
+
+//    implementation 'com.google.protobuf:protobuf-java:3.8.0'
+
+    // https://mvnrepository.com/artifact/com.google.api.grpc/proto-google-common-protos
+    implementation group: 'com.google.api.grpc', name: 'proto-google-common-protos', version: '2.11.0'
+
+    // https://mvnrepository.com/artifact/com.google.protobuf/protobuf-javalite
+//    implementation group: 'com.google.protobuf', name: 'protobuf-javalite', version: '3.21.12'
+
+//    protobuf files("$projectDir/src/main/proto/")
+}
+
+protobuf {
+    protoc {
+        artifact = 'com.google.protobuf:protoc:3.7.0'
+    }
+    plugins {
+        javalite {
+            artifact = 'com.google.protobuf:protoc-gen-javalite:3.0.0'
+        }
+    }
+    generateProtoTasks {
+        all().each { task ->
+            task.builtins {
+//                remove java
+                java {
+//                    option "lite"
+                }
+            }
+            task.generateDescriptorSet = true
+
+            // Allows to override the default for the descriptor set location
+//            task.descriptorSetOptions.path = "${projectDir}/build/descriptors/${task.sourceSet.name}.dsc"
+
+            // If true, the descriptor set will contain line number information
+            // and comments. Default is false.
+            task.descriptorSetOptions.includeSourceInfo = true
+
+            // If true, the descriptor set will contain all transitive imports and
+            // is therefore self-contained. Default is false.
+            task.descriptorSetOptions.includeImports = true
+//            task.plugins {
+////                javalite { }
+//            }
+        }
+
+        // (Android-only selectors)
+        // Returns tasks for a flavor
+//        ofFlavor('demo')
+//        // Returns tasks for a buildType
+//        ofBuildType('debug')
+//        // Returns tasks for a variant
+//        ofVariant('demoRelease')
+    }
+    generatedFilesBaseDir = "$projectDir/src/generated"
 }
