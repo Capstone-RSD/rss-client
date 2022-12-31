@@ -36,22 +36,17 @@ dependencies {
     implementation 'com.google.android.material:material:1.7.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'com.google.firebase:firebase-storage:20.1.0'
+    implementation 'org.apache.kafka:kafka-clients:3.3.1'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
 
     // Protobuf
-//    implementation 'com.google.protobuf:protobuf-lite:3.0.0'
-//    implementation 'com.google.protobuf:protobuf-javalite:3.21.7'
-//    implementation 'com.google.protobuf:protobuf-javalite:3.8.0'
-
-//    implementation 'com.google.protobuf:protobuf-java:3.8.0'
-
     // https://mvnrepository.com/artifact/com.google.api.grpc/proto-google-common-protos
     implementation group: 'com.google.api.grpc', name: 'proto-google-common-protos', version: '2.11.0'
 
     // https://mvnrepository.com/artifact/com.google.protobuf/protobuf-javalite
-//    implementation group: 'com.google.protobuf', name: 'protobuf-javalite', version: '3.21.12'
+   // implementation group: 'com.google.protobuf', name: 'protobuf-javalite', version: '3.21.12'
 
 //    protobuf files("$projectDir/src/main/proto/")
 }

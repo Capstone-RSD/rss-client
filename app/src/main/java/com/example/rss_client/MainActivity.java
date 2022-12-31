@@ -13,6 +13,7 @@ import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.Toast;
 import com.example.rss_client.Client.DamageLocationOrBuilder;
+
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
@@ -43,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
         selectBtn = findViewById(R.id.imgSelect);
         uploadBtn = findViewById(R.id.imgUpload);
-         uploadBtn.setEnabled(imageList.isEmpty());// Enable upload button if the list isn't empty
+        uploadBtn.setEnabled(imageList.isEmpty());// Enable upload button if the list isn't empty
 
         ActivityResultLauncher<Intent> startIntentActivityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
             // Resource: https://youtu.be/Ke9PaRdMcgc
