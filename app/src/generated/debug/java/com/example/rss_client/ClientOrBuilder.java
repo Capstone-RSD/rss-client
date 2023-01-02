@@ -64,21 +64,23 @@ public interface ClientOrBuilder extends
   /**
    * <pre>
    * A key value pair mapping of the BlobSrc objects.
-   *The keys are represented as hashed name and the BlobSrc as the value.  
+   *The keys are represented as hashed name and the BlobSrc as the value.
+   *Use the repeated attribute instead  
    * </pre>
    *
-   * <code>map&lt;string, .RSS.BlobSrc&gt; blob_map = 8;</code>
+   * <code>map&lt;string, .RSS.BlobSrc&gt; blob_map = 8 [deprecated = true];</code>
    */
-  int getBlobMapCount();
+  @java.lang.Deprecated int getBlobMapCount();
   /**
    * <pre>
    * A key value pair mapping of the BlobSrc objects.
-   *The keys are represented as hashed name and the BlobSrc as the value.  
+   *The keys are represented as hashed name and the BlobSrc as the value.
+   *Use the repeated attribute instead  
    * </pre>
    *
-   * <code>map&lt;string, .RSS.BlobSrc&gt; blob_map = 8;</code>
+   * <code>map&lt;string, .RSS.BlobSrc&gt; blob_map = 8 [deprecated = true];</code>
    */
-  boolean containsBlobMap(
+  @java.lang.Deprecated boolean containsBlobMap(
       java.lang.String key);
   /**
    * Use {@link #getBlobMapMap()} instead.
@@ -89,34 +91,37 @@ public interface ClientOrBuilder extends
   /**
    * <pre>
    * A key value pair mapping of the BlobSrc objects.
-   *The keys are represented as hashed name and the BlobSrc as the value.  
+   *The keys are represented as hashed name and the BlobSrc as the value.
+   *Use the repeated attribute instead  
    * </pre>
    *
-   * <code>map&lt;string, .RSS.BlobSrc&gt; blob_map = 8;</code>
+   * <code>map&lt;string, .RSS.BlobSrc&gt; blob_map = 8 [deprecated = true];</code>
    */
-  java.util.Map<java.lang.String, com.example.rss_client.BlobSrc>
+  @java.lang.Deprecated java.util.Map<java.lang.String, com.example.rss_client.BlobSrc>
   getBlobMapMap();
   /**
    * <pre>
    * A key value pair mapping of the BlobSrc objects.
-   *The keys are represented as hashed name and the BlobSrc as the value.  
+   *The keys are represented as hashed name and the BlobSrc as the value.
+   *Use the repeated attribute instead  
    * </pre>
    *
-   * <code>map&lt;string, .RSS.BlobSrc&gt; blob_map = 8;</code>
+   * <code>map&lt;string, .RSS.BlobSrc&gt; blob_map = 8 [deprecated = true];</code>
    */
-
+  @java.lang.Deprecated 
   com.example.rss_client.BlobSrc getBlobMapOrDefault(
       java.lang.String key,
       com.example.rss_client.BlobSrc defaultValue);
   /**
    * <pre>
    * A key value pair mapping of the BlobSrc objects.
-   *The keys are represented as hashed name and the BlobSrc as the value.  
+   *The keys are represented as hashed name and the BlobSrc as the value.
+   *Use the repeated attribute instead  
    * </pre>
    *
-   * <code>map&lt;string, .RSS.BlobSrc&gt; blob_map = 8;</code>
+   * <code>map&lt;string, .RSS.BlobSrc&gt; blob_map = 8 [deprecated = true];</code>
    */
-
+  @java.lang.Deprecated 
   com.example.rss_client.BlobSrc getBlobMapOrThrow(
       java.lang.String key);
 }

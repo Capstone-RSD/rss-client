@@ -30,67 +30,42 @@ public interface BlobSrcOrBuilder extends
    * Date blob was created
    * </pre>
    *
-   * <code>.google.type.Date date_created = 2;</code>
+   * <code>.google.type.DateTime datetime_created = 2;</code>
    */
-  boolean hasDateCreated();
+  boolean hasDatetimeCreated();
   /**
    * <pre>
    * Date blob was created
    * </pre>
    *
-   * <code>.google.type.Date date_created = 2;</code>
+   * <code>.google.type.DateTime datetime_created = 2;</code>
    */
-  com.google.type.Date getDateCreated();
+  com.google.type.DateTime getDatetimeCreated();
   /**
    * <pre>
    * Date blob was created
    * </pre>
    *
-   * <code>.google.type.Date date_created = 2;</code>
+   * <code>.google.type.DateTime datetime_created = 2;</code>
    */
-  com.google.type.DateOrBuilder getDateCreatedOrBuilder();
+  com.google.type.DateTimeOrBuilder getDatetimeCreatedOrBuilder();
 
   /**
-   * <pre>
-   * Time the blob was created
-   * </pre>
-   *
-   * <code>.google.protobuf.Timestamp time_created = 3;</code>
-   */
-  boolean hasTimeCreated();
-  /**
-   * <pre>
-   * Time the blob was created
-   * </pre>
-   *
-   * <code>.google.protobuf.Timestamp time_created = 3;</code>
-   */
-  com.google.protobuf.Timestamp getTimeCreated();
-  /**
-   * <pre>
-   * Time the blob was created
-   * </pre>
-   *
-   * <code>.google.protobuf.Timestamp time_created = 3;</code>
-   */
-  com.google.protobuf.TimestampOrBuilder getTimeCreatedOrBuilder();
-
-  /**
-   * <code>string image = 4;</code>
+   * <code>string image = 3;</code>
    */
   java.lang.String getImage();
   /**
-   * <code>string image = 4;</code>
+   * <code>string image = 3;</code>
    */
   com.google.protobuf.ByteString
       getImageBytes();
 
   /**
-   * <code>string video = 5;</code>
+   * <code>string video = 4;</code>
    */
   java.lang.String getVideo();
   /**
-   * <code>string video = 5;</code>
+   * <code>string video = 4;</code>
    */
   com.google.protobuf.ByteString
       getVideoBytes();

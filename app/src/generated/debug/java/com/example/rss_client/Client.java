@@ -1088,19 +1088,20 @@ private static final long serialVersionUID = 0L;
     }
     return blobMap_;
   }
-
+  @java.lang.Deprecated 
   public int getBlobMapCount() {
     return internalGetBlobMap().getMap().size();
   }
   /**
    * <pre>
    * A key value pair mapping of the BlobSrc objects.
-   *The keys are represented as hashed name and the BlobSrc as the value.  
+   *The keys are represented as hashed name and the BlobSrc as the value.
+   *Use the repeated attribute instead  
    * </pre>
    *
-   * <code>map&lt;string, .RSS.BlobSrc&gt; blob_map = 8;</code>
+   * <code>map&lt;string, .RSS.BlobSrc&gt; blob_map = 8 [deprecated = true];</code>
    */
-
+  @java.lang.Deprecated 
   public boolean containsBlobMap(
       java.lang.String key) {
     if (key == null) { throw new java.lang.NullPointerException(); }
@@ -1116,24 +1117,26 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * A key value pair mapping of the BlobSrc objects.
-   *The keys are represented as hashed name and the BlobSrc as the value.  
+   *The keys are represented as hashed name and the BlobSrc as the value.
+   *Use the repeated attribute instead  
    * </pre>
    *
-   * <code>map&lt;string, .RSS.BlobSrc&gt; blob_map = 8;</code>
+   * <code>map&lt;string, .RSS.BlobSrc&gt; blob_map = 8 [deprecated = true];</code>
    */
-
+  @java.lang.Deprecated 
   public java.util.Map<java.lang.String, com.example.rss_client.BlobSrc> getBlobMapMap() {
     return internalGetBlobMap().getMap();
   }
   /**
    * <pre>
    * A key value pair mapping of the BlobSrc objects.
-   *The keys are represented as hashed name and the BlobSrc as the value.  
+   *The keys are represented as hashed name and the BlobSrc as the value.
+   *Use the repeated attribute instead  
    * </pre>
    *
-   * <code>map&lt;string, .RSS.BlobSrc&gt; blob_map = 8;</code>
+   * <code>map&lt;string, .RSS.BlobSrc&gt; blob_map = 8 [deprecated = true];</code>
    */
-
+  @java.lang.Deprecated 
   public com.example.rss_client.BlobSrc getBlobMapOrDefault(
       java.lang.String key,
       com.example.rss_client.BlobSrc defaultValue) {
@@ -1145,12 +1148,13 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * A key value pair mapping of the BlobSrc objects.
-   *The keys are represented as hashed name and the BlobSrc as the value.  
+   *The keys are represented as hashed name and the BlobSrc as the value.
+   *Use the repeated attribute instead  
    * </pre>
    *
-   * <code>map&lt;string, .RSS.BlobSrc&gt; blob_map = 8;</code>
+   * <code>map&lt;string, .RSS.BlobSrc&gt; blob_map = 8 [deprecated = true];</code>
    */
-
+  @java.lang.Deprecated 
   public com.example.rss_client.BlobSrc getBlobMapOrThrow(
       java.lang.String key) {
     if (key == null) { throw new java.lang.NullPointerException(); }
@@ -2075,19 +2079,20 @@ private static final long serialVersionUID = 0L;
       }
       return blobMap_;
     }
-
+    @java.lang.Deprecated 
     public int getBlobMapCount() {
       return internalGetBlobMap().getMap().size();
     }
     /**
      * <pre>
      * A key value pair mapping of the BlobSrc objects.
-     *The keys are represented as hashed name and the BlobSrc as the value.  
+     *The keys are represented as hashed name and the BlobSrc as the value.
+     *Use the repeated attribute instead  
      * </pre>
      *
-     * <code>map&lt;string, .RSS.BlobSrc&gt; blob_map = 8;</code>
+     * <code>map&lt;string, .RSS.BlobSrc&gt; blob_map = 8 [deprecated = true];</code>
      */
-
+    @java.lang.Deprecated 
     public boolean containsBlobMap(
         java.lang.String key) {
       if (key == null) { throw new java.lang.NullPointerException(); }
@@ -2103,24 +2108,26 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * A key value pair mapping of the BlobSrc objects.
-     *The keys are represented as hashed name and the BlobSrc as the value.  
+     *The keys are represented as hashed name and the BlobSrc as the value.
+     *Use the repeated attribute instead  
      * </pre>
      *
-     * <code>map&lt;string, .RSS.BlobSrc&gt; blob_map = 8;</code>
+     * <code>map&lt;string, .RSS.BlobSrc&gt; blob_map = 8 [deprecated = true];</code>
      */
-
+    @java.lang.Deprecated 
     public java.util.Map<java.lang.String, com.example.rss_client.BlobSrc> getBlobMapMap() {
       return internalGetBlobMap().getMap();
     }
     /**
      * <pre>
      * A key value pair mapping of the BlobSrc objects.
-     *The keys are represented as hashed name and the BlobSrc as the value.  
+     *The keys are represented as hashed name and the BlobSrc as the value.
+     *Use the repeated attribute instead  
      * </pre>
      *
-     * <code>map&lt;string, .RSS.BlobSrc&gt; blob_map = 8;</code>
+     * <code>map&lt;string, .RSS.BlobSrc&gt; blob_map = 8 [deprecated = true];</code>
      */
-
+    @java.lang.Deprecated 
     public com.example.rss_client.BlobSrc getBlobMapOrDefault(
         java.lang.String key,
         com.example.rss_client.BlobSrc defaultValue) {
@@ -2132,12 +2139,13 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * A key value pair mapping of the BlobSrc objects.
-     *The keys are represented as hashed name and the BlobSrc as the value.  
+     *The keys are represented as hashed name and the BlobSrc as the value.
+     *Use the repeated attribute instead  
      * </pre>
      *
-     * <code>map&lt;string, .RSS.BlobSrc&gt; blob_map = 8;</code>
+     * <code>map&lt;string, .RSS.BlobSrc&gt; blob_map = 8 [deprecated = true];</code>
      */
-
+    @java.lang.Deprecated 
     public com.example.rss_client.BlobSrc getBlobMapOrThrow(
         java.lang.String key) {
       if (key == null) { throw new java.lang.NullPointerException(); }
@@ -2148,7 +2156,7 @@ private static final long serialVersionUID = 0L;
       }
       return map.get(key);
     }
-
+    @java.lang.Deprecated 
     public Builder clearBlobMap() {
       internalGetMutableBlobMap().getMutableMap()
           .clear();
@@ -2157,12 +2165,13 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * A key value pair mapping of the BlobSrc objects.
-     *The keys are represented as hashed name and the BlobSrc as the value.  
+     *The keys are represented as hashed name and the BlobSrc as the value.
+     *Use the repeated attribute instead  
      * </pre>
      *
-     * <code>map&lt;string, .RSS.BlobSrc&gt; blob_map = 8;</code>
+     * <code>map&lt;string, .RSS.BlobSrc&gt; blob_map = 8 [deprecated = true];</code>
      */
-
+    @java.lang.Deprecated 
     public Builder removeBlobMap(
         java.lang.String key) {
       if (key == null) { throw new java.lang.NullPointerException(); }
@@ -2181,12 +2190,13 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * A key value pair mapping of the BlobSrc objects.
-     *The keys are represented as hashed name and the BlobSrc as the value.  
+     *The keys are represented as hashed name and the BlobSrc as the value.
+     *Use the repeated attribute instead  
      * </pre>
      *
-     * <code>map&lt;string, .RSS.BlobSrc&gt; blob_map = 8;</code>
+     * <code>map&lt;string, .RSS.BlobSrc&gt; blob_map = 8 [deprecated = true];</code>
      */
-    public Builder putBlobMap(
+    @java.lang.Deprecated public Builder putBlobMap(
         java.lang.String key,
         com.example.rss_client.BlobSrc value) {
       if (key == null) { throw new java.lang.NullPointerException(); }
@@ -2198,12 +2208,13 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * A key value pair mapping of the BlobSrc objects.
-     *The keys are represented as hashed name and the BlobSrc as the value.  
+     *The keys are represented as hashed name and the BlobSrc as the value.
+     *Use the repeated attribute instead  
      * </pre>
      *
-     * <code>map&lt;string, .RSS.BlobSrc&gt; blob_map = 8;</code>
+     * <code>map&lt;string, .RSS.BlobSrc&gt; blob_map = 8 [deprecated = true];</code>
      */
-
+    @java.lang.Deprecated 
     public Builder putAllBlobMap(
         java.util.Map<java.lang.String, com.example.rss_client.BlobSrc> values) {
       internalGetMutableBlobMap().getMutableMap()

@@ -7,7 +7,7 @@ package RSS;// RSS=Road Surface Status
 // Imports
 // Resource: https://developers.google.com/protocol-buffers/docs/overview#common-types
 import "google/protobuf/timestamp.proto";
-import "google/type/date.proto";
+import "google/type/datetime.proto";
 import "google/type/latlng.proto";
 import "google/type/postal_address.proto";
 
@@ -40,20 +40,21 @@ message Client {
 
 
   /* A key value pair mapping of the BlobSrc objects.
-  The keys are represented as hashed name and the BlobSrc as the value.  */
-  map<string,BlobSrc> blob_map = 8;
+  The keys are represented as hashed name and the BlobSrc as the value.
+   Use the repeated attribute instead  */
+  map<string,BlobSrc> blob_map = 8 [deprecated=true];
 }
 
 
 /* Represets the blob and its parameters. */
 message BlobSrc {
   string blob_url = 1; // URL to the blobs location. i.e. the url to the s3 bucket it is stored in
-  google.type.Date date_created = 2; // Date blob was created
-  google.protobuf.Timestamp time_created = 3; // Time the blob was created
+  google.type.DateTime datetime_created = 2; // Date blob was created
+//  google.protobuf.Timestamp time_created = 3 [deprecated=true]; // Time the blob was created
 
   /* A blob type represented as either an image or video. */
   oneof blob_type {
-    string image = 4;
-    string video = 5;
+    string image = 3;
+    string video = 4;
   }
 }

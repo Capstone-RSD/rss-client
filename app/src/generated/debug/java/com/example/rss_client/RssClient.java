@@ -44,22 +44,21 @@ public final class RssClient {
   static {
     java.lang.String[] descriptorData = {
       "\n\020rss_client.proto\022\003RSS\032\037google/protobuf" +
-      "/timestamp.proto\032\026google/type/date.proto" +
-      "\032\030google/type/latlng.proto\032 google/type/" +
-      "postal_address.proto\"\254\002\n\006Client\022\014\n\004name\030" +
-      "\001 \001(\t\022\n\n\002id\030\002 \001(\005\022\r\n\005email\030\003 \001(\t\022\r\n\005spee" +
-      "d\030\006 \001(\005\022\033\n\005blobs\030\007 \003(\0132\014.RSS.BlobSrc\022*\n\010" +
-      "blob_map\030\010 \003(\0132\030.RSS.Client.BlobMapEntry" +
-      "\032c\n\016DamageLocation\022$\n\007lat_lng\030\001 \001(\0132\023.go" +
-      "ogle.type.LatLng\022+\n\007address\030\002 \001(\0132\032.goog" +
-      "le.type.PostalAddress\032<\n\014BlobMapEntry\022\013\n" +
-      "\003key\030\001 \001(\t\022\033\n\005value\030\002 \001(\0132\014.RSS.BlobSrc:" +
-      "\0028\001\"\245\001\n\007BlobSrc\022\020\n\010blob_url\030\001 \001(\t\022\'\n\014dat" +
-      "e_created\030\002 \001(\0132\021.google.type.Date\0220\n\014ti" +
-      "me_created\030\003 \001(\0132\032.google.protobuf.Times" +
-      "tamp\022\017\n\005image\030\004 \001(\tH\000\022\017\n\005video\030\005 \001(\tH\000B\013" +
-      "\n\tblob_typeB\034\n\026com.example.rss_clientH\001P" +
-      "\001b\006proto3"
+      "/timestamp.proto\032\032google/type/datetime.p" +
+      "roto\032\030google/type/latlng.proto\032 google/t" +
+      "ype/postal_address.proto\"\260\002\n\006Client\022\014\n\004n" +
+      "ame\030\001 \001(\t\022\n\n\002id\030\002 \001(\005\022\r\n\005email\030\003 \001(\t\022\r\n\005" +
+      "speed\030\006 \001(\005\022\033\n\005blobs\030\007 \003(\0132\014.RSS.BlobSrc" +
+      "\022.\n\010blob_map\030\010 \003(\0132\030.RSS.Client.BlobMapE" +
+      "ntryB\002\030\001\032c\n\016DamageLocation\022$\n\007lat_lng\030\001 " +
+      "\001(\0132\023.google.type.LatLng\022+\n\007address\030\002 \001(" +
+      "\0132\032.google.type.PostalAddress\032<\n\014BlobMap" +
+      "Entry\022\013\n\003key\030\001 \001(\t\022\033\n\005value\030\002 \001(\0132\014.RSS." +
+      "BlobSrc:\0028\001\"{\n\007BlobSrc\022\020\n\010blob_url\030\001 \001(\t" +
+      "\022/\n\020datetime_created\030\002 \001(\0132\025.google.type" +
+      ".DateTime\022\017\n\005image\030\003 \001(\tH\000\022\017\n\005video\030\004 \001(" +
+      "\tH\000B\013\n\tblob_typeB\034\n\026com.example.rss_clie" +
+      "ntH\001P\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -73,7 +72,7 @@ public final class RssClient {
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.google.protobuf.TimestampProto.getDescriptor(),
-          com.google.type.DateProto.getDescriptor(),
+          com.google.type.DateTimeProto.getDescriptor(),
           com.google.type.LatLngProto.getDescriptor(),
           com.google.type.PostalAddressProto.getDescriptor(),
         }, assigner);
@@ -100,9 +99,9 @@ public final class RssClient {
     internal_static_RSS_BlobSrc_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_RSS_BlobSrc_descriptor,
-        new java.lang.String[] { "BlobUrl", "DateCreated", "TimeCreated", "Image", "Video", "BlobType", });
+        new java.lang.String[] { "BlobUrl", "DatetimeCreated", "Image", "Video", "BlobType", });
     com.google.protobuf.TimestampProto.getDescriptor();
-    com.google.type.DateProto.getDescriptor();
+    com.google.type.DateTimeProto.getDescriptor();
     com.google.type.LatLngProto.getDescriptor();
     com.google.type.PostalAddressProto.getDescriptor();
   }
