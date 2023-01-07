@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.rss_client"
-        minSdk 28
+        minSdk 26
         targetSdk 32
         versionCode 1
         versionName "1.0"
@@ -47,7 +47,12 @@ dependencies {
     // Kafka
     implementation 'org.apache.kafka:kafka-clients:3.3.1'
     // https://mvnrepository.com/artifact/io.confluent/kafka-protobuf-serializer
-//    implementation group: 'io.confluent', name: 'kafka-protobuf-serializer', version: '7.3.1'
+
+    // HTTP Requests
+//    implementation 'com.android.volley:volley:1.2.1'
+//    implementation 'com.squareup.okhttp:okhttp:2.7.5'
+    // https://mvnrepository.com/artifact/com.android.volley/volley
+    implementation group: 'com.android.volley', name: 'volley', version: '1.2.0'
 
 }
 

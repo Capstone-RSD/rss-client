@@ -4,25 +4,26 @@ import android.util.Log;
 
 import org.apache.kafka.clients.producer.Callback;
 import org.apache.kafka.clients.producer.KafkaProducer;
+import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;
 
 import java.util.Properties;
 
 public class RSSKafkaClient {
-    private final Properties props;
-private final KafkaProducer<String,Client.Builder> producer;
+    private Properties props;
+  KafkaProducer<String,Client.Builder> producer;
     public RSSKafkaClient() {
         props = new Properties();
-        props.put("bootstrap.servers", "localhost:9092");
-        props.put("linger.ms", 1);
-        props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
-        props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
-        producer = new KafkaProducer<>(props);
+        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092,localhost:9092,192.168.2.124:9092");
+        props.put(ProducerConfig.LINGER_MS_CONFIG, String.valueOf(1));
+        props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringSerializer");
+        props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringSerializer");
+        producer = new KafkaProducer<String,Client.Builder>(props);
     }
 
     public void send(Client.Builder client){
-        producer.send(new ProducerRecord<String, Client.Builder>("my-topic", "my-key", client), new Callback() {
+        producer.send(new ProducerRecord<String, Client.Builder>("my_topic", client), new Callback() {
             @Override
             public void onCompletion(RecordMetadata metadata, Exception exception) {
                 // executes every time a record is successfully sent or an exception is thrown
@@ -41,7 +42,7 @@ private final KafkaProducer<String,Client.Builder> producer;
     }
 
     public void close(){
-        producer.close();
+        producer.flush();producer.close();
     }
 
 }
