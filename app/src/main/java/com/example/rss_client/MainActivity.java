@@ -25,31 +25,24 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.HttpHeaderParser;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.JsonRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.common.util.JsonUtils;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.protobuf.InvalidProtocolBufferException;
 
-import org.apache.kafka.clients.producer.Callback;
-import org.apache.kafka.clients.producer.KafkaProducer;
-import org.apache.kafka.clients.producer.ProducerConfig;
-import org.apache.kafka.clients.producer.ProducerRecord;
-import org.apache.kafka.clients.producer.RecordMetadata;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
 
 public class MainActivity extends AppCompatActivity {
     /**
@@ -60,15 +53,15 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<Uri> imageList = new ArrayList<Uri>();
     ArrayList<BlobSrc.Builder> blobsList = new ArrayList<BlobSrc.Builder>();
 
-    // Create a Cloud Storage reference from the app
-    StorageReference rssStorageRef = FirebaseStorage.getInstance().getReference("uploads");
-    //    RSSKafkaClient rssKafkaClient;
+    private static final String URL = "https://pkc-3w22w.us-central1.gcp.confluent.cloud:443/kafka/v3/clusters";
     private Client.Builder rssClient;
-
-    private final String URL = "http://192.168.2.124:8082/v3/clusters/fy06R6KPS-Sp3sMi4b23gw";
-    private final String URL_POST = "http://192.168.2.124:8082";
-    private final String TOPIC = "/my_topic";
-
+    //    private static final String API_KEY = "NzJOM1dWWFJLU1AzQUZTQTpvTkU2eWVyYkNSSStVR05XalIwVkhJSFNUQzJBbVp2NmlBRW5malp6Y0gvMWM3NHY3UDJnSVltd3hlRnJ3eFc4";
+    private static final String TOPIC = "/rss_topic";
+    private static final String CLUSTER_ID = "/lkc-d91ond";
+    private static final Integer SCHEMA_ID = 100001;
+    private static final String API_KEY = BuildConfig.RSS_API_KEY;
+    // Create a Cloud Storage reference from the app
+    StorageReference rssStorageRef = FirebaseStorage.getInstance().getReference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,22 +70,35 @@ public class MainActivity extends AppCompatActivity {
 
         selectBtn = findViewById(R.id.imgSelect);
         uploadBtn = findViewById(R.id.imgUpload);
-        uploadBtn.setEnabled(imageList.isEmpty());// Enable upload button if the list isn't empty
+//        uploadBtn.setEnabled(!imageList.isEmpty());// Enable upload button if the list isn't empty
 
-//        rssKafkaClient = new RSSKafkaClient(); // Inits Kafka Producer with config properties
-//        rssClient = Client.newBuilder();
 
-        String tempURL = URL + "/topics" + TOPIC;
+        String tempURL = URL + CLUSTER_ID + "/topics";
+
         Log.d("url", tempURL.toString());
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, tempURL, response -> {
-            Log.d("Volley REST Response", response);
+        JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.GET, tempURL, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.d("Volley REST Response", response.toString());
+            }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.d("Volley REST Response error", error.toString());
                 Toast.makeText(MainActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
             }
-        });
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap headers = new HashMap();
+                headers.put("Content-Type", "application/json");
+                headers.put("Authorization", "Basic " + API_KEY);
+
+                Log.d("headers", headers.toString());
+                return headers;
+
+            }
+        };
 
         RequestQueue resquestQueue = Volley.newRequestQueue(getApplicationContext());
         resquestQueue.add(stringRequest);
@@ -148,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
 
         uploadBtn.setOnClickListener(v -> {
             buildClient();
-//            streamResults();
+            streamResults();
             uploadRssClient(); // uploads the rssClient to Kafka Broker
 
         });
@@ -156,10 +162,11 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Builds the client from local storage/Shared Preferences
-     * TODO: Impl shared prefs to populate user data
-     * TODO: Impl UI to collect user data and save to shared prefs
      */
     private void buildClient() {
+        // TODO: Impl shared prefs to populate user data
+        // TODO: Impl UI to collect user data and save to shared prefs
+        // TODO: impl random ID for user. Firebase bucket depends on this to be unique
         rssClient = Client.newBuilder().setEmail("example@example.com").setId(123456).setName("Slim Shady");
     }
 
@@ -168,6 +175,8 @@ public class MainActivity extends AppCompatActivity {
      * <p>
      *
      * @param uri
+     * @param blobURL
+     * @param blobTypeCase
      * @return the populated BlobMetadata
      */
     private BlobSrc buildBlobMetadata(Uri uri, String blobURL, BlobSrc.BlobTypeCase blobTypeCase) {
@@ -184,6 +193,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+        // TODO: Collect datetime from image/Uri and populate rssClient datetime attributes
         // Extracts DateTime from Uri
 //        ExifInterface exif = null;
 //        try {
@@ -213,33 +223,35 @@ public class MainActivity extends AppCompatActivity {
      * Uploads RSS Client event to Kafka Broker
      */
     private void uploadRssClient() {
-//        if (rssClient.getBlobsCount() > 0) {
+        if (rssClient.getBlobsCount() > 0) {
 
-        Log.i("Blob Count", String.valueOf(rssClient.getBlobsCount()));
-        // Send each blob item to Kafka broker as event
-//            rssKafkaClient.send(rssClient); //TODO: Complete kafka integration
+            Log.i("Blob Count", String.valueOf(rssClient.getBlobsCount()));
 
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    //Your code goes here
-                    sendPost();
-                } catch (Exception e) {
-                    Log.e("okhttp", e.getMessage());
+            Thread thread = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        //Your code goes here
+                        sendPost();
+                    } catch (Exception e) {
+                        Log.e("okhttp", e.getMessage());
+                    }
                 }
-            }
-        });
-        thread.start();
+            });
+            thread.start();
+        }
     }
 
-
+    /**
+     * Sends the rssClient data to the Kafka Broker in a post request
+     */
     private void sendPost() {
-        String tempURL = URL_POST + "/topics" + TOPIC;
-        Log.d("url", tempURL.toString());
-
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, tempURL, response -> {
-            Log.d("Volley REST Response", response);
+        String postUrl = URL + CLUSTER_ID + "/topics" + TOPIC + "/records";
+        JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.POST, postUrl, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.d("Volley REST Response", response.toString());
+            }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
@@ -250,31 +262,45 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 HashMap headers = new HashMap();
-                headers.put("Content-Type", "application/vnd.kafka.protobuf.v2+json");
-                headers.put("Accept", "application/vnd.kafka+json");
+                headers.put("Content-Type", "application/json");
+                headers.put("Authorization", "Basic " + API_KEY);
+
+                Log.d("headers", headers.toString());
                 return headers;
             }
 
             @Override
-            public String getBodyContentType() {
-                return "application/json; charset=utf-8";
-            }
+            public byte[] getBody() {
+                JSONObject body = new JSONObject();
+                JSONObject key = new JSONObject();
+                JSONObject value = new JSONObject();
+                try {
+                    key.put("subject_name_strategy", TOPIC.toUpperCase());
+                    key.put("schema_id", JSONObject.NULL);
+                    key.put("data", JSONObject.NULL);
 
-            @Override
-            public byte[] getBody() throws AuthFailureError {
-//                    return rssClient.build().toByteArray().toString().getBytes(StandardCharsets.UTF_8);
-                String body = "{\"value_schema_id\":1,\"records\":[{\"value\":"+rssClient.toString()+"}]}";
-//                        "{\"value_schema_id\": 1," +
-//                        "\"records\":[{\"value\":" + "rssClient.build().toString()" + "}]}";
+                    value.put("type", "BINARY");
+                    value.put("data", Base64.getEncoder().encodeToString(rssClient.build().toString().getBytes()));
 
-                Log.d("body", body);
-                return body.getBytes(StandardCharsets.UTF_8);
+                    Log.d("key", key.toString());
+                    Log.d("value", value.toString());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                try {
+                    body.put("key", JSONObject.NULL);
+                    body.put("value", value);
+                    Log.d("Body", body.toString());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                return body.toString().getBytes(StandardCharsets.UTF_8);
             }
 
             @Override
             protected Response parseNetworkResponse(NetworkResponse response) {
                 try {
-                    Log.i("Kafka rest proxy", "Mahdi: HomeFragment: getCar: res 1 " + response.data);
+                    Log.i("Kafka rest proxy", "response data " + response.data);
                     String jsonString = new String(response.data, HttpHeaderParser.parseCharset(response.headers));
                     return Response.success(new JSONObject(jsonString), HttpHeaderParser.parseCacheHeaders(response));
                 } catch (UnsupportedEncodingException | JSONException e) {
@@ -283,7 +309,6 @@ public class MainActivity extends AppCompatActivity {
             }
 
         };
-
         Log.d("Kafka Proxy URL", stringRequest.getUrl());
         RequestQueue resquestQueue = Volley.newRequestQueue(MainActivity.this);
         resquestQueue.add(stringRequest);
@@ -298,14 +323,14 @@ public class MainActivity extends AppCompatActivity {
         ) {
             Log.i("Uri", String.valueOf(getFileName(uri).hashCode()));
 
-            StorageReference storageReference = rssStorageRef.child(System.currentTimeMillis() + '.' + getFileExt(uri));
+            StorageReference storageReference = rssStorageRef.child(rssClient.getId()+"/"+System.currentTimeMillis() + '.' + getFileExt(uri));
             BlobSrc.Builder blobSrc = BlobSrc.newBuilder((buildBlobMetadata(uri, storageReference.getDownloadUrl().toString(), BlobSrc.BlobTypeCase.IMAGE)));
             storageReference.putFile(uri).addOnSuccessListener(taskSnapshot -> {
                 Toast.makeText(this, "Upload Successful", Toast.LENGTH_SHORT).show();
                 Log.i("Firebase Storage", "uploadImg: image has been uploaded to firebase at " + storageReference.getPath());
 
 
-                // TODO: Impl progress bar
+                // TODO: Impl on success progress bar
             }).addOnFailureListener(e -> {
                 Toast.makeText(this, "Upload failed. Please try again later", Toast.LENGTH_SHORT).show();
                 Log.e("Firebase Storage", e.getMessage());
@@ -320,7 +345,7 @@ public class MainActivity extends AppCompatActivity {
 
         // TODO: Hash image name instead of usign currentTimeMills()
         // TODO: Check for duplicates using hashed name
-        // TODO: create bucket depending on user email/Id (Use Email as ID)
+        // TODO: create firebase bucket depending on user email/Id (Use Email as ID)
     }
 
     // Get File Extension from Uri
