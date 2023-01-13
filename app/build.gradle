@@ -46,7 +46,8 @@ dependencies {
     // https://mvnrepository.com/artifact/com.google.api.grpc/proto-google-common-protos
     implementation group: 'com.google.api.grpc', name: 'proto-google-common-protos', version: '2.11.0'
     // https://mvnrepository.com/artifact/com.google.protobuf/protobuf-java-util
-    runtimeOnly group: 'com.google.protobuf', name: 'protobuf-java-util', version: '4.0.0-rc-2'
+    implementation group: 'com.google.protobuf', name: 'protobuf-java-util', version: '4.0.0-rc-2'
+
 
     // Kafka
     implementation 'org.apache.kafka:kafka-clients:3.3.1'
@@ -70,9 +71,12 @@ protobuf {
     generateProtoTasks {
         all().each { task ->
             task.builtins {
-//                remove java
                 java {
+//                remove java
 //                    option "lite"
+                }
+                python {
+
                 }
             }
             task.generateDescriptorSet = true

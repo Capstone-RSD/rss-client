@@ -26,13 +26,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.JsonRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.android.gms.common.util.JsonUtils;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.protobuf.InvalidProtocolBufferException;
+import com.google.protobuf.util.JsonFormat;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -40,7 +38,6 @@ import org.json.JSONObject;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -55,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String URL = "https://pkc-3w22w.us-central1.gcp.confluent.cloud:443/kafka/v3/clusters";
     private Client.Builder rssClient;
-    //    private static final String API_KEY = "NzJOM1dWWFJLU1AzQUZTQTpvTkU2eWVyYkNSSStVR05XalIwVkhJSFNUQzJBbVp2NmlBRW5malp6Y0gvMWM3NHY3UDJnSVltd3hlRnJ3eFc4";
     private static final String TOPIC = "/rss_topic";
     private static final String CLUSTER_ID = "/lkc-d91ond";
     private static final Integer SCHEMA_ID = 100001;
@@ -239,6 +235,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
             thread.start();
+        } else {
+            Log.i("Blob Count", "Is empty");
         }
     }
 
@@ -279,12 +277,17 @@ public class MainActivity extends AppCompatActivity {
                     key.put("schema_id", JSONObject.NULL);
                     key.put("data", JSONObject.NULL);
 
-                    value.put("type", "BINARY");
-                    value.put("data", Base64.getEncoder().encodeToString(rssClient.build().toString().getBytes()));
+                    String rssClient_json = JsonFormat.printer().print(rssClient);
+                    JSONObject json = new JSONObject(rssClient_json);
+
+                    value.put("type", "JSON");
+                    value.put("data", json);
 
                     Log.d("key", key.toString());
                     Log.d("value", value.toString());
                 } catch (JSONException e) {
+                    e.printStackTrace();
+                } catch (InvalidProtocolBufferException e) {
                     e.printStackTrace();
                 }
                 try {
