@@ -73,7 +73,7 @@ jobs:
         run: |
           mkdir -p protobuf-rsd-gen/dart-src
           ls -al
-          protoc --proto_path=${{github.workspace}} -I=${{github.workspace}}/api-common-protos --dart_out=protobuf-rsd-gen/dart-src rss_client.proto --plugin=protoc_plugin/bin/protoc-gen-dart
+          protoc --proto_path=${{github.workspace}} -I=${{github.workspace}}/api-common-protos --dart_out=protobuf-rsd-gen/dart-src rss_client.proto 
 
       # Upload dart artifacts
       - name: Upload generated dart artifacts
