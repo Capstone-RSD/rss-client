@@ -33,6 +33,9 @@ jobs:
       # Setup Dart
       - name: Setup Dart
         uses: cedx/setup-dart@v3.0.0
+        
+      - name: Installs Flutter
+        uses: britannio/action-install-flutter@v1.1
 
       # Resource: https://lukasjoswiak.com/github-actions-protobuf/
       - name: Cache protobuf library
