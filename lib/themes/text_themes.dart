@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class CalsyncThemesText {
-  static TextTheme calsyncTextThemeL = TextTheme(
+class RSSClientThemesText {
+  static TextTheme rssClientTextThemeL = TextTheme(
     headline1: GoogleFonts.poppins(
       fontSize: 45,
       letterSpacing: 5,
@@ -44,7 +44,7 @@ class CalsyncThemesText {
     ),
   );
 
-  static TextTheme calsyncTextThemeD = TextTheme(
+  static TextTheme rssClientTextThemeD = TextTheme(
     headline1: GoogleFonts.poppins(
       fontSize: 45,
       letterSpacing: 5,

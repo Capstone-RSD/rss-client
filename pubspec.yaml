@@ -1,5 +1,5 @@
 name: rssclient
-description: A new Flutter project.
+description: Road Surface Deterioration Mobile Client Application.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -38,6 +38,12 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   protobuf: ^2.1.0
+  provider: ^6.0.5
+  shared_preferences: ^2.0.16
+  flutter_native_splash: ^2.2.16
+  google_fonts: ^3.0.1
+  url_launcher: ^6.1.7
+  smooth_page_indicator: ^1.0.0+2
 
 dev_dependencies:
   flutter_test:

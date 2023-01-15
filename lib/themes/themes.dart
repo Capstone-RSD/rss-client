@@ -1,15 +1,16 @@
-// import 'package:calsync/themes/text_themes.dart';
-import 'text_themes.dart';
+// import 'package:rSSClient/themes/text_themes.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class CalsyncThemes extends ChangeNotifier {
-  CalsyncThemes._(); // private constructor t prevent creating an instance
+import 'text_themes.dart';
+
+class RSSClientThemes extends ChangeNotifier {
+  RSSClientThemes._(); // private constructor t prevent creating an instance
 
   static ThemeData light = ThemeData(
     useMaterial3: true,
     visualDensity: VisualDensity.adaptivePlatformDensity,
-    textTheme: CalsyncThemesText.calsyncTextThemeL,
+    textTheme: RSSClientThemesText.rssClientTextThemeL,
     inputDecorationTheme: InputDecorationTheme(
       fillColor: Color(0xff182231),
       contentPadding: const EdgeInsets.only(left: 10),
@@ -67,7 +68,7 @@ class CalsyncThemes extends ChangeNotifier {
   static ThemeData dark = ThemeData(
     useMaterial3: true,
     visualDensity: VisualDensity.adaptivePlatformDensity,
-    textTheme: CalsyncThemesText.calsyncTextThemeD,
+    textTheme: RSSClientThemesText.rssClientTextThemeD,
     errorColor: Colors.red,
     inputDecorationTheme: InputDecorationTheme(
       // fillColor: Color(0xff182231),
@@ -121,10 +122,10 @@ class CalsyncThemes extends ChangeNotifier {
   );
 }
 
-class CalsyncThemeNotification extends ChangeNotifier {
+class RSSClientThemeNotification extends ChangeNotifier {
   static const String _themeKey = "theme_key";
   bool _darkTheme = false;
-  CalsyncThemeNotification() {
+  RSSClientThemeNotification() {
     _darkTheme = true;
     getThemeSharedPref();
   }

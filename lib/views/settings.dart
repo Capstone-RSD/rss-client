@@ -1,6 +1,6 @@
-import 'package:calendar_sync/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:rssclient/themes/themes.dart';
 
 class Settings extends StatefulWidget {
   const Settings({Key? key}) : super(key: key);
@@ -15,7 +15,8 @@ class _SettingsState extends State<Settings> {
     bool _autofocus = false;
     return Column(
       children: <Widget>[
-        Consumer<CalsyncThemeNotification>(builder: (context, notifier, child) {
+        Consumer<RSSClientThemeNotification>(
+            builder: (context, notifier, child) {
           return SwitchListTile(
             value: notifier.darkTheme,
             title: Text(
