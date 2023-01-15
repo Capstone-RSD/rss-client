@@ -62,7 +62,7 @@ jobs:
         run: |
           dart pub global activate protoc_plugin
           ls -al
-          dart pub get protoc_plugin
+          flutter pub get protoc_plugin
           dart compile exe protoc_plugin.dart            
 
       # Generate for Dart using protobuf
