@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package RSS;// RSS=Road Surface Status
+
+// Resource: https://github.com/protocolbuffers/protobuf/blob/main/examples/addressbook.proto
+
+// Imports
+import "google/protobuf/timestamp.proto";
+import "rss_cost_analysis.proto";
+
+// [START global_declaration]
+option optimize_for = SPEED; // Enabled by default
+// [END global_declaration]
+
+
+// [START java_declaration]
+option java_multiple_files = true; // enables generating a separate .java file for each generated class
+option java_package = "com.example.rss_client";
+// option java_outer_classname = "RSD";
+// [END java_declaration]
+
+message RSSPayload {
+  // optional string name = 1;
+  // optional int32 id = 2;
+  // optional string email = 3;
+  // google.protobuf.Timestamp DateOfBirth = 4;
+
+
+  repeated string damage_type = 1; // List of all damage types detected
+  repeated string surface_type = 2; // List of all surface types detected. E.g. Dry, Damp, Wet, Frost, Ice
+  enum DamageLevel {
+    // option allow_alias = true;
+    LVL_UNSPECIFIED = 0;
+    LVL_LOW = 1;
+    LVL_MED = 2;
+    LVL_HEAVY = 3;
+  }
+
+  enum RepairPriority {
+    PRIORITY_UNSPECIFIED = 0;
+    PRIORITY_LOW = 1;
+    PRIORITY_MED = 2;
+    PRIORITY_HIGH = 3;
+  }
+}
+
