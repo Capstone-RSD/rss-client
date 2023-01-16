@@ -22,12 +22,12 @@ class MyApp extends StatelessWidget {
         child: Consumer<RSSClientThemeNotification>(builder:
             (BuildContext context, RSSClientThemeNotification notifier, child) {
           return MaterialApp(
-            title: 'Flutter Demo',
-            // theme: notifier.darkTheme
-            //     ? RSSClientThemes.dark
-            //     : RSSClientThemes.light,
+            title: 'RSS Client',
+            theme: notifier.darkTheme
+                ? RSSClientThemes.dark
+                : RSSClientThemes.light,
 
-            theme: RSSClientThemes.light,
+            // theme: RSSClientThemes.light,
             darkTheme: RSSClientThemes.dark,
             themeMode: ThemeMode.system,
 

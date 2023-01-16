@@ -33,23 +33,6 @@ class _SettingsState extends State<Settings> {
             },
           );
         }),
-        // SwitchListTile(
-        //   value: _autofocus,
-        //   secondary: Icon(Icons.center_focus_weak_rounded),
-        //   subtitle: Text("Enable auto focus of text"),
-        //   // controlAffinity: ListTileControlAffinity.platform,
-        //   onChanged: (value) {
-        //     setState(() {
-        //       _autofocus = value;
-        //       print(value);
-        //       print("Autofocus: $_autofocus");
-        //     });
-        //   },
-        //   title: Text(
-        //     "AutoFocus TextField",
-        //     style: Theme.of(context).textTheme.headline5,
-        //   ),
-        // )
       ],
     );
   }
