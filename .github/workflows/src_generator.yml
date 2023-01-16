@@ -6,7 +6,7 @@ name: dart-src-generator
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: [ "feature/*" ]
+    branches: [ "feature/*","task/*" ]
   #   pull_request:
   #     branches: [ "main" ]
 
@@ -61,6 +61,7 @@ jobs:
           sudo ldconfig
           protoc --version
           ls -al
+
       - name: Build & install for dart
         run: |
           dart pub global activate protoc_plugin
