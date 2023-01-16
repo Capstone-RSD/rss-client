@@ -1,8 +1,31 @@
-# RSS_Client
-A mobile application for the user to upload their captured data
+# Capstone
 
-## Resources: 
-- [Android Protobuf tutorial](https://medium.com/mobile-app-development-publication/simple-android-protobuf-tutorial-with-actual-code-bfb581299f47)
-- [Config gradle for protobuf](https://youtu.be/nB7J6D_IXrA)
-- [Protocol Buffers w/ Java & Gradle](https://youtu.be/CDYoLQR6744)
-- [Upload to Firebase Storage](https://youtu.be/lPfQN-Sfnjw)
+A new Flutter project.
+
+## Getting Started
+
+FlutterFlow projects are built to run on the Flutter _stable_ release.
+
+### IMPORTANT:
+
+For projects with Firestore integration, you must first run the following commands to ensure the project compiles:
+
+```
+flutter pub get
+flutter packages pub run build_runner build --delete-conflicting-outputs
+```
+
+This command creates the generated files that parse each Record from Firestore into a schema object.
+
+### Getting started continued:
+
+This project is a starting point for a Flutter application.
+
+A few resources to get you started if this is your first Flutter project:
+
+- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
+- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+
+For help getting started with Flutter, view our
+[online documentation](https://flutter.dev/docs), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.
