@@ -2,8 +2,12 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+
 // import 'package:rssclient/views/onboarding.dart';
 import 'package:provider/provider.dart';
+
+art';
+
 // import 'package:rssclient/generated/rsd-dart-gen/rss_client.pb.dart';
 import 'package:rssclient/themes/themes.dart';
 
@@ -68,8 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
   static const String TOPIC = "/rss_topic";
   static const String CLUSTER_ID = "/lkc-d91ond";
   static const int SCHEMA_ID = 100001;
-  static const String API_KEY =
-      "NzJOM1dWWFJLU1AzQUZTQTpvTkU2eWVyYkNSSStVR05XalIwVkhJSFNUQzJBbVp2NmlBRW5malp6Y0gvMWM3NHY3UDJnSVltd3hlRnJ3eFc4";
+  static const String API_KEY = "";
 
   Future<void> _incrementCounter() async {
     setState(() {
