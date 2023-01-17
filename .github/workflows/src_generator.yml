@@ -83,3 +83,12 @@ jobs:
           name: rsd-dart-gen
           path: |
             ${{github.workspace}}/protobuf-rsd-gen
+      
+      
+      # Upload dart artifacts
+      - name: Upload generated dart artifacts
+        uses: actions/upload-artifact@v3.1.1
+        with:
+          name: rsd-dart-gen
+          path: |
+            ${{github.workspace}}
