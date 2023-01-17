@@ -82,4 +82,4 @@ jobs:
         with:
           name: rsd-dart-gen
           path: |
-            ${{github.workspace}}/protobuf-rsd-gen/dart-src
+            ${{github.workspace}}/protobuf-rsd-gen
