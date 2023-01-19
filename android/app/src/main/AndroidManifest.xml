@@ -1,6 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.rssclient">
-   <application
+    package="com.example.rss.rssclient">
+
+    <application
         android:label="rssclient"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
