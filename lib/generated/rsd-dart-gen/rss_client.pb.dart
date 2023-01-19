@@ -3,9 +3,9 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../../rsd-dart-gen/google/type/datetime.pb.dart' as $2;
-import '../../rsd-dart-gen/google/type/latlng.pb.dart' as $0;
-import '../../rsd-dart-gen/google/type/postal_address.pb.dart' as $1;
+import 'google/type/datetime.pb.dart' as $2;
+import 'google/type/latlng.pb.dart' as $0;
+import 'google/type/postal_address.pb.dart' as $1;
 
 class Client_DamageLocation extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
@@ -32,6 +32,7 @@ class Client_DamageLocation extends $pb.GeneratedMessage {
     ..hasRequiredFields = false;
 
   Client_DamageLocation._() : super();
+
   factory Client_DamageLocation({
     $0.LatLng? latLng,
     $1.PostalAddress? address,
@@ -45,17 +46,21 @@ class Client_DamageLocation extends $pb.GeneratedMessage {
     }
     return _result;
   }
+
   factory Client_DamageLocation.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
+
   factory Client_DamageLocation.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
   Client_DamageLocation clone() =>
       Client_DamageLocation()..mergeFromMessage(this);
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
@@ -64,11 +69,15 @@ class Client_DamageLocation extends $pb.GeneratedMessage {
       super.copyWith((message) => updates(message as Client_DamageLocation))
           as Client_DamageLocation; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static Client_DamageLocation create() => Client_DamageLocation._();
+
   Client_DamageLocation createEmptyInstance() => create();
+
   static $pb.PbList<Client_DamageLocation> createRepeated() =>
       $pb.PbList<Client_DamageLocation>();
+
   @$core.pragma('dart2js:noInline')
   static Client_DamageLocation getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<Client_DamageLocation>(create);
@@ -76,6 +85,7 @@ class Client_DamageLocation extends $pb.GeneratedMessage {
 
   @$pb.TagNumber(1)
   $0.LatLng get latLng => $_getN(0);
+
   @$pb.TagNumber(1)
   set latLng($0.LatLng v) {
     setField(1, v);
@@ -90,6 +100,7 @@ class Client_DamageLocation extends $pb.GeneratedMessage {
 
   @$pb.TagNumber(2)
   $1.PostalAddress get address => $_getN(1);
+
   @$pb.TagNumber(2)
   set address($1.PostalAddress v) {
     setField(2, v);
@@ -155,6 +166,7 @@ class Client extends $pb.GeneratedMessage {
     ..hasRequiredFields = false;
 
   Client._() : super();
+
   factory Client({
     $core.String? name,
     $core.int? id,
@@ -186,16 +198,20 @@ class Client extends $pb.GeneratedMessage {
     }
     return _result;
   }
+
   factory Client.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
+
   factory Client.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
   Client clone() => Client()..mergeFromMessage(this);
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
@@ -203,10 +219,14 @@ class Client extends $pb.GeneratedMessage {
       super.copyWith((message) => updates(message as Client))
           as Client; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static Client create() => Client._();
+
   Client createEmptyInstance() => create();
+
   static $pb.PbList<Client> createRepeated() => $pb.PbList<Client>();
+
   @$core.pragma('dart2js:noInline')
   static Client getDefault() =>
       _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Client>(create);
@@ -214,6 +234,7 @@ class Client extends $pb.GeneratedMessage {
 
   @$pb.TagNumber(1)
   $core.String get name => $_getSZ(0);
+
   @$pb.TagNumber(1)
   set name($core.String v) {
     $_setString(0, v);
@@ -226,6 +247,7 @@ class Client extends $pb.GeneratedMessage {
 
   @$pb.TagNumber(2)
   $core.int get id => $_getIZ(1);
+
   @$pb.TagNumber(2)
   set id($core.int v) {
     $_setSignedInt32(1, v);
@@ -238,6 +260,7 @@ class Client extends $pb.GeneratedMessage {
 
   @$pb.TagNumber(3)
   $core.String get email => $_getSZ(2);
+
   @$pb.TagNumber(3)
   set email($core.String v) {
     $_setString(2, v);
@@ -250,6 +273,7 @@ class Client extends $pb.GeneratedMessage {
 
   @$pb.TagNumber(6)
   $core.int get speed => $_getIZ(3);
+
   @$pb.TagNumber(6)
   set speed($core.int v) {
     $_setSignedInt32(3, v);
@@ -310,6 +334,7 @@ class BlobSrc extends $pb.GeneratedMessage {
     ..hasRequiredFields = false;
 
   BlobSrc._() : super();
+
   factory BlobSrc({
     $core.String? blobUrl,
     $2.DateTime? datetimeCreated,
@@ -331,16 +356,20 @@ class BlobSrc extends $pb.GeneratedMessage {
     }
     return _result;
   }
+
   factory BlobSrc.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
+
   factory BlobSrc.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
   BlobSrc clone() => BlobSrc()..mergeFromMessage(this);
+
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
@@ -348,10 +377,14 @@ class BlobSrc extends $pb.GeneratedMessage {
       super.copyWith((message) => updates(message as BlobSrc))
           as BlobSrc; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static BlobSrc create() => BlobSrc._();
+
   BlobSrc createEmptyInstance() => create();
+
   static $pb.PbList<BlobSrc> createRepeated() => $pb.PbList<BlobSrc>();
+
   @$core.pragma('dart2js:noInline')
   static BlobSrc getDefault() =>
       _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<BlobSrc>(create);
@@ -362,6 +395,7 @@ class BlobSrc extends $pb.GeneratedMessage {
 
   @$pb.TagNumber(1)
   $core.String get blobUrl => $_getSZ(0);
+
   @$pb.TagNumber(1)
   set blobUrl($core.String v) {
     $_setString(0, v);
@@ -374,6 +408,7 @@ class BlobSrc extends $pb.GeneratedMessage {
 
   @$pb.TagNumber(2)
   $2.DateTime get datetimeCreated => $_getN(1);
+
   @$pb.TagNumber(2)
   set datetimeCreated($2.DateTime v) {
     setField(2, v);
@@ -388,6 +423,7 @@ class BlobSrc extends $pb.GeneratedMessage {
 
   @$pb.TagNumber(3)
   $core.String get image => $_getSZ(2);
+
   @$pb.TagNumber(3)
   set image($core.String v) {
     $_setString(2, v);
@@ -400,6 +436,7 @@ class BlobSrc extends $pb.GeneratedMessage {
 
   @$pb.TagNumber(4)
   $core.String get video => $_getSZ(3);
+
   @$pb.TagNumber(4)
   set video($core.String v) {
     $_setString(3, v);

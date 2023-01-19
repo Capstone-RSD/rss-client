@@ -3,9 +3,11 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
+
 // import 'package:rssclient/views/onboarding.dart';
 import 'package:provider/provider.dart';
-// import 'package:rssclient/generated/rsd-dart-gen/rss_client.pb.dart';
+import 'package:rssclient/generated/rsd-dart-gen/rss_client.pb.dart';
+import 'package:rssclient/generated/rsd-dart-gen/rss_client.pbserver.dart';
 import 'package:rssclient/themes/themes.dart';
 
 void main() {
@@ -65,7 +67,8 @@ class _MyHomePageState extends State<MyHomePage> {
   static const String URL = "pkc-3w22w.us-central1.gcp.confluent.cloud:443";
   static const String PATH = "/kafka/v3/clusters";
 
-  // late final Client rssClient;
+  late final Client rssClient =
+      Client(id: 123456, email: "johndoe@email.com", name: "John Doe");
   static const String TOPIC = "/rss_topic";
   static const String CLUSTER_ID = "/lkc-d91ond";
   static const int SCHEMA_ID = 100001;
@@ -96,8 +99,10 @@ class _MyHomePageState extends State<MyHomePage> {
     print("Decoded Res: $decodedResult");
 
     Map<String, dynamic> data = {"name": "doodle", "color": "blue"};
+    var s = rssClient.toBuilder();
+    Map data = {"name": "doodle", "color": "blue"};
     var key = "null";
-    var value = "{'type': 'JSON', 'data': $data}";
+    var value = "{'type': 'PROTOBUF', 'data': $data}";
 
     String body = jsonEncode(data);
     var methodRes =
@@ -106,9 +111,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
     var res = await http.post(url,
         headers: {
-          'Content-Type': 'text/plain',
-          // 'Accept': "application/json",
-          'Authorization': 'Basic $API_KEY'
+          'Content-Type': "application/json",
+          'Accept': "application/json",
+          'Authorization': "Basic $API_KEY"
         },
         body: "data");
     print("Response Headers: ${res.headers.toString()}");
