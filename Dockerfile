@@ -2,7 +2,7 @@
 FROM ubuntu:18.04
 
 # Prerequisites
-RUN apt update && apt install -y curl git unzip xz-utils zip libglu1-mesa openjdk-8-jdk wget
+RUN apt update && apt install -y curl git unzip xz-utils zip libglu1-mesa openjdk-8-jdk wget cmake ninja-build build-essential
 
 # Set up new user
 RUN useradd -ms /bin/bash developer
@@ -30,3 +30,4 @@ COPY . /home/developer/workspace
 
 # Run basic check to download Dark SDK
 RUN flutter doctor
+CMD [ "flutter", 'pub', 'get' ]

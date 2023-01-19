@@ -3,12 +3,12 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
+p;
+
 // import 'package:rssclient/views/onboarding.dart';
 import 'package:provider/provider.dart';
-
-art';
-
-// import 'package:rssclient/generated/rsd-dart-gen/rss_client.pb.dart';
+import 'package:rssclient/generated/rsd-dart-gen/rss_client.pb.dart';
+import 'package:rssclient/generated/rsd-dart-gen/rss_client.pbserver.dart';
 import 'package:rssclient/themes/themes.dart';
 
 void main() {
@@ -68,11 +68,13 @@ class _MyHomePageState extends State<MyHomePage> {
   static const String URL = "pkc-3w22w.us-central1.gcp.confluent.cloud:443";
   static const String PATH = "/kafka/v3/clusters";
 
-  // late final Client rssClient;
+  late final Client rssClient =
+  Client(id: 123456, email: "johndoe@email.com", name: "John Doe");
   static const String TOPIC = "/rss_topic";
   static const String CLUSTER_ID = "/lkc-d91ond";
   static const int SCHEMA_ID = 100001;
-  static const String API_KEY = "";
+  static const String API_KEY =
+      "NzJOM1dWWFJLU1AzQUZTQTpvTkU2eWVyYkNSSStVR05XalIwVkhJSFNUQzJBbVp2NmlBRW5malp6Y0gvMWM3NHY3UDJnSVltd3hlRnJ3eFc4";
 
   Future<void> _incrementCounter() async {
     setState(() {
@@ -85,26 +87,23 @@ class _MyHomePageState extends State<MyHomePage> {
     });
     print("$URL$CLUSTER_ID/topics$TOPIC/records");
     var url = Uri.https("$URL", "$PATH$CLUSTER_ID/topics$TOPIC/records");
-    // URL + CLUSTER_ID + "/topics" + TOPIC + "/records";
-    final Map<String, String> headers = {
-      'Content-Type': "application/json",
-      'Authorization': "Basic $API_KEY"
-    };
 
-    var data = {"name": "doodle", "color": "blue"};
+    var s = rssClient.toBuilder();
+    Map data = {"name": "doodle", "color": "blue"};
     var key = "null";
-    var value = "{'type': 'JSON', 'data': $data}";
+    var value = "{'type': 'PROTOBUF', 'data': $data}";
 
     String body = jsonEncode(data);
 
     var res = await http.post(url,
         headers: {
           'Content-Type': "application/json",
-          'Accept': "application/json",
+          // 'Accept': "application/json",
           'Authorization': "Basic $API_KEY"
         },
-        body: jsonEncode({"value": "value"}) as String);
+        body: jsonEncode({"value": value}) as Map);
     print(res.headers.toString());
+    print(res.body);
 
     // if (res.statusCode == 200) {
     var decodedResponse = jsonDecode(utf8.decode(res.bodyBytes)) as Map;
