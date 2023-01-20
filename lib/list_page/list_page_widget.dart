@@ -2,6 +2,7 @@ import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -13,6 +14,7 @@ class ListPageWidget extends StatefulWidget {
 }
 
 class _ListPageWidgetState extends State<ListPageWidget> {
+  DateTime? datePicked;
   final _unfocusNode = FocusNode();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -30,58 +32,64 @@ class _ListPageWidgetState extends State<ListPageWidget> {
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(110),
         child: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).secondaryColor,
+          backgroundColor: FlutterFlowTheme.of(context).primaryColor,
           automaticallyImplyLeading: false,
-          title: Column(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
-                    child: FlutterFlowIconButton(
-                      borderColor: Colors.transparent,
-                      borderRadius: 30,
-                      borderWidth: 1,
-                      buttonSize: 50,
-                      icon: Icon(
-                        Icons.arrow_back_rounded,
-                        color: FlutterFlowTheme.of(context).primaryText,
-                        size: 30,
-                      ),
-                      onPressed: () async {
-                        context.pop();
-                      },
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
-                    child: Text(
-                      'Back',
-                      style: FlutterFlowTheme.of(context).title1.override(
-                            fontFamily: 'Poppins',
-                            color: FlutterFlowTheme.of(context).primaryText,
-                            fontSize: 16,
-                          ),
-                    ),
-                  ),
-                ],
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20, 0, 0, 12),
-                child: Text(
-                  'Summary ',
-                  style: FlutterFlowTheme.of(context).title2,
-                ),
-              ),
-            ],
-          ),
           actions: [],
-          centerTitle: true,
+          flexibleSpace: FlexibleSpaceBar(
+            title: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
+                      child: FlutterFlowIconButton(
+                        borderColor: Colors.transparent,
+                        borderRadius: 30,
+                        borderWidth: 1,
+                        buttonSize: 50,
+                        icon: Icon(
+                          Icons.arrow_back_rounded,
+                          color: FlutterFlowTheme.of(context).primaryText,
+                          size: 30,
+                        ),
+                        onPressed: () async {
+                          context.pop();
+                        },
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
+                      child: Text(
+                        'Back',
+                        style: FlutterFlowTheme.of(context).title1.override(
+                              fontFamily: 'Poppins',
+                              color: FlutterFlowTheme.of(context).primaryText,
+                              fontSize: 16,
+                            ),
+                      ),
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(20, 0, 0, 12),
+                  child: Text(
+                    'History',
+                    style: FlutterFlowTheme.of(context).title2.override(
+                          fontFamily: 'Poppins',
+                          color: FlutterFlowTheme.of(context).primaryText,
+                        ),
+                  ),
+                ),
+              ],
+            ),
+            centerTitle: true,
+            expandedTitleScale: 1.0,
+          ),
           elevation: 0,
         ),
       ),
@@ -98,6 +106,7 @@ class _ListPageWidgetState extends State<ListPageWidget> {
               children: [
                 Container(
                   width: double.infinity,
+                  height: MediaQuery.of(context).size.height * 0.7,
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).secondaryBackground,
                     boxShadow: [
@@ -116,15 +125,35 @@ class _ListPageWidgetState extends State<ListPageWidget> {
                       children: [
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
-                          child: Text(
-                            'Monday, June 12 2022',
-                            style: FlutterFlowTheme.of(context)
-                                .subtitle1
-                                .override(
-                                  fontFamily: 'Poppins',
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryColor,
-                                ),
+                          child: InkWell(
+                            onTap: () async {
+                              final _datePickedDate = await showDatePicker(
+                                context: context,
+                                initialDate: getCurrentTimestamp,
+                                firstDate: getCurrentTimestamp,
+                                lastDate: DateTime(2050),
+                              );
+
+                              if (_datePickedDate != null) {
+                                setState(
+                                  () => datePicked = DateTime(
+                                    _datePickedDate.year,
+                                    _datePickedDate.month,
+                                    _datePickedDate.day,
+                                  ),
+                                );
+                              }
+                            },
+                            child: Text(
+                              'Monday, June 12 2022',
+                              style: FlutterFlowTheme.of(context)
+                                  .subtitle1
+                                  .override(
+                                    fontFamily: 'Poppins',
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryColor,
+                                  ),
+                            ),
                           ),
                         ),
                         Padding(
@@ -149,7 +178,7 @@ class _ListPageWidgetState extends State<ListPageWidget> {
                             child: Image.network(
                               'https://media-cdn.tripadvisor.com/media/photo-s/0c/74/3c/4e/sample-receipt.jpg',
                               width: double.infinity,
-                              height: 200,
+                              height: 350,
                               fit: BoxFit.cover,
                             ),
                           ),

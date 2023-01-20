@@ -1,11 +1,8 @@
 import '../flutter_flow/flutter_flow_icon_button.dart';
-import '../flutter_flow/flutter_flow_place_picker.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../flutter_flow/place.dart';
 import '../flutter_flow/upload_media.dart';
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -21,7 +18,6 @@ class _CameraWidgetState extends State<CameraWidget> {
   FFLocalFile uploadedLocalFile = FFLocalFile(bytes: Uint8List.fromList([]));
 
   TextEditingController? textController;
-  var placePickerValue = FFPlace();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -93,10 +89,8 @@ class _CameraWidgetState extends State<CameraWidget> {
                         padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
                         child: InkWell(
                           onTap: () async {
-                            final selectedMedia =
-                                await selectMediaWithSourceBottomSheet(
-                              context: context,
-                              allowPhoto: true,
+                            final selectedMedia = await selectMedia(
+                              multiImage: false,
                             );
                             if (selectedMedia != null &&
                                 selectedMedia.every((m) => validateFileFormat(
@@ -217,38 +211,6 @@ class _CameraWidgetState extends State<CameraWidget> {
                 ),
               ),
             ],
-          ),
-          Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(12, 0, 12, 0),
-            child: FlutterFlowPlacePicker(
-              iOSGoogleMapsApiKey: '',
-              androidGoogleMapsApiKey: '',
-              webGoogleMapsApiKey: '',
-              onSelect: (place) async {
-                setState(() => placePickerValue = place);
-              },
-              defaultText: 'Tag Location',
-              icon: Icon(
-                Icons.place,
-                color: Color(0xFF95A1AC),
-                size: 16,
-              ),
-              buttonOptions: FFButtonOptions(
-                width: double.infinity,
-                height: 50,
-                color: Colors.white,
-                textStyle: FlutterFlowTheme.of(context).subtitle2.override(
-                      fontFamily: 'Lexend Deca',
-                      color: Color(0xFF95A1AC),
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                    ),
-                borderSide: BorderSide(
-                  color: Color(0xFFF1F4F8),
-                  width: 2,
-                ),
-              ),
-            ),
           ),
           Padding(
             padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),

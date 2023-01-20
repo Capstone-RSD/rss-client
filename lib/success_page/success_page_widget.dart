@@ -26,7 +26,7 @@ class _SuccessPageWidgetState extends State<SuccessPageWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color(0xFF39D2C0),
+      backgroundColor: FlutterFlowTheme.of(context).primaryColor,
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
