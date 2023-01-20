@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
-
 // import 'package:rssclient/views/onboarding.dart';
 import 'package:provider/provider.dart';
 import 'package:rssclient/generated/rsd-dart-gen/rss_client.pb.dart';
@@ -72,8 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
   static const String TOPIC = "/rss_topic";
   static const String CLUSTER_ID = "/lkc-d91ond";
   static const int SCHEMA_ID = 100001;
-  static const String API_KEY =
-      "NzJOM1dWWFJLU1AzQUZTQTpvTkU2eWVyYkNSSStVR05XalIwVkhJSFNUQzJBbVp2NmlBRW5malp6Y0gvMWM3NHY3UDJnSVltd3hlRnJ3eFc4";
+  static const String API_KEY = "";
 
   static const rssChannel = MethodChannel("rssChannel");
 
@@ -86,6 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
       // called again, and so nothing would appear to happen.
       _counter++;
     });
+
     print("$URL$CLUSTER_ID/topics$TOPIC/records");
     var url = Uri.https("$URL", "$PATH$CLUSTER_ID/topics$TOPIC/records");
     var getURL = Uri.https(URL, "$PATH$CLUSTER_ID/topics");
@@ -95,34 +94,16 @@ class _MyHomePageState extends State<MyHomePage> {
       'Authorization': "Basic $API_KEY"
     });
     var decodedResult = jsonDecode(utf8.decode(result.bodyBytes)) as Map;
-    // var uri = Uri.parse(decodedResponse['uri'] as String);
     print("Decoded Res: $decodedResult");
 
-    Map<String, dynamic> data = {"name": "doodle", "color": "blue"};
-    var s = rssClient.toBuilder();
-    Map data = {"name": "doodle", "color": "blue"};
-    var key = "null";
-    var value = "{'type': 'PROTOBUF', 'data': $data}";
-
-    String body = jsonEncode(data);
-    var methodRes =
-        await rssChannel.invokeMethod("rssChannel"); //, {"name": "doodle"});
-    print(methodRes.toString());
-
-    var res = await http.post(url,
-        headers: {
-          'Content-Type': "application/json",
-          'Accept': "application/json",
-          'Authorization': "Basic $API_KEY"
-        },
-        body: "data");
-    print("Response Headers: ${res.headers.toString()}");
-    print("Response Body: ${res.body.toString()}");
-    // if (res.statusCode == 200) {
-    var decodedResponse = jsonDecode(utf8.decode(res.bodyBytes)) as Map;
-    // var uri = Uri.parse(decodedResponse['uri'] as String);
-    print(decodedResponse);
-    // }
+    try {
+      print(rssClient.toProto3Json());
+      var methodRes = await rssChannel.invokeMethod("rssChannel",
+          {"name": rssClient.toBuilder().toProto3Json().toString()});
+      print(methodRes.toString());
+    } on PlatformException catch (e) {
+      print(e.message);
+    }
   }
 
   @override
