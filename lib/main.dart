@@ -1,6 +1,12 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:http/http.dart' as http;
 // import 'package:rssclient/views/onboarding.dart';
 import 'package:provider/provider.dart';
+import 'package:rssclient/generated/rsd-dart-gen/rss_client.pb.dart';
+import 'package:rssclient/generated/rsd-dart-gen/rss_client.pbserver.dart';
 import 'package:rssclient/themes/themes.dart';
 
 void main() {
@@ -57,8 +63,19 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  static const String URL = "pkc-3w22w.us-central1.gcp.confluent.cloud:443";
+  static const String PATH = "/kafka/v3/clusters";
 
-  void _incrementCounter() {
+  late final Client rssClient =
+      Client(id: 123456, email: "johndoe@email.com", name: "John Doe");
+  static const String TOPIC = "/rss_topic";
+  static const String CLUSTER_ID = "/lkc-d91ond";
+  static const int SCHEMA_ID = 100001;
+  static const String API_KEY = "";
+
+  static const rssChannel = MethodChannel("rssChannel");
+
+  Future<void> _incrementCounter() async {
     setState(() {
       // This call to setState tells the Flutter framework that something has
       // changed in this State, which causes it to rerun the build method below
@@ -67,6 +84,26 @@ class _MyHomePageState extends State<MyHomePage> {
       // called again, and so nothing would appear to happen.
       _counter++;
     });
+
+    print("$URL$CLUSTER_ID/topics$TOPIC/records");
+    var url = Uri.https("$URL", "$PATH$CLUSTER_ID/topics$TOPIC/records");
+    var getURL = Uri.https(URL, "$PATH$CLUSTER_ID/topics");
+
+    var result = await http.get(getURL, headers: {
+      'Content-Type': "application/json",
+      'Authorization': "Basic $API_KEY"
+    });
+    var decodedResult = jsonDecode(utf8.decode(result.bodyBytes)) as Map;
+    print("Decoded Res: $decodedResult");
+
+    try {
+      print(rssClient.toProto3Json());
+      var methodRes = await rssChannel.invokeMethod("rssChannel",
+          {"name": rssClient.toBuilder().toProto3Json().toString()});
+      print(methodRes.toString());
+    } on PlatformException catch (e) {
+      print(e.message);
+    }
   }
 
   @override
