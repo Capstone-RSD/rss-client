@@ -6,7 +6,7 @@ name: dart-src-generator
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: [ "feature/*","task/*" ]
+    branches: [ "feature/*","task/*","dev" ]
   #   pull_request:
   #     branches: [ "main" ]
 
@@ -64,16 +64,14 @@ jobs:
 
       - name: Build & install for dart
         run: |
-          dart pub global activate protoc_plugin
-          ls -al         
-          flutter pub get protoc_plugin
+              dart pub global activate protoc_plugin
 
       # Generate for Dart using protobuf
       - name: Generate Dart source code
         run: |
           mkdir -p protobuf-rsd-gen/dart-src
           ls -al
-          protoc --proto_path=${{github.workspace}} -I=${{github.workspace}}/api-common-protos --dart_out=protobuf-rsd-gen/dart-src protobuf/src/google/protobuf/duration.proto
+          protoc --proto_path=${{github.workspace}} -I=${{github.workspace}}/api-common-protos --dart_out=protobuf-rsd-gen/dart-src rss_client.proto 
 
       # Upload dart artifacts
       - name: Upload generated dart artifacts
@@ -81,7 +79,7 @@ jobs:
         with:
           name: rsd-dart-gen
           path: |
-            ${{github.workspace}}/protobuf-rsd-gen
+            ${{github.workspace}}/protobuf-rsd-gen/dart-src
       
       
 #       # Upload dart artifacts
