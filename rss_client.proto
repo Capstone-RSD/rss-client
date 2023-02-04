@@ -30,7 +30,7 @@ message Client {
 
   DamageLocation damageLocation =4;
 
-  int32 speed = 6;
+  double speed = 6;
 
   repeated BlobSrc blobs = 7;
 
