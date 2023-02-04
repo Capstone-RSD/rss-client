@@ -64,9 +64,7 @@ jobs:
 
       - name: Build & install for dart
         run: |
-          dart pub global activate protoc_plugin
-          ls -al
-          flutter pub get protoc_plugin
+              dart pub global activate protoc_plugin
 
       # Generate for Dart using protobuf
       - name: Generate Dart source code
