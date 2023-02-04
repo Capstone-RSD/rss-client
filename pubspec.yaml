@@ -44,11 +44,12 @@ dependencies:
   google_fonts: ^3.0.1
   #  url_launcher: ^6.1.7
   #  smooth_page_indicator: ^1.0.0+2
-  ##  camera: ^0.10.1
+  camera: ^0.10.3
   #  path_provider: ^2.0.11
   #  path: ^1.8.2
   http: ^0.13.5
   protoc_plugin: ^20.0.1
+  geolocator: ^9.0.2
 
 dev_dependencies:
   flutter_test:
