@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:camera/camera.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -10,6 +11,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
 // import 'package:rssclient/views/onboarding.dart';
 import 'package:provider/provider.dart';
+import 'package:rssclient/generated/rsd-dart-gen/google/type/latlng.pbserver.dart';
 import 'package:rssclient/generated/rsd-dart-gen/rss_client.pb.dart';
 import 'package:rssclient/generated/rsd-dart-gen/rss_client.pbserver.dart';
 import 'package:rssclient/themes/themes.dart';
@@ -296,8 +298,14 @@ class _MyHomePageState extends State<MyHomePage>
         // onPressed: _incrementCounter,
         onPressed: () {
           _getCurrentLocation().then((value) => {
-                // rssClient.
                 setState(() {
+                  DamageLocation location = DamageLocation(
+                      latLng: LatLng(
+                          latitude: value.latitude,
+                          longitude: value.longitude));
+                  rssClient.damageLocation = location;
+                  rssClient.speed = value.speed;
+                  print(rssClient.toBuilder());
                   debugPrint("Longitude: ${value.longitude}");
                   debugPrint("Latitude: ${value.latitude}");
                 })
@@ -1232,5 +1240,17 @@ class _MyHomePageState extends State<MyHomePage>
       debugPrint("Longitude: ${event.longitude}");
       debugPrint("Latitude: ${event.latitude}");
     });
+  }
+
+  Future<void> uploadImage() async {
+    final file = File();
+    final firebasePath = '${rssClient.email}/rss';
+    final storageRef = FirebaseStorage.instance.ref().child(firebasePath);
+    storageRef.putFile(blob);
+
+    // Uploading to firebase
+    UploadTask task;
+    final snapshot = await task.whenComplete(() => null);
+    final urlDownload = await
   }
 }

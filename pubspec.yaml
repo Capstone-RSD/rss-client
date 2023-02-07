@@ -50,6 +50,8 @@ dependencies:
   http: ^0.13.5
   protoc_plugin: ^20.0.1
   geolocator: ^9.0.2
+  firebase_core: ^2.4.1
+  firebase_storage: ^11.0.10
 
 dev_dependencies:
   flutter_test:

@@ -33,9 +33,18 @@ public interface ClientOrBuilder extends
       getEmailBytes();
 
   /**
-   * <code>int32 speed = 6;</code>
+   * <code>.RSS.DamageLocation damageLocation = 4;</code>
    */
-  int getSpeed();
+  boolean hasDamageLocation();
+  /**
+   * <code>.RSS.DamageLocation damageLocation = 4;</code>
+   */
+  com.example.rss_client.DamageLocation getDamageLocation();
+
+  /**
+   * <code>double speed = 6;</code>
+   */
+  double getSpeed();
 
   /**
    * <code>repeated .RSS.BlobSrc blobs = 7;</code>
