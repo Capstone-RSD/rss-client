@@ -221,7 +221,7 @@ class _CameraWidgetState extends State<CameraWidget> {
               text: 'Create Post',
               options: FFButtonOptions(
                 width: 270,
-                height: 50,
+                height: 66,
                 color: Color(0xFF4B39EF),
                 textStyle: FlutterFlowTheme.of(context).subtitle2.override(
                       fontFamily: 'Lexend Deca',
