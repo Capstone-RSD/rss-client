@@ -218,7 +218,7 @@ class _CameraWidgetState extends State<CameraWidget> {
               onPressed: () async {
                 context.pushNamed('SuccessPage');
               },
-              text: 'Create Post',
+              text: 'Send Post',
               options: FFButtonOptions(
                 width: 270,
                 height: 66,
