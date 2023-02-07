@@ -53,8 +53,8 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:host="capstone.com"
-                    android:scheme="capstone" />
+                    android:host="rssclient.com"
+                    android:scheme="rssclient" />
             </intent-filter>
 
         </activity>

@@ -1,15 +1,20 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/internationalization.dart';
-import 'flutter_flow/nav/navnitialized();
+import 'flutter_flow/nav/nav.dart';
+import 'index.dart';
 
-await
-FlutterFlowTheme.initialize();
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
 
-runApp(MyApp());}
+  await FlutterFlowTheme.initialize();
+
+  runApp(MyApp());
+}
 
 class MyApp extends StatefulWidget {
   // This widget is the root of your application.
@@ -38,8 +43,7 @@ class _MyAppState extends State<MyApp> {
     setState(() => _locale = createLocale(language));
   }
 
-  void setThemeMode(ThemeMode mode) =>
-      setState(() {
+  void setThemeMode(ThemeMode mode) => setState(() {
         _themeMode = mode;
         FlutterFlowTheme.saveThemeMode(mode);
       });

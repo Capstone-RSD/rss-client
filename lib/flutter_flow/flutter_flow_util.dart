@@ -17,16 +17,15 @@ export 'dart:typed_data' show Uint8List;
 export 'package:intl/intl.dart';
 export 'package:page_transition/page_transition.dart';
 
-export 'lat_lng.dart';
 export 'local_file.dart';
 export 'nav/nav.dart';
-export 'placefault<T>(T? value, T defaultValue) =>
+// import 'lat_lng.dart';
 
-(
-value is String && value.isEmpty) ||
-value == null
-?
-defaultValue : value;
+// export 'lat_lng.dart';
+export 'place.dart';
+
+T valueOrDefault<T>(T? value, T defaultValue) =>
+    (value is String && value.isEmpty) || value == null ? defaultValue : value;
 
 String dateTimeFormat(String format, DateTime? dateTime, {String? locale}) {
   if (dateTime == null) {
@@ -69,7 +68,8 @@ enum DecimalType {
   commaDecimal,
 }
 
-String formatNumber(num? value, {
+String formatNumber(
+  num? value, {
   required FormatType formatType,
   DecimalType? decimalType,
   String? currency,
@@ -134,18 +134,16 @@ DateTime get getCurrentTimestamp => DateTime.now();
 
 extension DateTimeComparisonOperators on DateTime {
   bool operator <(DateTime other) => isBefore(other);
-
   bool operator >(DateTime other) => isAfter(other);
-
   bool operator <=(DateTime other) => this < other || isAtSameMomentAs(other);
-
   bool operator >=(DateTime other) => this > other || isAtSameMomentAs(other);
 }
 
-dynamic getJsonField(dynamic response,
-    String jsonPath, [
-      bool isForList = false,
-    ]) {
+dynamic getJsonField(
+  dynamic response,
+  String jsonPath, [
+  bool isForList = false,
+]) {
   final field = JsonPath(jsonPath).read(response);
   if (field.isEmpty) {
     return null;
@@ -167,19 +165,12 @@ Rect? getWidgetBoundingBox(BuildContext context) {
 }
 
 bool get isAndroid => !kIsWeb && Platform.isAndroid;
-
 bool get isiOS => !kIsWeb && Platform.isIOS;
-
 bool get isWeb => kIsWeb;
 
 const kMobileWidthCutoff = 479.0;
-
 bool isMobileWidth(BuildContext context) =>
-    MediaQuery
-        .of(context)
-        .size
-        .width < kMobileWidthCutoff;
-
+    MediaQuery.of(context).size.width < kMobileWidthCutoff;
 bool responsiveVisibility({
   required BuildContext context,
   bool phone = true,
@@ -187,10 +178,7 @@ bool responsiveVisibility({
   bool tabletLandscape = true,
   bool desktop = true,
 }) {
-  final width = MediaQuery
-      .of(context)
-      .size
-      .width;
+  final width = MediaQuery.of(context).size.width;
   if (width < kMobileWidthCutoff) {
     return phone;
   } else if (width < 767) {
@@ -209,12 +197,11 @@ const kTextValidatorWebsiteRegex =
     r'(https?:\/\/)?(www\.)[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,10}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)|(https?:\/\/)?(www\.)?(?!ww)[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,10}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)';
 
 extension IterableExt<T> on Iterable<T> {
-  List<S> mapIndexed<S>(S Function(int, T) func) =>
-      toList()
-          .asMap()
-          .map((index, value) => MapEntry(index, func(index, value)))
-          .values
-          .toList();
+  List<S> mapIndexed<S>(S Function(int, T) func) => toList()
+      .asMap()
+      .map((index, value) => MapEntry(index, func(index, value)))
+      .values
+      .toList();
 }
 
 void setAppLanguage(BuildContext context, String language) =>
@@ -223,11 +210,12 @@ void setAppLanguage(BuildContext context, String language) =>
 void setDarkModeSetting(BuildContext context, ThemeMode themeMode) =>
     MyApp.of(context).setThemeMode(themeMode);
 
-void showSnackbar(BuildContext context,
-    String message, {
-      bool loading = false,
-      int duration = 4,
-    }) {
+void showSnackbar(
+  BuildContext context,
+  String message, {
+  bool loading = false,
+  int duration = 4,
+}) {
   ScaffoldMessenger.of(context).hideCurrentSnackBar();
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
