@@ -20,8 +20,8 @@ export 'serialization_util.dart';
 const kTransitionInfoKey = '__transition_info__';
 
 class AppStateNotifier extends ChangeNotifier {
-  CapstoneFirebaseUser? initialUser;
-  CapstoneFirebaseUser? user;
+  Rsd1FirebaseUser? initialUser;
+  Rsd1FirebaseUser? user;
   bool showSplashImage = true;
   String? _redirectLocation;
 
@@ -46,7 +46,7 @@ class AppStateNotifier extends ChangeNotifier {
   /// to perform subsequent actions (such as navigation) afterwards.
   void updateNotifyOnAuthChange(bool notify) => notifyOnAuthChange = notify;
 
-  void update(CapstoneFirebaseUser newUser) {
+  void update(Rsd1FirebaseUser newUser) {
     initialUser ??= newUser;
     user = newUser;
     // Refresh the app on auth change unless explicitly marked otherwise.
@@ -69,23 +69,23 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, _) =>
-          appStateNotifier.loggedIn ? CameraWidget() : WelcomeWidget(),
+          appStateNotifier.loggedIn ? CameraWidget() : OnboardingWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? CameraWidget() : WelcomeWidget(),
+              appStateNotifier.loggedIn ? CameraWidget() : OnboardingWidget(),
           routes: [
+            FFRoute(
+              name: 'onboarding',
+              path: 'onboarding',
+              builder: (context, params) => OnboardingWidget(),
+            ),
             FFRoute(
               name: 'HomePage',
               path: 'homePage',
               builder: (context, params) => HomePageWidget(),
-            ),
-            FFRoute(
-              name: 'Welcome',
-              path: 'welcome',
-              builder: (context, params) => WelcomeWidget(),
             ),
             FFRoute(
               name: 'ListPage',
@@ -265,7 +265,7 @@ class FFRoute {
 
           if (requireAuth && !appStateNotifier.loggedIn) {
             appStateNotifier.setRedirectLocationIfUnset(state.location);
-            return '/welcome';
+            return '/onboarding';
           }
           return null;
         },

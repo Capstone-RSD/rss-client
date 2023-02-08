@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Capstone</string>
+	<string>RSD1</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -13,7 +13,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>Capstone</string>
+	<string>RSD1</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 
@@ -37,10 +37,10 @@
         <key>CFBundleTypeRole</key>
         <string>Editor</string>
         <key>CFBundleURLName</key>
-        <string>capstone.com</string>
+        <string>rsd1.com</string>
         <key>CFBundleURLSchemes</key>
         <array>
-        <string>capstone</string>
+        <string>rsd1</string>
         </array>
         </dict>
     </array>
@@ -57,7 +57,8 @@
     <string>In order to take a picture or video, this app requires permission to access the camera.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
     <string>In order to upload media, this app requires permission to access the photo library.</string>
-
+	<key>NSLocationWhenInUseUsageDescription</key>
+    <string>Location permission</string>
 
 
 	<key>UILaunchStoryboardName</key>

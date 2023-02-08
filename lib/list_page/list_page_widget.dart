@@ -5,6 +5,7 @@ import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class ListPageWidget extends StatefulWidget {
   const ListPageWidget({Key? key}) : super(key: key);
@@ -26,6 +27,8 @@ class _ListPageWidgetState extends State<ListPageWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -198,7 +201,18 @@ class _ListPageWidgetState extends State<ListPageWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 16),
                 child: FFButtonWidget(
                   onPressed: () async {
-                    context.pushNamed('Welcome');
+                    if (Navigator.of(context).canPop()) {
+                      context.pop();
+                    }
+                    context.pushNamed(
+                      'Camera2',
+                      extra: <String, dynamic>{
+                        kTransitionInfoKey: TransitionInfo(
+                          hasTransition: true,
+                          transitionType: PageTransitionType.leftToRight,
+                        ),
+                      },
+                    );
                   },
                   text: 'Home',
                   options: FFButtonOptions(
