@@ -191,7 +191,7 @@ Future<List<SelectedMedia>?> selectMedia({
   final pickedMediaFuture = isVideo
       ? picker.pickVideo(source: source)
       : picker.pickImage(
-    maxWidth: maxWidth,
+          maxWidth: maxWidth,
           maxHeight: maxHeight,
           imageQuality: imageQuality,
           source: source,
