@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>518631005157-uffapnv4737qalvpjlee9hle8ljg21au.apps.googleusercontent.com</string>
+	<string>518631005157-kjmloa25gdate2mpct4unl5iaqg226om.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.518631005157-uffapnv4737qalvpjlee9hle8ljg21au</string>
+	<string>com.googleusercontent.apps.518631005157-kjmloa25gdate2mpct4unl5iaqg226om</string>
 	<key>ANDROID_CLIENT_ID</key>
-	<string>518631005157-mcum9uep8lj3o5jsgp48rk1h9d58vjfc.apps.googleusercontent.com</string>
+	<string>518631005157-34j7d6cffsqc1i61539uqrajkfighjqm.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
 	<string>AIzaSyBOl5k8DUJDHyYpc0_5-ZUz7OiZa1wutps</string>
 	<key>GCM_SENDER_ID</key>
@@ -15,7 +15,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.mycompany.capstone</string>
+	<string>com.capstone.rss</string>
 	<key>PROJECT_ID</key>
 	<string>rss-client-21d3b</string>
 	<key>STORAGE_BUCKET</key>
@@ -31,7 +31,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:518631005157:ios:b29840b4358de1daafad0c</string>
+	<string>1:518631005157:ios:0de66a84218a507dafad0c</string>
 	<key>DATABASE_URL</key>
 	<string>https://rss-client-21d3b-default-rtdb.firebaseio.com</string>
 </dict>

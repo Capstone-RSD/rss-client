@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
+import 'success_page_model.dart';
+export 'success_page_model.dart';
 
 class SuccessPageWidget extends StatefulWidget {
   const SuccessPageWidget({Key? key}) : super(key: key);
@@ -14,11 +16,21 @@ class SuccessPageWidget extends StatefulWidget {
 }
 
 class _SuccessPageWidgetState extends State<SuccessPageWidget> {
-  final _unfocusNode = FocusNode();
+  late SuccessPageModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => SuccessPageModel());
+  }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
     super.dispose();
   }
@@ -58,7 +70,9 @@ class _SuccessPageWidgetState extends State<SuccessPageWidget> {
                   ),
                 ),
                 Text(
-                  'Congrats!',
+                  FFLocalizations.of(context).getText(
+                    'gwz2gb95' /* Congrats! */,
+                  ),
                   style: FlutterFlowTheme.of(context).title2.override(
                         fontFamily: 'Outfit',
                         color: Colors.white,
@@ -69,7 +83,9 @@ class _SuccessPageWidgetState extends State<SuccessPageWidget> {
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
                   child: Text(
-                    'Thanks for sharing!',
+                    FFLocalizations.of(context).getText(
+                      'onadnle5' /* Thanks for sharing! */,
+                    ),
                     style: FlutterFlowTheme.of(context).subtitle2.override(
                           fontFamily: 'Outfit',
                           color: Colors.white,
@@ -84,7 +100,9 @@ class _SuccessPageWidgetState extends State<SuccessPageWidget> {
                     onPressed: () async {
                       context.pushNamed('ListPage');
                     },
-                    text: 'Go To List',
+                    text: FFLocalizations.of(context).getText(
+                      's4fvuvht' /* Go To List */,
+                    ),
                     options: FFButtonOptions(
                       width: 130,
                       height: 50,

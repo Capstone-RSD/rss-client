@@ -6,6 +6,8 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart'
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'onboarding_model.dart';
+export 'onboarding_model.dart';
 
 class OnboardingWidget extends StatefulWidget {
   const OnboardingWidget({Key? key}) : super(key: key);
@@ -15,8 +17,22 @@ class OnboardingWidget extends StatefulWidget {
 }
 
 class _OnboardingWidgetState extends State<OnboardingWidget> {
-  PageController? pageViewController;
+  late OnboardingModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => OnboardingModel());
+  }
+
+  @override
+  void dispose() {
+    _model.dispose();
+
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +53,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                   child: Stack(
                     children: [
                       PageView(
-                        controller: pageViewController ??=
+                        controller: _model.pageViewController ??=
                             PageController(initialPage: 0),
                         scrollDirection: Axis.vertical,
                         children: [
@@ -74,7 +90,9 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Text(
-                                        'Welcome',
+                                        FFLocalizations.of(context).getText(
+                                          'hvoas3f9' /* Welcome */,
+                                        ),
                                         style: FlutterFlowTheme.of(context)
                                             .title1
                                             .override(
@@ -93,7 +111,9 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                     children: [
                                       Expanded(
                                         child: Text(
-                                          'Help us to detect road damages around the city by using our app.',
+                                          FFLocalizations.of(context).getText(
+                                            'qc1y1u2g' /* Help us to detect road damages... */,
+                                          ),
                                           style: FlutterFlowTheme.of(context)
                                               .subtitle2
                                               .override(
@@ -132,7 +152,10 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                               },
                                             );
                                           },
-                                          text: 'Explore Now',
+                                          text: FFLocalizations.of(context)
+                                              .getText(
+                                            'lv4cshgv' /* Explore Now */,
+                                          ),
                                           options: FFButtonOptions(
                                             width: 170,
                                             height: 50,
@@ -195,7 +218,9 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Text(
-                                        'Message Friends',
+                                        FFLocalizations.of(context).getText(
+                                          '32pgwoom' /* Message Friends */,
+                                        ),
                                         style: FlutterFlowTheme.of(context)
                                             .title1
                                             .override(
@@ -216,7 +241,9 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                     children: [
                                       Expanded(
                                         child: Text(
-                                          'Stay in the loop with trip plans, places to go and transportation.',
+                                          FFLocalizations.of(context).getText(
+                                            'lavpnqul' /* Stay in the loop with trip pla... */,
+                                          ),
                                           style: FlutterFlowTheme.of(context)
                                               .subtitle2,
                                         ),
@@ -251,7 +278,10 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                               },
                                             );
                                           },
-                                          text: 'Explore Now',
+                                          text: FFLocalizations.of(context)
+                                              .getText(
+                                            'lw9dh8t4' /* Explore Now */,
+                                          ),
                                           options: FFButtonOptions(
                                             width: 170,
                                             height: 50,
@@ -315,7 +345,9 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Text(
-                                        'Track Expenses',
+                                        FFLocalizations.of(context).getText(
+                                          'vhc8tv00' /* Track Expenses */,
+                                        ),
                                         style:
                                             FlutterFlowTheme.of(context).title1,
                                       ),
@@ -330,7 +362,9 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                     children: [
                                       Expanded(
                                         child: Text(
-                                          'Don’t overspend on your trip, track all your expenses within the application.',
+                                          FFLocalizations.of(context).getText(
+                                            'ia399r9e' /* Don’t overspend on your trip, ... */,
+                                          ),
                                           style: FlutterFlowTheme.of(context)
                                               .subtitle2,
                                         ),
@@ -351,7 +385,10 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                           onPressed: () {
                                             print('Button pressed ...');
                                           },
-                                          text: 'Explore Now',
+                                          text: FFLocalizations.of(context)
+                                              .getText(
+                                            '8n98x8u9' /* Explore Now */,
+                                          ),
                                           options: FFButtonOptions(
                                             width: 170,
                                             height: 50,
@@ -388,12 +425,12 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
                           child: smooth_page_indicator.SmoothPageIndicator(
-                            controller: pageViewController ??=
+                            controller: _model.pageViewController ??=
                                 PageController(initialPage: 0),
                             count: 3,
                             axisDirection: Axis.vertical,
                             onDotClicked: (i) {
-                              pageViewController!.animateToPage(
+                              _model.pageViewController!.animateToPage(
                                 i,
                                 duration: Duration(milliseconds: 500),
                                 curve: Curves.ease,

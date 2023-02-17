@@ -1,4 +1,4 @@
-package com.mycompany.capstone
+package com.capstone.rss
 
 import io.flutter.embedding.android.FlutterActivity
 

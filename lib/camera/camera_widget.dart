@@ -1,4 +1,4 @@
-import '../flutter_flow/flutter_flow_icon_button.dart';
+import '../backend/firebase_storage/storage.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -6,6 +6,8 @@ import '../flutter_flow/upload_media.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'camera_model.dart';
+export 'camera_model.dart';
 
 class CameraWidget extends StatefulWidget {
   const CameraWidget({Key? key}) : super(key: key);
@@ -15,21 +17,22 @@ class CameraWidget extends StatefulWidget {
 }
 
 class _CameraWidgetState extends State<CameraWidget> {
-  bool isMediaUploading = false;
-  FFLocalFile uploadedLocalFile = FFLocalFile(bytes: Uint8List.fromList([]));
+  late CameraModel _model;
 
-  TextEditingController? textController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    textController = TextEditingController();
+    _model = createModel(context, () => CameraModel());
+
+    _model.textController ??= TextEditingController();
   }
 
   @override
   void dispose() {
-    textController?.dispose();
+    _model.dispose();
+
     super.dispose();
   }
 
@@ -44,7 +47,9 @@ class _CameraWidgetState extends State<CameraWidget> {
         backgroundColor: Colors.white,
         automaticallyImplyLeading: false,
         title: Text(
-          'Create Post',
+          FFLocalizations.of(context).getText(
+            'ptmxca6w' /* Create Post */,
+          ),
           style: FlutterFlowTheme.of(context).title2.override(
                 fontFamily: 'Lexend Deca',
                 color: Color(0xFF090F13),
@@ -52,24 +57,7 @@ class _CameraWidgetState extends State<CameraWidget> {
                 fontWeight: FontWeight.bold,
               ),
         ),
-        actions: [
-          Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 12, 0),
-            child: FlutterFlowIconButton(
-              borderColor: Colors.transparent,
-              borderRadius: 30,
-              buttonSize: 48,
-              icon: Icon(
-                Icons.close_rounded,
-                color: Color(0xFF95A1AC),
-                size: 30,
-              ),
-              onPressed: () async {
-                context.pop();
-              },
-            ),
-          ),
-        ],
+        actions: [],
         centerTitle: false,
         elevation: 0,
       ),
@@ -92,33 +80,54 @@ class _CameraWidgetState extends State<CameraWidget> {
                         padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
                         child: InkWell(
                           onTap: () async {
-                            final selectedMedia = await selectMedia(
-                              multiImage: false,
+                            final selectedMedia =
+                                await selectMediaWithSourceBottomSheet(
+                              context: context,
+                              allowPhoto: true,
                             );
                             if (selectedMedia != null &&
                                 selectedMedia.every((m) => validateFileFormat(
                                     m.storagePath, context))) {
-                              setState(() => isMediaUploading = true);
-                              var selectedLocalFiles = <FFLocalFile>[];
+                              setState(() => _model.isMediaUploading = true);
+                              var selectedUploadedFiles = <FFUploadedFile>[];
+                              var downloadUrls = <String>[];
                               try {
-                                selectedLocalFiles = selectedMedia
-                                    .map((m) => FFLocalFile(
+                                selectedUploadedFiles = selectedMedia
+                                    .map((m) => FFUploadedFile(
                                           name: m.storagePath.split('/').last,
                                           bytes: m.bytes,
+                                          height: m.dimensions?.height,
+                                          width: m.dimensions?.width,
                                         ))
                                     .toList();
+
+                                downloadUrls = (await Future.wait(
+                                  selectedMedia.map(
+                                    (m) async => await uploadData(
+                                        m.storagePath, m.bytes),
+                                  ),
+                                ))
+                                    .where((u) => u != null)
+                                    .map((u) => u!)
+                                    .toList();
                               } finally {
-                                isMediaUploading = false;
+                                _model.isMediaUploading = false;
                               }
-                              if (selectedLocalFiles.length ==
-                                  selectedMedia.length) {
-                                setState(() => uploadedLocalFile =
-                                    selectedLocalFiles.first);
+                              if (selectedUploadedFiles.length ==
+                                      selectedMedia.length &&
+                                  downloadUrls.length == selectedMedia.length) {
+                                setState(() {
+                                  _model.uploadedLocalFile =
+                                      selectedUploadedFiles.first;
+                                  _model.uploadedFileUrl = downloadUrls.first;
+                                });
                               } else {
                                 setState(() {});
                                 return;
                               }
                             }
+
+                            context.goNamed('SuccessPage');
                           },
                           child: Container(
                             width: MediaQuery.of(context).size.width * 0.96,
@@ -150,10 +159,12 @@ class _CameraWidgetState extends State<CameraWidget> {
                           children: [
                             Expanded(
                               child: TextFormField(
-                                controller: textController,
+                                controller: _model.textController,
                                 obscureText: false,
                                 decoration: InputDecoration(
-                                  hintText: 'Enter post details here...',
+                                  hintText: FFLocalizations.of(context).getText(
+                                    'cw4td9mz' /* Enter post details here... */,
+                                  ),
                                   hintStyle: FlutterFlowTheme.of(context)
                                       .bodyText2
                                       .override(
@@ -171,7 +182,7 @@ class _CameraWidgetState extends State<CameraWidget> {
                                   ),
                                   focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Color(0xFFF1F4F8),
+                                      color: Color(0x00000000),
                                       width: 2,
                                     ),
                                     borderRadius: BorderRadius.circular(8),
@@ -204,6 +215,8 @@ class _CameraWidgetState extends State<CameraWidget> {
                                     ),
                                 textAlign: TextAlign.start,
                                 maxLines: 4,
+                                validator: _model.textControllerValidator
+                                    .asValidator(context),
                               ),
                             ),
                           ],
@@ -219,9 +232,15 @@ class _CameraWidgetState extends State<CameraWidget> {
             padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
             child: FFButtonWidget(
               onPressed: () async {
-                context.pushNamed('SuccessPage');
+                if (FFAppState().authCred != null) {
+                  context.goNamed('SuccessPage');
+                } else {
+                  return;
+                }
               },
-              text: 'Send Post',
+              text: FFLocalizations.of(context).getText(
+                'te9retwb' /* Send Post */,
+              ),
               options: FFButtonOptions(
                 width: 270,
                 height: 66,

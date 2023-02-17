@@ -10,7 +10,7 @@ Future initFirebase() async {
             projectId: "rss-client-21d3b",
             storageBucket: "rss-client-21d3b.appspot.com",
             messagingSenderId: "518631005157",
-            appId: "1:518631005157:web:c789dace4bc8efefafad0c"));
+            appId: "1:518631005157:web:d7f85553bf0e1f63afad0c"));
   } else {
     await Firebase.initializeApp();
   }

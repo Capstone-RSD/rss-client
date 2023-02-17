@@ -1,21 +1,21 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'test_record.dart';
+part of 'users_record.dart';
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<TestRecord> _$testRecordSerializer = new _$TestRecordSerializer();
+Serializer<UsersRecord> _$usersRecordSerializer = new _$UsersRecordSerializer();
 
-class _$TestRecordSerializer implements StructuredSerializer<TestRecord> {
+class _$UsersRecordSerializer implements StructuredSerializer<UsersRecord> {
   @override
-  final Iterable<Type> types = const [TestRecord, _$TestRecord];
+  final Iterable<Type> types = const [UsersRecord, _$UsersRecord];
   @override
-  final String wireName = 'TestRecord';
+  final String wireName = 'UsersRecord';
 
   @override
-  Iterable<Object?> serialize(Serializers serializers, TestRecord object,
+  Iterable<Object?> serialize(Serializers serializers, UsersRecord object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[];
     Object? value;
@@ -40,26 +40,19 @@ class _$TestRecordSerializer implements StructuredSerializer<TestRecord> {
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    value = object.createdTime;
-    if (value != null) {
-      result
-        ..add('created_time')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(DateTime)));
-    }
-    value = object.editedTime;
-    if (value != null) {
-      result
-        ..add('edited_time')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(DateTime)));
-    }
     value = object.uid;
     if (value != null) {
       result
         ..add('uid')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
+    }
+    value = object.createdTime;
+    if (value != null) {
+      result
+        ..add('created_time')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(DateTime)));
     }
     value = object.phoneNumber;
     if (value != null) {
@@ -80,9 +73,9 @@ class _$TestRecordSerializer implements StructuredSerializer<TestRecord> {
   }
 
   @override
-  TestRecord deserialize(Serializers serializers, Iterable<Object?> serialized,
+  UsersRecord deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new TestRecordBuilder();
+    final result = new UsersRecordBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -102,17 +95,13 @@ class _$TestRecordSerializer implements StructuredSerializer<TestRecord> {
           result.photoUrl = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
-        case 'created_time':
-          result.createdTime = serializers.deserialize(value,
-              specifiedType: const FullType(DateTime)) as DateTime?;
-          break;
-        case 'edited_time':
-          result.editedTime = serializers.deserialize(value,
-              specifiedType: const FullType(DateTime)) as DateTime?;
-          break;
         case 'uid':
           result.uid = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
+          break;
+        case 'created_time':
+          result.createdTime = serializers.deserialize(value,
+              specifiedType: const FullType(DateTime)) as DateTime?;
           break;
         case 'phone_number':
           result.phoneNumber = serializers.deserialize(value,
@@ -131,7 +120,7 @@ class _$TestRecordSerializer implements StructuredSerializer<TestRecord> {
   }
 }
 
-class _$TestRecord extends TestRecord {
+class _$UsersRecord extends UsersRecord {
   @override
   final String? email;
   @override
@@ -139,47 +128,43 @@ class _$TestRecord extends TestRecord {
   @override
   final String? photoUrl;
   @override
-  final DateTime? createdTime;
-  @override
-  final DateTime? editedTime;
-  @override
   final String? uid;
+  @override
+  final DateTime? createdTime;
   @override
   final String? phoneNumber;
   @override
   final DocumentReference<Object?>? ffRef;
 
-  factory _$TestRecord([void Function(TestRecordBuilder)? updates]) =>
-      (new TestRecordBuilder()..update(updates))._build();
+  factory _$UsersRecord([void Function(UsersRecordBuilder)? updates]) =>
+      (new UsersRecordBuilder()..update(updates))._build();
 
-  _$TestRecord._(
+  _$UsersRecord._(
       {this.email,
       this.displayName,
       this.photoUrl,
-      this.createdTime,
-      this.editedTime,
       this.uid,
+      this.createdTime,
       this.phoneNumber,
       this.ffRef})
       : super._();
 
   @override
-  TestRecord rebuild(void Function(TestRecordBuilder) updates) =>
+  UsersRecord rebuild(void Function(UsersRecordBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  TestRecordBuilder toBuilder() => new TestRecordBuilder()..replace(this);
+  UsersRecordBuilder toBuilder() => new UsersRecordBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is TestRecord &&
+    return other is UsersRecord &&
         email == other.email &&
         displayName == other.displayName &&
         photoUrl == other.photoUrl &&
-        createdTime == other.createdTime &&
-        editedTime == other.editedTime &&
         uid == other.uid &&
+        createdTime == other.createdTime &&
         phoneNumber == other.phoneNumber &&
         ffRef == other.ffRef;
   }
@@ -190,33 +175,30 @@ class _$TestRecord extends TestRecord {
         $jc(
             $jc(
                 $jc(
-                    $jc(
-                        $jc($jc($jc(0, email.hashCode), displayName.hashCode),
-                            photoUrl.hashCode),
-                        createdTime.hashCode),
-                    editedTime.hashCode),
-                uid.hashCode),
+                    $jc($jc($jc(0, email.hashCode), displayName.hashCode),
+                        photoUrl.hashCode),
+                    uid.hashCode),
+                createdTime.hashCode),
             phoneNumber.hashCode),
         ffRef.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'TestRecord')
+    return (newBuiltValueToStringHelper(r'UsersRecord')
           ..add('email', email)
           ..add('displayName', displayName)
           ..add('photoUrl', photoUrl)
-          ..add('createdTime', createdTime)
-          ..add('editedTime', editedTime)
           ..add('uid', uid)
+          ..add('createdTime', createdTime)
           ..add('phoneNumber', phoneNumber)
           ..add('ffRef', ffRef))
         .toString();
   }
 }
 
-class TestRecordBuilder implements Builder<TestRecord, TestRecordBuilder> {
-  _$TestRecord? _$v;
+class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
+  _$UsersRecord? _$v;
 
   String? _email;
   String? get email => _$this._email;
@@ -230,17 +212,13 @@ class TestRecordBuilder implements Builder<TestRecord, TestRecordBuilder> {
   String? get photoUrl => _$this._photoUrl;
   set photoUrl(String? photoUrl) => _$this._photoUrl = photoUrl;
 
-  DateTime? _createdTime;
-  DateTime? get createdTime => _$this._createdTime;
-  set createdTime(DateTime? createdTime) => _$this._createdTime = createdTime;
-
-  DateTime? _editedTime;
-  DateTime? get editedTime => _$this._editedTime;
-  set editedTime(DateTime? editedTime) => _$this._editedTime = editedTime;
-
   String? _uid;
   String? get uid => _$this._uid;
   set uid(String? uid) => _$this._uid = uid;
+
+  DateTime? _createdTime;
+  DateTime? get createdTime => _$this._createdTime;
+  set createdTime(DateTime? createdTime) => _$this._createdTime = createdTime;
 
   String? _phoneNumber;
   String? get phoneNumber => _$this._phoneNumber;
@@ -250,19 +228,18 @@ class TestRecordBuilder implements Builder<TestRecord, TestRecordBuilder> {
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
 
-  TestRecordBuilder() {
-    TestRecord._initializeBuilder(this);
+  UsersRecordBuilder() {
+    UsersRecord._initializeBuilder(this);
   }
 
-  TestRecordBuilder get _$this {
+  UsersRecordBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _email = $v.email;
       _displayName = $v.displayName;
       _photoUrl = $v.photoUrl;
-      _createdTime = $v.createdTime;
-      _editedTime = $v.editedTime;
       _uid = $v.uid;
+      _createdTime = $v.createdTime;
       _phoneNumber = $v.phoneNumber;
       _ffRef = $v.ffRef;
       _$v = null;
@@ -271,28 +248,27 @@ class TestRecordBuilder implements Builder<TestRecord, TestRecordBuilder> {
   }
 
   @override
-  void replace(TestRecord other) {
+  void replace(UsersRecord other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$TestRecord;
+    _$v = other as _$UsersRecord;
   }
 
   @override
-  void update(void Function(TestRecordBuilder)? updates) {
+  void update(void Function(UsersRecordBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  TestRecord build() => _build();
+  UsersRecord build() => _build();
 
-  _$TestRecord _build() {
+  _$UsersRecord _build() {
     final _$result = _$v ??
-        new _$TestRecord._(
+        new _$UsersRecord._(
             email: email,
             displayName: displayName,
             photoUrl: photoUrl,
-            createdTime: createdTime,
-            editedTime: editedTime,
             uid: uid,
+            createdTime: createdTime,
             phoneNumber: phoneNumber,
             ffRef: ffRef);
     replace(_$result);

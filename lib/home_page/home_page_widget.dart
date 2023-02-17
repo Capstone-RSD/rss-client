@@ -1,9 +1,12 @@
+import '../auth/auth_util.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'home_page_model.dart';
+export 'home_page_model.dart';
 
 class HomePageWidget extends StatefulWidget {
   const HomePageWidget({Key? key}) : super(key: key);
@@ -13,24 +16,25 @@ class HomePageWidget extends StatefulWidget {
 }
 
 class _HomePageWidgetState extends State<HomePageWidget> {
-  TextEditingController? teController;
-  TextEditingController? textController2;
-  final _unfocusNode = FocusNode();
+  late HomePageModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final formKey = GlobalKey<FormState>();
+  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
     super.initState();
-    teController = TextEditingController();
-    textController2 = TextEditingController();
+    _model = createModel(context, () => HomePageModel());
+
+    _model.nameController ??= TextEditingController();
+    _model.emailController ??= TextEditingController();
   }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
-    teController?.dispose();
-    textController2?.dispose();
     super.dispose();
   }
 
@@ -47,7 +51,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
           backgroundColor: FlutterFlowTheme.of(context).primaryColor,
           automaticallyImplyLeading: false,
           title: Text(
-            'Road Surfaces Detection',
+            FFLocalizations.of(context).getText(
+              'u6toodzu' /* Road Surfaces Detection */,
+            ),
             style: FlutterFlowTheme.of(context).title2.override(
                   fontFamily: 'Poppins',
                   color: Colors.white,
@@ -110,7 +116,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           ),
                           SelectionArea(
                               child: Text(
-                            'WELCOME',
+                            FFLocalizations.of(context).getText(
+                              'sjq99t1a' /* WELCOME */,
+                            ),
                             style: FlutterFlowTheme.of(context).title3.override(
                                   fontFamily: 'Poppins',
                                   fontSize: 30,
@@ -123,7 +131,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
                             child: SelectionArea(
                                 child: Text(
-                              ' Please enter your details.',
+                              FFLocalizations.of(context).getText(
+                                '4w0es48j' /*  Please enter your details. */,
+                              ),
                               style: FlutterFlowTheme.of(context)
                                   .bodyText2
                                   .override(
@@ -136,7 +146,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             padding:
                                 EdgeInsetsDirectional.fromSTEB(0, 32, 0, 0),
                             child: Form(
-                              key: formKey,
+                              key: _model.formKey,
                               autovalidateMode: AutovalidateMode.disabled,
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -151,11 +161,38 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                         children: [
                                           Expanded(
                                             child: TextFormField(
-                                              controller: teController,
+                                              controller: _model.nameController,
+                                              onFieldSubmitted: (_) async {
+                                                GoRouter.of(context)
+                                                    .prepareAuthEvent();
+                                                final user =
+                                                    await signInAnonymously(
+                                                        context);
+                                                if (user == null) {
+                                                  return;
+                                                }
+
+                                                context.goNamedAuth(
+                                                    'camera', mounted);
+                                              },
                                               autofocus: true,
+                                              autofillHints: [
+                                                AutofillHints.name
+                                              ],
+                                              textCapitalization:
+                                                  TextCapitalization.words,
                                               obscureText: false,
                                               decoration: InputDecoration(
-                                                hintText: 'Name',
+                                                labelText:
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                  'aykbz5y4' /* Name */,
+                                                ),
+                                                hintText:
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                  '05bccijw' /* Name */,
+                                                ),
                                                 hintStyle:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyText2,
@@ -219,6 +256,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyText1,
+                                              validator: _model
+                                                  .nameControllerValidator
+                                                  .asValidator(context),
                                             ),
                                           ),
                                         ],
@@ -234,11 +274,36 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         TextFormField(
-                                          controller: textController2,
+                                          controller: _model.emailController,
+                                          onFieldSubmitted: (_) async {
+                                            GoRouter.of(context)
+                                                .prepareAuthEvent();
+                                            final user =
+                                                await signInAnonymously(
+                                                    context);
+                                            if (user == null) {
+                                              return;
+                                            }
+
+                                            context.goNamedAuth(
+                                                'camera', mounted);
+                                          },
                                           autofocus: true,
+                                          autofillHints: [AutofillHints.email],
+                                          textCapitalization:
+                                              TextCapitalization.none,
                                           obscureText: false,
                                           decoration: InputDecoration(
-                                            hintText: 'Email',
+                                            labelText:
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                              'hm9msl4u' /* Email */,
+                                            ),
+                                            hintText:
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                              'xn3urduu' /* Email */,
+                                            ),
                                             hintStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .bodyText2,
@@ -292,6 +357,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                               .bodyText1,
                                           keyboardType:
                                               TextInputType.emailAddress,
+                                          validator: _model
+                                              .emailControllerValidator
+                                              .asValidator(context),
                                         ),
                                       ],
                                     ),
@@ -305,9 +373,18 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
                             child: FFButtonWidget(
                               onPressed: () async {
-                                context.pushNamed('camera');
+                                FFAppState().authCred = FFAppState().authCred;
+                                GoRouter.of(context).prepareAuthEvent();
+                                final user = await signInAnonymously(context);
+                                if (user == null) {
+                                  return;
+                                }
+
+                                context.pushNamedAuth('camera', mounted);
                               },
-                              text: 'SUBMIT',
+                              text: FFLocalizations.of(context).getText(
+                                'z50y3twz' /* SUBMIT */,
+                              ),
                               options: FFButtonOptions(
                                 width: double.infinity,
                                 height: 44,

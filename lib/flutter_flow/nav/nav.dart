@@ -88,9 +88,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => HomePageWidget(),
             ),
             FFRoute(
-              name: 'ListPage',
-              path: 'listPage',
-              builder: (context, params) => ListPageWidget(),
+              name: 'SuccessPage',
+              path: 'successPage',
+              builder: (context, params) => SuccessPageWidget(),
             ),
             FFRoute(
               name: 'camera',
@@ -98,14 +98,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => CameraWidget(),
             ),
             FFRoute(
-              name: 'SuccessPage',
-              path: 'successPage',
-              builder: (context, params) => SuccessPageWidget(),
+              name: 'ListPage',
+              path: 'listPage',
+              builder: (context, params) => ListPageWidget(),
             ),
             FFRoute(
-              name: 'Camera2',
-              path: 'camera2',
-              builder: (context, params) => Camera2Widget(),
+              name: 'test',
+              path: 'test',
+              builder: (context, params) => TestWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),
@@ -278,13 +278,11 @@ class FFRoute {
                 )
               : builder(context, ffParams);
           final child = appStateNotifier.loading
-              ? Center(
-                  child: SizedBox(
-                    width: 50,
-                    height: 50,
-                    child: CircularProgressIndicator(
-                      color: FlutterFlowTheme.of(context).primaryColor,
-                    ),
+              ? Container(
+                  color: Colors.transparent,
+                  child: Image.asset(
+                    'assets/images/istockphoto-157418325-612x612.jpg',
+                    fit: BoxFit.cover,
                   ),
                 )
               : page;

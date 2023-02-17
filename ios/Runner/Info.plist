@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>RSD1</string>
+	<string>RSD Client</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -16,6 +16,11 @@
 	<string>RSD1</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>en</string>
+		<string>fr</string>
+	</array>
 
 	<key>CFBundleShortVersionString</key>
 	<string>$(FLUTTER_BUILD_NAME)</string>
@@ -28,7 +33,7 @@
             <string>Editor</string>
             <key>CFBundleURLSchemes</key>
             <array>
-                <string>com.googleusercontent.apps.518631005157-uffapnv4737qalvpjlee9hle8ljg21au</string>
+                <string>com.googleusercontent.apps.518631005157-kjmloa25gdate2mpct4unl5iaqg226om</string>
                 
             </array>
         </dict>
@@ -58,7 +63,7 @@
 	<key>NSPhotoLibraryUsageDescription</key>
     <string>In order to upload media, this app requires permission to access the photo library.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-    <string>Location permission</string>
+    <string>This permission is required to pinpoint the location of the road deterioration</string>
 
 
 	<key>UILaunchStoryboardName</key>

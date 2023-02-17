@@ -6,23 +6,32 @@ import '../flutter_flow/upload_media.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'test_model.dart';
+export 'test_model.dart';
 
-class Camera2Widget extends StatefulWidget {
-  const Camera2Widget({Key? key}) : super(key: key);
+class TestWidget extends StatefulWidget {
+  const TestWidget({Key? key}) : super(key: key);
 
   @override
-  _Camera2WidgetState createState() => _Camera2WidgetState();
+  _TestWidgetState createState() => _TestWidgetState();
 }
 
-class _Camera2WidgetState extends State<Camera2Widget> {
-  bool isMediaUploading = false;
-  String uploadedFileUrl = '';
+class _TestWidgetState extends State<TestWidget> {
+  late TestModel _model;
 
-  final _unfocusNode = FocusNode();
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => TestModel());
+  }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
     super.dispose();
   }
@@ -38,7 +47,9 @@ class _Camera2WidgetState extends State<Camera2Widget> {
         backgroundColor: FlutterFlowTheme.of(context).primaryColor,
         automaticallyImplyLeading: false,
         title: Text(
-          'Camera',
+          FFLocalizations.of(context).getText(
+            'i51k8xx2' /* Page Title */,
+          ),
           style: FlutterFlowTheme.of(context).title2.override(
                 fontFamily: 'Poppins',
                 color: Colors.white,
@@ -55,7 +66,8 @@ class _Camera2WidgetState extends State<Camera2Widget> {
           child: Align(
             alignment: AlignmentDirectional(0, 0),
             child: Column(
-              mainAxisSize: MainAxisSize.min,
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 FFButtonWidget(
@@ -68,9 +80,19 @@ class _Camera2WidgetState extends State<Camera2Widget> {
                     if (selectedMedia != null &&
                         selectedMedia.every((m) =>
                             validateFileFormat(m.storagePath, context))) {
-                      setState(() => isMediaUploading = true);
+                      setState(() => _model.isMediaUploading = true);
+                      var selectedUploadedFiles = <FFUploadedFile>[];
                       var downloadUrls = <String>[];
                       try {
+                        selectedUploadedFiles = selectedMedia
+                            .map((m) => FFUploadedFile(
+                                  name: m.storagePath.split('/').last,
+                                  bytes: m.bytes,
+                                  height: m.dimensions?.height,
+                                  width: m.dimensions?.width,
+                                ))
+                            .toList();
+
                         downloadUrls = (await Future.wait(
                           selectedMedia.map(
                             (m) async =>
@@ -81,17 +103,25 @@ class _Camera2WidgetState extends State<Camera2Widget> {
                             .map((u) => u!)
                             .toList();
                       } finally {
-                        isMediaUploading = false;
+                        _model.isMediaUploading = false;
                       }
-                      if (downloadUrls.length == selectedMedia.length) {
-                        setState(() => uploadedFileUrl = downloadUrls.first);
+                      if (selectedUploadedFiles.length ==
+                              selectedMedia.length &&
+                          downloadUrls.length == selectedMedia.length) {
+                        setState(() {
+                          _model.uploadedLocalFile =
+                              selectedUploadedFiles.first;
+                          _model.uploadedFileUrl = downloadUrls.first;
+                        });
                       } else {
                         setState(() {});
                         return;
                       }
                     }
                   },
-                  text: 'Upload',
+                  text: FFLocalizations.of(context).getText(
+                    '084f8a3r' /* Upload */,
+                  ),
                   options: FFButtonOptions(
                     width: 130,
                     height: 40,
