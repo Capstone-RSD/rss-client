@@ -2,7 +2,8 @@ import 'dart:async';
 
 import 'package:built_value/built_value.dart';
 
-import 'serializersalue.dart';
+import 'index.dart';
+import 'serializers.dart';
 
 part 'users_record.g.dart';
 
@@ -27,7 +28,6 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
 
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference? get ffRef;
-
   DocumentReference get reference => ffRef!;
 
   static void _initializeBuilder(UsersRecordBuilder builder) => builder
@@ -49,7 +49,6 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
       .then((s) => serializers.deserializeWith(serializer, serializedData(s))!);
 
   UsersRecord._();
-
   factory UsersRecord([void Function(UsersRecordBuilder) updates]) =
       _$UsersRecord;
 

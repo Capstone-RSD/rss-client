@@ -1,6 +1,6 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/materialtion.dart';
+import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mime_type/mime_type.dart';
@@ -18,7 +18,6 @@ class SelectedMedia {
     required this.bytes,
     this.dimensions,
   });
-
   final String storagePath;
   final String? filePath;
   final Uint8List bytes;
@@ -30,7 +29,6 @@ class MediaDimensions {
     this.height,
     this.width,
   });
-
   final double? height;
   final double? width;
 }
