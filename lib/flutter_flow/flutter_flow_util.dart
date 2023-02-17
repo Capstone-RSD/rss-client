@@ -26,8 +26,7 @@ export 'internationalization.dart' show FFLocalizations;
 export 'lat_lng.dart';
 export 'nav/nav.dart';
 export 'place.dart';
-export 'uploaded_filealizations;
-export 'nav/nav.dart';
+export 'uploaded_file.dart';
 
 T valueOrDefault<T>(T? value, T defaultValue) =>
     (value is String && value.isEmpty) || value == null ? defaultValue : value;
@@ -211,7 +210,6 @@ const kTextValidatorWebsiteRegex =
 
 extension FFTextEditingControllerExt on TextEditingController? {
   String get text => this == null ? '' : this!.text;
-
   set text(String newText) => this?.text = newText;
 }
 

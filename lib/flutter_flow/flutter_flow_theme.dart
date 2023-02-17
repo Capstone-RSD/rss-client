@@ -2,9 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-';
-
 import 'package:shared_preferences/shared_preferences.dart';
 
 const kThemeModeKey = '__theme_mode__';
@@ -13,7 +10,6 @@ SharedPreferences? _prefs;
 abstract class FlutterFlowTheme {
   static Future initialize() async =>
       _prefs = await SharedPreferences.getInstance();
-
   static ThemeMode get themeMode {
     final darkMode = _prefs?.getBool(kThemeModeKey);
     return darkMode == null
@@ -52,21 +48,13 @@ abstract class FlutterFlowTheme {
   late Color textColor;
 
   String get title1Family => typography.title1Family;
-
   TextStyle get title1 => typography.title1;
-
   String get title2Family => typography.title2Family;
-
   TextStyle get title2 => typography.title2;
-
   String get title3Family => typography.title3Family;
-
   TextStyle get title3 => typography.title3;
-
   String get subtitle1Family => typography.subtitle1Family;
-
   TextStyle get subtitle1 => typography.subtitle1;
-
   String get subtitle2Family => typography.subtitle2Family;
   TextStyle get subtitle2 => typography.subtitle2;
   String get bodyText1Family => typography.bodyText1Family;

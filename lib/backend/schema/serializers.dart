@@ -2,7 +2,7 @@ import 'package:built_value/standard_json_plugin.dart';
 import 'package:from_css_color/from_css_color.dart';
 
 import 'index.dart';
-import 'users_recordindex.dart';
+import 'users_record.dart';
 
 export 'index.dart';
 
@@ -91,12 +91,10 @@ class FirestoreUtilData {
     this.create = false,
     this.delete = false,
   });
-
   final Map<String, dynamic> fieldValues;
   final bool clearUnsetFields;
   final bool create;
   final bool delete;
-
   static String get name => 'firestoreUtilData';
 }
 

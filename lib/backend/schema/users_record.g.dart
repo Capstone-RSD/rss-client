@@ -201,45 +201,31 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
   _$UsersRecord? _$v;
 
   String? _email;
-
   String? get email => _$this._email;
-
   set email(String? email) => _$this._email = email;
 
   String? _displayName;
-
   String? get displayName => _$this._displayName;
-
   set displayName(String? displayName) => _$this._displayName = displayName;
 
   String? _photoUrl;
-
   String? get photoUrl => _$this._photoUrl;
-
   set photoUrl(String? photoUrl) => _$this._photoUrl = photoUrl;
 
   String? _uid;
-
   String? get uid => _$this._uid;
-
   set uid(String? uid) => _$this._uid = uid;
 
   DateTime? _createdTime;
-
   DateTime? get createdTime => _$this._createdTime;
-
   set createdTime(DateTime? createdTime) => _$this._createdTime = createdTime;
 
   String? _phoneNumber;
-
   String? get phoneNumber => _$this._phoneNumber;
-
   set phoneNumber(String? phoneNumber) => _$this._phoneNumber = phoneNumber;
 
   DocumentReference<Object?>? _ffRef;
-
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
-
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
 
   UsersRecordBuilder() {
