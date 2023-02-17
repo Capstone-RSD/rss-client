@@ -1,4 +1,4 @@
-package com.example.rss.rss_client;
+package com.capstone.rss;
 
 import android.util.Log;
 import android.widget.Toast;
