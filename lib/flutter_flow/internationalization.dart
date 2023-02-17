@@ -263,21 +263,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': '',
     },
   },
-  // test
-  {
-    '084f8a3r': {
-      'en': 'Upload',
-      'fr': '',
-    },
-    'i51k8xx2': {
-      'en': 'Page Title',
-      'fr': '',
-    },
-    'ammyqmo4': {
-      'en': 'Home',
-      'fr': '',
-    },
-  },
   // Miscellaneous
   {
     'csk68993': {
