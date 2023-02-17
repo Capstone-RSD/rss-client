@@ -22,7 +22,6 @@ if (flutterVersionName == null) {
 }
 
 apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 apply plugin: "com.google.protobuf"
 //apply plugin: 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
@@ -49,7 +48,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.example.rss.rssclient"
+        applicationId "com.example.rss.rss_client"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-build-configuration.
         minSdkVersion 29
@@ -86,9 +85,9 @@ flutter {
 dependencies {
     // Protobuf
     // https://mvnrepository.com/artifact/com.google.api.grpc/proto-google-common-protos
-    implementation group: 'com.google.api.grpc', name: 'proto-google-common-protos', version: '2.11.0'
+//    implementation group: 'com.google.api.grpc', name: 'proto-google-common-protos', version: '2.11.0'
     // https://mvnrepository.com/artifact/com.google.protobuf/protobuf-java-util
-    implementation group: 'com.google.protobuf', name: 'protobuf-java-util', version: '4.0.0-rc-2'
+//    implementation group: 'com.google.protobuf', name: 'protobuf-java-util', version: '4.0.0-rc-2'
 
     // HTTP Requests
     // https://mvnrepository.com/artifact/com.android.volley/volley
@@ -112,8 +111,8 @@ protobuf {
         all().each { task ->
             task.builtins {
                 java {
-//                 remove java
-                    option "lite"
+                    remove java
+//                    option "lite"
                 }
 //                python {
 //                }

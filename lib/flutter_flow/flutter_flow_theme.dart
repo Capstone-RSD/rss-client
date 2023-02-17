@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 const kThemeModeKey = '__theme_mode__';
@@ -10,7 +11,6 @@ SharedPreferences? _prefs;
 abstract class FlutterFlowTheme {
   static Future initialize() async =>
       _prefs = await SharedPreferences.getInstance();
-
   static ThemeMode get themeMode {
     final darkMode = _prefs?.getBool(kThemeModeKey);
     return darkMode == null
@@ -41,6 +41,12 @@ abstract class FlutterFlowTheme {
 
   late Color primaryBtnText;
   late Color lineColor;
+  late Color grayIcon;
+  late Color gray200;
+  late Color gray600;
+  late Color black600;
+  late Color tertiary400;
+  late Color textColor;
 
   String get title1Family => typography.title1Family;
 
@@ -59,15 +65,10 @@ abstract class FlutterFlowTheme {
   TextStyle get subtitle1 => typography.subtitle1;
 
   String get subtitle2Family => typography.subtitle2Family;
-
   TextStyle get subtitle2 => typography.subtitle2;
-
   String get bodyText1Family => typography.bodyText1Family;
-
   TextStyle get bodyText1 => typography.bodyText1;
-
   String get bodyText2Family => typography.bodyText2Family;
-
   TextStyle get bodyText2 => typography.bodyText2;
 
   Typography get typography => ThemeTypography(this);
@@ -85,35 +86,28 @@ class LightModeTheme extends FlutterFlowTheme {
 
   late Color primaryBtnText = Color(0xFFFFFFFF);
   late Color lineColor = Color(0xFFE0E3E7);
+  late Color grayIcon = Color(0xFF95A1AC);
+  late Color gray200 = Color(0xFFDBE2E7);
+  late Color gray600 = Color(0xFF262D34);
+  late Color black600 = Color(0xFF090F13);
+  late Color tertiary400 = Color(0xFF39D2C0);
+  late Color textColor = Color(0xFF1E2429);
 }
 
 abstract class Typography {
   String get title1Family;
-
   TextStyle get title1;
-
   String get title2Family;
-
   TextStyle get title2;
-
   String get title3Family;
-
   TextStyle get title3;
-
   String get subtitle1Family;
-
   TextStyle get subtitle1;
-
   String get subtitle2Family;
-
   TextStyle get subtitle2;
-
   String get bodyText1Family;
-
   TextStyle get bodyText1;
-
   String get bodyText2Family;
-
   TextStyle get bodyText2;
 }
 
@@ -123,61 +117,48 @@ class ThemeTypography extends Typography {
   final FlutterFlowTheme theme;
 
   String get title1Family => 'Poppins';
-
   TextStyle get title1 => GoogleFonts.getFont(
         'Poppins',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 24,
       );
-
   String get title2Family => 'Poppins';
-
   TextStyle get title2 => GoogleFonts.getFont(
         'Poppins',
         color: theme.secondaryText,
         fontWeight: FontWeight.w600,
         fontSize: 22,
       );
-
   String get title3Family => 'Poppins';
-
   TextStyle get title3 => GoogleFonts.getFont(
         'Poppins',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 20,
       );
-
   String get subtitle1Family => 'Poppins';
-
   TextStyle get subtitle1 => GoogleFonts.getFont(
         'Poppins',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 18,
       );
-
   String get subtitle2Family => 'Poppins';
-
   TextStyle get subtitle2 => GoogleFonts.getFont(
         'Poppins',
         color: theme.secondaryText,
         fontWeight: FontWeight.w600,
         fontSize: 16,
       );
-
   String get bodyText1Family => 'Poppins';
-
   TextStyle get bodyText1 => GoogleFonts.getFont(
         'Poppins',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 14,
       );
-
   String get bodyText2Family => 'Poppins';
-
   TextStyle get bodyText2 => GoogleFonts.getFont(
         'Poppins',
         color: theme.secondaryText,
@@ -198,6 +179,12 @@ class DarkModeTheme extends FlutterFlowTheme {
 
   late Color primaryBtnText = Color(0xFFFFFFFF);
   late Color lineColor = Color(0xFF22282F);
+  late Color grayIcon = Color(0xFF95A1AC);
+  late Color gray200 = Color(0xFFDBE2E7);
+  late Color gray600 = Color(0xFF262D34);
+  late Color black600 = Color(0xFF090F13);
+  late Color tertiary400 = Color(0xFF39D2C0);
+  late Color textColor = Color(0xFF1E2429);
 }
 
 extension TextStyleHelper on TextStyle {

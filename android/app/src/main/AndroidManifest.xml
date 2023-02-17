@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.rss.rssclient">
+    package="com.example.rss.rss_client">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
@@ -10,9 +10,9 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
-        android:label="rssclient"
-        android:icon="@mipmap/ic_launcher"
+        android:label="RSD Client"
         android:requestLegacyExternalStorage="true"
+        android:icon="@mipmap/ic_launcher"
         tools:replace="android:label">
 
         <activity
@@ -48,13 +48,12 @@
                 android:value="true" />
             <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
-
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:host="rssclient.com"
-                    android:scheme="rssclient" />
+                    android:host="rsd1.com"
+                    android:scheme="rsd1" />
             </intent-filter>
 
         </activity>

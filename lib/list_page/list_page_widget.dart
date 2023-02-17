@@ -1,130 +1,95 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
-import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../flutter_flow/flutter_flow_widgey}) : super(key: key);
+import '../flutter_flow/flutter_flow_widgets.dart';
+import 'list_page_model.dart';
 
-@override
-_ListPageWidgetState createState() => _ListPageWidgetState();}
+export 'list_page_model.dart';
+
+class ListPageWidget extends StatefulWidget {
+  const ListPageWidget({Key? key}) : super(key: key);
+
+  @override
+  _ListPageWidgetState createState() => _ListPageWidgetState();
+}
 
 class _ListPageWidgetState extends State<ListPageWidget> {
-  DateTime? datePicked;
-  final _unfocusNode = FocusNode();
+  late ListPageModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final _unfocusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => ListPageModel());
+  }
 
   @override
   void dispose() {
+    _model.dispose();
+
     _unfocusNode.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme
-          .of(context)
-          .primaryBackground,
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(110),
-        child: AppBar(
-          backgroundColor: FlutterFlowTheme
-              .of(context)
-              .primaryColor,
-          automaticallyImplyLeading: false,
-          actions: [],
-          flexibleSpace: FlexibleSpaceBar(
-            title: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
-                      child: FlutterFlowIconButton(
-                        borderColor: Colors.transparent,
-                        borderRadius: 30,
-                        borderWidth: 1,
-                        buttonSize: 50,
-                        icon: Icon(
-                          Icons.arrow_back_rounded,
-                          color: FlutterFlowTheme
-                              .of(context)
-                              .primaryText,
-                          size: 30,
-                        ),
-                        onPressed: () async {
-                          context.pop();
-                        },
+    context.watch<FFAppState>();
+
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        key: scaffoldKey,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(110),
+          child: AppBar(
+            backgroundColor: FlutterFlowTheme.of(context).primaryColor,
+            automaticallyImplyLeading: false,
+            actions: [],
+            flexibleSpace: FlexibleSpaceBar(
+              title: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(20, 0, 0, 12),
+                    child: Text(
+                      FFLocalizations.of(context).getText(
+                        'ktrob3n2' /* History */,
                       ),
-                    ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
-                      child: Text(
-                        'Back',
-                        style: FlutterFlowTheme
-                            .of(context)
-                            .title1
-                            .override(
-                          fontFamily: 'Poppins',
-                          color: FlutterFlowTheme
-                              .of(context)
-                              .primaryText,
-                          fontSize: 16,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(20, 0, 0, 12),
-                  child: Text(
-                    'History',
-                    style: FlutterFlowTheme
-                        .of(context)
-                        .title2
-                        .override(
-                      fontFamily: 'Poppins',
-                      color: FlutterFlowTheme
-                          .of(context)
-                          .primaryText,
+                      style: FlutterFlowTheme.of(context).title2.override(
+                            fontFamily: 'Poppins',
+                            color: FlutterFlowTheme.of(context).primaryText,
+                          ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
+              centerTitle: true,
+              expandedTitleScale: 1.0,
             ),
-            centerTitle: true,
-            expandedTitleScale: 1.0,
+            elevation: 0,
           ),
-          elevation: 0,
         ),
-      ),
-      body: SafeArea(
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
-          child: InkWell(
-            onTap: () async {
-              context.pushNamed('HomePage');
-            },
+        body: SafeArea(
+          child: GestureDetector(
+            onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
                   width: double.infinity,
-                  height: MediaQuery
-                      .of(context)
-                      .size
-                      .height * 0.7,
+                  height: MediaQuery.of(context).size.height * 0.7,
                   decoration: BoxDecoration(
-                    color: FlutterFlowTheme
-                        .of(context)
-                        .secondaryBackground,
+                    color: FlutterFlowTheme.of(context).secondaryBackground,
                     boxShadow: [
                       BoxShadow(
                         blurRadius: 5,
@@ -150,48 +115,59 @@ class _ListPageWidgetState extends State<ListPageWidget> {
                                 lastDate: DateTime(2050),
                               );
 
+                              TimeOfDay? _datePickedTime;
                               if (_datePickedDate != null) {
-                                setState(
-                                      () =>
-                                  datePicked = DateTime(
+                                _datePickedTime = await showTimePicker(
+                                  context: context,
+                                  initialTime: TimeOfDay.fromDateTime(
+                                      getCurrentTimestamp),
+                                );
+                              }
+
+                              if (_datePickedDate != null &&
+                                  _datePickedTime != null) {
+                                setState(() {
+                                  _model.datePicked = DateTime(
                                     _datePickedDate.year,
                                     _datePickedDate.month,
                                     _datePickedDate.day,
-                                  ),
-                                );
+                                    _datePickedTime!.hour,
+                                    _datePickedTime.minute,
+                                  );
+                                });
                               }
                             },
                             child: Text(
-                              'Monday, June 12 2022',
-                              style: FlutterFlowTheme
-                                  .of(context)
+                              FFLocalizations.of(context).getText(
+                                'uyriss1c' /* Monday, June 12 2022 */,
+                              ),
+                              style: FlutterFlowTheme.of(context)
                                   .subtitle1
                                   .override(
-                                fontFamily: 'Poppins',
-                                color: FlutterFlowTheme
-                                    .of(context)
-                                    .primaryColor,
-                              ),
+                                    fontFamily: 'Poppins',
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryColor,
+                                  ),
                             ),
                           ),
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(20, 8, 20, 0),
                           child: Text(
-                            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
-                            style: FlutterFlowTheme
-                                .of(context)
-                                .bodyText1,
+                            FFLocalizations.of(context).getText(
+                              'qzebwtsu' /* Lorem ipsum dolor sit amet, co... */,
+                            ),
+                            style: FlutterFlowTheme.of(context).bodyText1,
                           ),
                         ),
                         Padding(
                           padding:
-                          EdgeInsetsDirectional.fromSTEB(20, 12, 20, 0),
+                              EdgeInsetsDirectional.fromSTEB(20, 12, 20, 0),
                           child: Text(
-                            'Attachment',
-                            style: FlutterFlowTheme
-                                .of(context)
-                                .bodyText2,
+                            FFLocalizations.of(context).getText(
+                              'oiixrlbk' /* Attachment */,
+                            ),
+                            style: FlutterFlowTheme.of(context).bodyText2,
                           ),
                         ),
                         Padding(
@@ -214,25 +190,32 @@ class _ListPageWidgetState extends State<ListPageWidget> {
                   padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 16),
                   child: FFButtonWidget(
                     onPressed: () async {
-                      context.pushNamed('Welcome');
+                      if (Navigator.of(context).canPop()) {
+                        context.pop();
+                      }
+                      context.pushNamed(
+                        'onboarding',
+                        extra: <String, dynamic>{
+                          kTransitionInfoKey: TransitionInfo(
+                            hasTransition: true,
+                            transitionType: PageTransitionType.rightToLeft,
+                          ),
+                        },
+                      );
                     },
-                    text: 'Home',
+                    text: FFLocalizations.of(context).getText(
+                      'x20tbwo3' /* Home */,
+                    ),
                     options: FFButtonOptions(
                       width: 300,
                       height: 50,
-                      color: FlutterFlowTheme
-                          .of(context)
-                          .primaryText,
+                      color: FlutterFlowTheme.of(context).primaryText,
                       textStyle:
-                      FlutterFlowTheme
-                          .of(context)
-                          .subtitle1
-                          .override(
-                        fontFamily: 'Poppins',
-                        color: FlutterFlowTheme
-                            .of(context)
-                            .secondaryBackground,
-                      ),
+                          FlutterFlowTheme.of(context).subtitle1.override(
+                                fontFamily: 'Poppins',
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                              ),
                       elevation: 3,
                       borderSide: BorderSide(
                         color: Colors.transparent,
