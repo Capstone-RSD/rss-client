@@ -1,8 +1,6 @@
-import 'dart:typed_data';
-
 import 'package:file_picker/file_picker.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/materialtion.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mime_type/mime_type.dart';
@@ -58,23 +56,23 @@ Future<List<SelectedMedia>?> selectMediaWithSourceBottomSheet({
 }) async {
   final createUploadMediaListTile =
       (String label, MediaSource mediaSource) => ListTile(
-    title: Text(
-      label,
-      textAlign: TextAlign.center,
-      style: GoogleFonts.getFont(
-        pickerFontFamily,
-        color: textColor,
-        fontWeight: FontWeight.w600,
-        fontSize: 20,
-      ),
-    ),
-    tileColor: backgroundColor,
-    dense: false,
-    onTap: () => Navigator.pop(
-      context,
-      mediaSource,
-    ),
-  );
+            title: Text(
+              label,
+              textAlign: TextAlign.center,
+              style: GoogleFonts.getFont(
+                pickerFontFamily,
+                color: textColor,
+                fontWeight: FontWeight.w600,
+                fontSize: 20,
+              ),
+            ),
+            tileColor: backgroundColor,
+            dense: false,
+            onTap: () => Navigator.pop(
+              context,
+              mediaSource,
+            ),
+          );
   final mediaSource = await showModalBottomSheet<MediaSource>(
       context: context,
       backgroundColor: backgroundColor,
