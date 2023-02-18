@@ -62,8 +62,7 @@
     <string>In order to take a picture or video, this app requires permission to access the camera.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
     <string>In order to upload media, this app requires permission to access the photo library.</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-    <string>This permission is required to pinpoint the location of the road deterioration</string>
+
 
 
 	<key>UILaunchStoryboardName</key>

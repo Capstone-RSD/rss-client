@@ -273,10 +273,5 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
       'fr': '',
     },
-    '6t170cit': {
-      'en':
-          'This permission is required to pinpoint the location of the road deterioration',
-      'fr': '',
-    },
   },
 ].reduce((a, b) => a..addAll(b));
