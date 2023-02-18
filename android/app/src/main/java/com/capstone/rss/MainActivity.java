@@ -30,46 +30,58 @@ import io.flutter.plugin.common.MethodChannel;
 
 
 public class MainActivity extends FlutterActivity {
-    private static final String CHANNEL = "rssChannel";
-    private static final String URL = "https://pkc-3w22w.us-central1.gcp.confluent.cloud:443/kafka/v3/clusters";
+    private static final String CHANNEL = "publishEvent";
+    private static final String URL = "https://pkc-4r087.us-west2.gcp.confluent.cloud:443/kafka/v3/clusters";
     private static final String TOPIC = "/rss_topic";
-    private static final String CLUSTER_ID = "/lkc-d91ond";
+    private static final String CLUSTER_ID = "/lkc-3r5gd2";
     private static final Integer SCHEMA_ID = 100001;
-    private static final String API_KEY = "NzJOM1dWWFJLU1AzQUZTQTpvTkU2eWVyYkNSSStVR05XalIwVkhJSFNUQzJBbVp2NmlBRW5malp6Y0gvMWM3NHY3UDJnSVltd3hlRnJ3eFc4";
+    private static final String API_KEY = "SFdFVVRZMjQzR1A1SjczTjppakZvQmZnRFQ2czFiMFlFZmh1eXltSU5GWlA1WUU3QjVOdWFienpjcldncDNUbTUvUjNabGZvcGpGcnhLSzh6";
 //    private Client.Builder rssClient;
 
     @Override
     public void configureFlutterEngine(@NonNull FlutterEngine flutterEngine) {
         super.configureFlutterEngine(flutterEngine);
-//        GeneratedPluginRegistrant.registerWith(flutterEngine);
         new MethodChannel(flutterEngine.getDartExecutor().getBinaryMessenger(), CHANNEL)
                 .setMethodCallHandler(
                         (call, result) -> {
                             // This method is invoked on the main thread.
-                            String x = call.argument("name");
-//                    Log.i("rssChannel", "onMethodCall: " + x);
-                            rssChannel(x);
-                            result.success("lorem Ipsum");
+                            String client = call.argument("client");
+                            if (call.method.equals(CHANNEL)) {
+                                String res = publishEvent(client);
+                                if (!res.isEmpty()) {
+                                    result.success(res);
+                                } else {
+                                    result.error("Publish Error", "Event was not published to the Kafka Cluster", null);
+                                }
+                            } else {
+                                result.notImplemented();
+                            }
                         }
                 );
     }
 
     /**
      * Sends the rssClient data to the Kafka Broker in a post request
+     *
+     * @return string
      */
-    private void rssChannel(String client) {
-        Log.i("rssChannel", "onMethodCall: " + client);
+    private String publishEvent (String client) {
+        Log.i("publishEvent", "onMethodCall: " + client);
+
+        final String[] res = {""};
 
         String postUrl = URL + CLUSTER_ID + "/topics" + TOPIC + "/records";
         JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.POST, postUrl, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Log.d("Volley REST Response", response.toString());
+                res[0] = response.toString();
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.d("Volley Response error", "onCreate: " + error.networkResponse.toString());
+                res[0] = error.networkResponse.toString();
                 Toast.makeText(MainActivity.this, "There was an error. Please try again", Toast.LENGTH_SHORT).show();
             }
         }) {
@@ -131,6 +143,7 @@ public class MainActivity extends FlutterActivity {
         RequestQueue resquestQueue = Volley.newRequestQueue(MainActivity.this);
         resquestQueue.add(stringRequest);
 
+        return res[0];
     }
 
 }
