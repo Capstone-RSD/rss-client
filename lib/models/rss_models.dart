@@ -13,6 +13,7 @@ class RSSClient extends ChangeNotifier {
 
   set rssClient(Client value) {
     _rssClient = value;
+    notifyListeners();
   }
 
   static const String TOPIC = "/rss_topic";
@@ -39,6 +40,9 @@ class RSSClient extends ChangeNotifier {
             "Location permissions has been denied. Please enable for functionality");
       }
     }
+
+    notifyListeners();
+
     return await Geolocator.getCurrentPosition();
   }
 

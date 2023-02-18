@@ -277,6 +277,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                         TextFormField(
                                           controller: _model.emailController,
                                           onFieldSubmitted: (_) async {
+                                            // FFAppState().authCred[]
                                             GoRouter.of(context)
                                                 .prepareAuthEvent();
                                             final user =

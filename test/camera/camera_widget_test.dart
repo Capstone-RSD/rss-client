@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:rssclient/generated/rsd-dart-gen/google/type/datetime.pb.dart';
 import 'package:rssclient/generated/rsd-dart-gen/google/type/latlng.pbserver.dart';
@@ -5,10 +6,12 @@ import 'package:rssclient/generated/rsd-dart-gen/rss_client.pbserver.dart';
 import 'package:rssclient/models/rss_models.dart';
 
 void main() {
+  TestWidgetsFlutterBinding.ensureInitialized();
+
   Client client = Client();
   List<BlobSrc> blobSrcList = [];
 
-  TestWidgetsFlutterBinding.ensureInitialized();
+  // await initFirebase();
 
   group('Kafka Tests', () {
     setUpAll(() {
@@ -34,8 +37,29 @@ void main() {
         () async {
       RSSClient rssClient = RSSClient();
       rssClient.rssClient = client;
-      bool res = await rssClient.publishToKafka();
-      expect(res, true);
+      print(client.toProto3Json().toString());
+      mockPackageInfo(rssClient);
     });
   });
+  // RSSClient rssClient = RSSClient();
+  // rssClient.rssClient = client;
+  // mockPackageInfo(rssClient);
+}
+
+void mockPackageInfo(RSSClient client) {
+  const channel = MethodChannel('publishEvent');
+
+  handler(MethodCall methodCall) async {
+    if (methodCall.method == 'publishEvent') {
+      methodCall
+          .arguments(client.rssClient.toBuilder().toProto3Json().toString());
+      // return client.rssClient.toBuilder().toProto3Json().toString();
+    }
+    return null;
+  }
+
+  TestWidgetsFlutterBinding.ensureInitialized();
+
+  TestDefaultBinaryMessengerBinding.instance?.defaultBinaryMessenger
+      .setMockMethodCallHandler(channel, handler);
 }

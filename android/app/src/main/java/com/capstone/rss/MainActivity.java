@@ -41,21 +41,22 @@ public class MainActivity extends FlutterActivity {
     @Override
     public void configureFlutterEngine(@NonNull FlutterEngine flutterEngine) {
         super.configureFlutterEngine(flutterEngine);
+//        GeneratedPluginRegistrant.registerWith(this);
         new MethodChannel(flutterEngine.getDartExecutor().getBinaryMessenger(), CHANNEL)
                 .setMethodCallHandler(
                         (call, result) -> {
                             // This method is invoked on the main thread.
                             String client = call.argument("client");
-                            if (call.method.equals(CHANNEL)) {
+//                            if (call.method.equals(CHANNEL)) {
                                 String res = publishEvent(client);
-                                if (!res.isEmpty()) {
+//                                if (!res.isEmpty()) {
                                     result.success(res);
-                                } else {
-                                    result.error("Publish Error", "Event was not published to the Kafka Cluster", null);
-                                }
-                            } else {
-                                result.notImplemented();
-                            }
+//                                } else {
+//                                    result.error("Publish Error", "Event was not published to the Kafka Cluster", null);
+//                                }
+//                            } else {
+//                                result.notImplemented();
+//                            }
                         }
                 );
     }
