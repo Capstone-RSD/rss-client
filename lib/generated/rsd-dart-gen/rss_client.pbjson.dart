@@ -15,7 +15,8 @@ const Client$json = const {
     const {'1': 'name', '3': 1, '4': 1, '5': 9, '10': 'name'},
     const {'1': 'id', '3': 2, '4': 1, '5': 5, '10': 'id'},
     const {'1': 'email', '3': 3, '4': 1, '5': 9, '10': 'email'},
-    const {'1': 'speed', '3': 6, '4': 1, '5': 5, '10': 'speed'},
+    const {'1': 'damageLocation', '3': 4, '4': 1, '5': 11, '6': '.RSS.DamageLocation', '10': 'damageLocation'},
+    const {'1': 'speed', '3': 6, '4': 1, '5': 1, '10': 'speed'},
     const {'1': 'blobs', '3': 7, '4': 3, '5': 11, '6': '.RSS.BlobSrc', '10': 'blobs'},
     const {
       '1': 'blob_map',
@@ -27,16 +28,7 @@ const Client$json = const {
       '10': 'blobMap',
     },
   ],
-  '3': const [Client_DamageLocation$json, Client_BlobMapEntry$json],
-};
-
-@$core.Deprecated('Use clientDescriptor instead')
-const Client_DamageLocation$json = const {
-  '1': 'DamageLocation',
-  '2': const [
-    const {'1': 'lat_lng', '3': 1, '4': 1, '5': 11, '6': '.google.type.LatLng', '10': 'latLng'},
-    const {'1': 'address', '3': 2, '4': 1, '5': 11, '6': '.google.type.PostalAddress', '10': 'address'},
-  ],
+  '3': const [Client_BlobMapEntry$json],
 };
 
 @$core.Deprecated('Use clientDescriptor instead')
@@ -50,7 +42,18 @@ const Client_BlobMapEntry$json = const {
 };
 
 /// Descriptor for `Client`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List clientDescriptor = $convert.base64Decode('CgZDbGllbnQSEgoEbmFtZRgBIAEoCVIEbmFtZRIOCgJpZBgCIAEoBVICaWQSFAoFZW1haWwYAyABKAlSBWVtYWlsEhQKBXNwZWVkGAYgASgFUgVzcGVlZBIiCgVibG9icxgHIAMoCzIMLlJTUy5CbG9iU3JjUgVibG9icxI3CghibG9iX21hcBgIIAMoCzIYLlJTUy5DbGllbnQuQmxvYk1hcEVudHJ5QgIYAVIHYmxvYk1hcBp0Cg5EYW1hZ2VMb2NhdGlvbhIsCgdsYXRfbG5nGAEgASgLMhMuZ29vZ2xlLnR5cGUuTGF0TG5nUgZsYXRMbmcSNAoHYWRkcmVzcxgCIAEoCzIaLmdvb2dsZS50eXBlLlBvc3RhbEFkZHJlc3NSB2FkZHJlc3MaSAoMQmxvYk1hcEVudHJ5EhAKA2tleRgBIAEoCVIDa2V5EiIKBXZhbHVlGAIgASgLMgwuUlNTLkJsb2JTcmNSBXZhbHVlOgI4AQ==');
+final $typed_data.Uint8List clientDescriptor = $convert.base64Decode('CgZDbGllbnQSEgoEbmFtZRgBIAEoCVIEbmFtZRIOCgJpZBgCIAEoBVICaWQSFAoFZW1haWwYAyABKAlSBWVtYWlsEjsKDmRhbWFnZUxvY2F0aW9uGAQgASgLMhMuUlNTLkRhbWFnZUxvY2F0aW9uUg5kYW1hZ2VMb2NhdGlvbhIUCgVzcGVlZBgGIAEoAVIFc3BlZWQSIgoFYmxvYnMYByADKAsyDC5SU1MuQmxvYlNyY1IFYmxvYnMSNwoIYmxvYl9tYXAYCCADKAsyGC5SU1MuQ2xpZW50LkJsb2JNYXBFbnRyeUICGAFSB2Jsb2JNYXAaSAoMQmxvYk1hcEVudHJ5EhAKA2tleRgBIAEoCVIDa2V5EiIKBXZhbHVlGAIgASgLMgwuUlNTLkJsb2JTcmNSBXZhbHVlOgI4AQ==');
+@$core.Deprecated('Use damageLocationDescriptor instead')
+const DamageLocation$json = const {
+  '1': 'DamageLocation',
+  '2': const [
+    const {'1': 'lat_lng', '3': 1, '4': 1, '5': 11, '6': '.google.type.LatLng', '10': 'latLng'},
+    const {'1': 'address', '3': 2, '4': 1, '5': 11, '6': '.google.type.PostalAddress', '10': 'address'},
+  ],
+};
+
+/// Descriptor for `DamageLocation`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List damageLocationDescriptor = $convert.base64Decode('Cg5EYW1hZ2VMb2NhdGlvbhIsCgdsYXRfbG5nGAEgASgLMhMuZ29vZ2xlLnR5cGUuTGF0TG5nUgZsYXRMbmcSNAoHYWRkcmVzcxgCIAEoCzIaLmdvb2dsZS50eXBlLlBvc3RhbEFkZHJlc3NSB2FkZHJlc3M=');
 @$core.Deprecated('Use blobSrcDescriptor instead')
 const BlobSrc$json = const {
   '1': 'BlobSrc',

@@ -18,7 +18,7 @@ option optimize_for = SPEED; // Enabled by default
 
 // [START java_declaration]
 option java_multiple_files = true; // enables generating a separate .java file for each generated class
-option java_package = "com.example.rss_client";
+option java_package = "com.capstone.rss";
 // option java_outer_classname = "RSD";
 // [END java_declaration]
 

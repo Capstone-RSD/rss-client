@@ -18,7 +18,7 @@ option optimize_for = LITE_RUNTIME; // Enabled by default
 
 // [START java_declaration]
 option java_multiple_files = true; // enables generating a separate .java file for each generated class
-option java_package = "com.example.rss_client";
+option java_package = "com.capstone.rss";
 // option java_outer_classname = "RSD";
 // [END java_declaration]
 
@@ -28,13 +28,9 @@ message Client {
   int32 id = 2;
   string email = 3;
 
-  /* Latitude and Longitude of the captured road surface damage */
-  message DamageLocation{
-    google.type.LatLng lat_lng = 1;
-    google.type.PostalAddress address = 2;
-  }
+  DamageLocation damageLocation =4;
 
-  int32 speed = 6;
+  double speed = 6;
 
   repeated BlobSrc blobs = 7;
 
@@ -42,9 +38,14 @@ message Client {
   /* A key value pair mapping of the BlobSrc objects.
   The keys are represented as hashed name and the BlobSrc as the value.
    Use the repeated attribute instead  */
-  map<string, BlobSrc> blob_map = 8 [deprecated = true];
+  map<string,BlobSrc> blob_map = 8 [deprecated=true];
 }
 
+/* Latitude and Longitude of the captured road surface damage */
+message DamageLocation{
+  google.type.LatLng lat_lng = 1;
+  google.type.PostalAddress address = 2;
+}
 
 /* Represets the blob and its parameters. */
 message BlobSrc {

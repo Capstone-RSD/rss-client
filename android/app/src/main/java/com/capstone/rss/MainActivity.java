@@ -1,4 +1,4 @@
-package com.example.rss.rssclient;
+package com.capstone.rss;
 
 import android.util.Log;
 import android.widget.Toast;
@@ -15,7 +15,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.rss_client.Client;
+//import com.example.rss.rssclient.Client;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -36,7 +36,7 @@ public class MainActivity extends FlutterActivity {
     private static final String CLUSTER_ID = "/lkc-d91ond";
     private static final Integer SCHEMA_ID = 100001;
     private static final String API_KEY = "NzJOM1dWWFJLU1AzQUZTQTpvTkU2eWVyYkNSSStVR05XalIwVkhJSFNUQzJBbVp2NmlBRW5malp6Y0gvMWM3NHY3UDJnSVltd3hlRnJ3eFc4";
-    private Client.Builder rssClient;
+//    private Client.Builder rssClient;
 
     @Override
     public void configureFlutterEngine(@NonNull FlutterEngine flutterEngine) {
