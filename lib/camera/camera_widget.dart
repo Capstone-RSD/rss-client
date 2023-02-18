@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:rssclient/generated/rsd-dart-gen/rss_client.pb.dart';
 import 'package:rssclient/models/rss_models.dart';
 
 import '../backend/firebase_storage/storage.dart';
@@ -85,7 +86,26 @@ class _CameraWidgetState extends State<CameraWidget> {
                             onTap: () async {
                               // TODO: impl and populate the client with the blob url
                               // placeholder on how to use. Will be deleted
-                              notifier.rssClient.name = "John Smith";
+                              // notifier.rssClient.name = "John Smith";
+
+                              notifier.getCurrentLocation().then((value) => {
+                                    // rssClient.
+                                    setState(() {
+                                      DamageLocation location = DamageLocation(
+                                          latLng: LatLng(
+                                              latitude: value.latitude,
+                                              longitude: value.longitude));
+                                      notifier.rssClient.damageLocation =
+                                          location;
+                                      notifier.rssClient.speed = value.speed;
+                                      print(notifier.rssClient.toBuilder());
+                                      debugPrint(
+                                          "Longitude: ${value.longitude}");
+                                      debugPrint("Latitude: ${value.latitude}");
+                                    })
+                                  });
+                              notifier.liveLocation();
+
                               final selectedMedia =
                                   await selectMediaWithSourceBottomSheet(
                                 context: context,
@@ -240,6 +260,10 @@ class _CameraWidgetState extends State<CameraWidget> {
               padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
               child: FFButtonWidget(
                 onPressed: () async {
+                  print(FFAppState().authCred);
+
+                  notifier.
+
                   if (FFAppState().authCred != null) {
                     context.goNamed('SuccessPage');
                   } else {
