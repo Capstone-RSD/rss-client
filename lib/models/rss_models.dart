@@ -13,6 +13,7 @@ class RSSClient extends ChangeNotifier {
 
   set rssClient(Client value) {
     _rssClient = value;
+    notifyListeners();
   }
 
   static const String TOPIC = "/rss_topic";
@@ -21,9 +22,9 @@ class RSSClient extends ChangeNotifier {
   static const String API_KEY =
       "NzJOM1dWWFJLU1AzQUZTQTpvTkU2eWVyYkNSSStVR05XalIwVkhJSFNUQzJBbVp2NmlBRW5malp6Y0gvMWM3NHY3UDJnSVltd3hlRnJ3eFc4";
 
-  static const rssChannel = MethodChannel("rssChannel");
+  static const rssChannel = MethodChannel("publishEvent");
 
-  Future<Position> _getCurrentLocation() async {
+  Future<Position> getCurrentLocation() async {
     bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
       return Future.error(
@@ -39,10 +40,13 @@ class RSSClient extends ChangeNotifier {
             "Location permissions has been denied. Please enable for functionality");
       }
     }
+
+    notifyListeners();
+
     return await Geolocator.getCurrentPosition();
   }
 
-  void _liveLocation() {
+  void liveLocation() {
     LocationSettings locationSettings = const LocationSettings(
         accuracy: LocationAccuracy.high, distanceFilter: 0);
     Geolocator.getPositionStream(locationSettings: locationSettings)
@@ -62,5 +66,23 @@ class RSSClient extends ChangeNotifier {
     // UploadTask task;
     // final snapshot = await task.whenComplete(() => null);
     // final urlDownload = await
+  }
+
+  Future<bool> publishToKafka() async {
+    var methodRes;
+    // Map<String, dynamic> result=[];
+    try {
+      print(rssClient.toProto3Json());
+      methodRes = await rssChannel.invokeMethod("publishEvent",
+          {"client": rssClient.toBuilder().toProto3Json().toString()});
+      print(methodRes.toString());
+
+      // result= jsonDecode(methodRes);
+      // print("Result from method channel $result");
+    } on PlatformException catch (e) {
+      print(e.message);
+    }
+    // return result['errorCode'];
+    return true;
   }
 }
