@@ -31,8 +31,8 @@ jobs:
         uses: lukka/get-cmake@arm64-win-linux
 
       # Setup Dart
-      - name: Setup Dart
-        uses: cedx/setup-dart@v3.0.0
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@v1.4
         
       - name: Installs Flutter
         uses: britannio/action-install-flutter@v1.1
@@ -80,12 +80,31 @@ jobs:
           name: rsd-dart-gen
           path: |
             ${{github.workspace}}/protobuf-rsd-gen/dart-src
-      
-      
-#       # Upload dart artifacts
-#       - name: Upload generated dart artifacts
-#         uses: actions/upload-artifact@v3.1.1
-#         with:
-#           name: rsd-dart-gen
-#           path: |
-#             ${{github.workspace}}
+            
+  package-analysis:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: axel-op/dart-package-analyzer@v3
+        # set an id for the current step
+        id: analysis
+        with:
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+
+      # You can then use this id to retrieve the outputs in the next steps.
+      # The following step shows how to exit the workflow with an error if the total score in percentage is below 50:
+      - name: Check scores
+        env:
+          # NB: "analysis" is the id set above. Replace it with the one you used if different.
+          TOTAL: ${{ steps.analysis.outputs.total }}
+          TOTAL_MAX: ${{ steps.analysis.outputs.total_max }}
+        run: |
+          PERCENTAGE=$(( $TOTAL * 100 / $TOTAL_MAX ))
+          if (( $PERCENTAGE < 50 ))
+          then
+            echo Score too low!
+            exit 1
+          fi      
