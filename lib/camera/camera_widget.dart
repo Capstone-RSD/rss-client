@@ -126,8 +126,6 @@ class _CameraWidgetState extends State<CameraWidget> {
                                 return;
                               }
                             }
-
-                            context.goNamed('SuccessPage');
                           },
                           child: Container(
                             width: MediaQuery.of(context).size.width * 0.96,
@@ -232,10 +230,44 @@ class _CameraWidgetState extends State<CameraWidget> {
             padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
             child: FFButtonWidget(
               onPressed: () async {
-                if (FFAppState().authCred != null) {
-                  context.goNamed('SuccessPage');
+                if (FFAppState().authCred == null) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(
+                        'User not authenticated. Post was not sent',
+                        style: TextStyle(
+                          color: FlutterFlowTheme.of(context).primaryText,
+                        ),
+                      ),
+                      duration: Duration(milliseconds: 4000),
+                      backgroundColor: Color(0x00000000),
+                      action: SnackBarAction(
+                        label: 'Navigate Home',
+                        textColor: Color(0x00000000),
+                        onPressed: () async {
+                          context.pushNamed(
+                            'HomePage',
+                            extra: <String, dynamic>{
+                              kTransitionInfoKey: TransitionInfo(
+                                hasTransition: true,
+                                transitionType: PageTransitionType.leftToRight,
+                              ),
+                            },
+                          );
+                        },
+                      ),
+                    ),
+                  );
                 } else {
-                  return;
+                  context.goNamed(
+                    'SuccessPage',
+                    extra: <String, dynamic>{
+                      kTransitionInfoKey: TransitionInfo(
+                        hasTransition: true,
+                        transitionType: PageTransitionType.rightToLeft,
+                      ),
+                    },
+                  );
                 }
               },
               text: FFLocalizations.of(context).getText(

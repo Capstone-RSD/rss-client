@@ -34,7 +34,7 @@ class FFAppState extends ChangeNotifier {
 
   late FlutterSecureStorage secureStorage;
 
-  dynamic _authCred;
+  dynamic _authCred = jsonDecode('{\"name\":\"\",\"email\":\"\"}');
   dynamic get authCred => _authCred;
   set authCred(dynamic _value) {
     _authCred = _value;
