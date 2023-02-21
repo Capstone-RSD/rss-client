@@ -192,11 +192,11 @@ class _ListPageWidgetState extends State<ListPageWidget> {
                         context.pop();
                       }
                       context.pushNamed(
-                        'onboarding',
+                        'camera',
                         extra: <String, dynamic>{
                           kTransitionInfoKey: TransitionInfo(
                             hasTransition: true,
-                            transitionType: PageTransitionType.rightToLeft,
+                            transitionType: PageTransitionType.leftToRight,
                           ),
                         },
                       );

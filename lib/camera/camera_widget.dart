@@ -80,10 +80,9 @@ class _CameraWidgetState extends State<CameraWidget> {
                         padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
                         child: InkWell(
                           onTap: () async {
-                            final selectedMedia =
-                                await selectMediaWithSourceBottomSheet(
-                              context: context,
-                              allowPhoto: true,
+                            final selectedMedia = await selectMedia(
+                              mediaSource: MediaSource.photoGallery,
+                              multiImage: false,
                             );
                             if (selectedMedia != null &&
                                 selectedMedia.every((m) => validateFileFormat(
@@ -126,6 +125,20 @@ class _CameraWidgetState extends State<CameraWidget> {
                                 return;
                               }
                             }
+
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  'Image uploaded to firebase',
+                                  style: TextStyle(
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                  ),
+                                ),
+                                duration: Duration(milliseconds: 4000),
+                                backgroundColor: Color(0x00000000),
+                              ),
+                            );
                           },
                           child: Container(
                             width: MediaQuery.of(context).size.width * 0.96,
