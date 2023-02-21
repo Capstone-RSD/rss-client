@@ -119,32 +119,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Explore Now',
       'fr': '',
     },
-    '32pgwoom': {
-      'en': 'Message Friends',
-      'fr': '',
-    },
-    'lavpnqul': {
-      'en':
-          'Stay in the loop with trip plans, places to go and transportation.',
-      'fr': '',
-    },
-    'lw9dh8t4': {
-      'en': 'Explore Now',
-      'fr': '',
-    },
-    'vhc8tv00': {
-      'en': 'Track Expenses',
-      'fr': '',
-    },
-    'ia399r9e': {
-      'en':
-          'Don’t overspend on your trip, track all your expenses within the application.',
-      'fr': '',
-    },
-    '8n98x8u9': {
-      'en': 'Explore Now',
-      'fr': '',
-    },
   },
   // HomePage
   {
