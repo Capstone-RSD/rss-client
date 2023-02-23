@@ -247,5 +247,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
       'fr': '',
     },
+    'wpnfrqn3': {
+      'en':
+          'In order to get accurate results this app requires permission to access your location',
+      'fr': '',
+    },
   },
 ].reduce((a, b) => a..addAll(b));
