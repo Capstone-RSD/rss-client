@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:rssclient/generated/rsd-dart-gen/rss_client.pbserver.dart';
@@ -7,12 +7,12 @@ class RSSClient extends ChangeNotifier {
   static const String URL = "pkc-3w22w.us-central1.gcp.confluent.cloud:443";
   static const String PATH = "/kafka/v3/clusters";
 
-  Client _rssClient = Client();
+  Client _client = Client();
 
-  Client get rssClient => _rssClient;
+  Client get client => _client;
 
-  set rssClient(Client value) {
-    _rssClient = value;
+  set client(Client value) {
+    _client = value;
     notifyListeners();
   }
 
@@ -68,14 +68,15 @@ class RSSClient extends ChangeNotifier {
     // final urlDownload = await
   }
 
-  Future<bool> publishToKafka() async {
+  Future publishToKafka() async {
     var methodRes;
     // Map<String, dynamic> result=[];
     try {
-      print(rssClient.toProto3Json());
       methodRes = await rssChannel.invokeMethod("publishEvent",
-          {"client": rssClient.toBuilder().toProto3Json().toString()});
-      print(methodRes.toString());
+          {"client": client.toBuilder().toProto3Json().toString()});
+      if (kDebugMode) {
+        print(methodRes.toString());
+      }
 
       // result= jsonDecode(methodRes);
       // print("Result from method channel $result");
@@ -83,6 +84,6 @@ class RSSClient extends ChangeNotifier {
       print(e.message);
     }
     // return result['errorCode'];
-    return true;
+    // return true;
   }
 }

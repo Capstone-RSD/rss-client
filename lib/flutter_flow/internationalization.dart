@@ -278,9 +278,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
       'fr': '',
     },
-    '6t170cit': {
+    'wpnfrqn3': {
       'en':
-          'This permission is required to pinpoint the location of the road deterioration',
+          'In order to get accurate results this app requires permission to access your location',
       'fr': '',
     },
   },

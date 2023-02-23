@@ -112,10 +112,10 @@ protobuf {
     generateProtoTasks {
         all().each { task ->
             task.builtins {
-                java {
+//                java {
 //                    remove java
-                    option "lite"
-                }
+//                    option "lite"
+//                }
 //                python {
 //                }
             }
