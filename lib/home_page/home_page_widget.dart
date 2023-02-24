@@ -277,7 +277,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                         TextFormField(
                                           controller: _model.emailController,
                                           onFieldSubmitted: (_) async {
-                                            // FFAppState().authCred[]
+                                            // FFAppState().authCred["name"] =
+                                            //     _model.emailController?.value;
                                             GoRouter.of(context)
                                                 .prepareAuthEvent();
                                             final user =
@@ -375,6 +376,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
                             child: FFButtonWidget(
                               onPressed: () async {
+                                FFAppState().authCred["name"] =
+                                    _model.nameController?.value.text;
+                                FFAppState().authCred["email"] =
+                                    _model.emailController?.value.text;
+                                print(FFAppState().authCred.toString());
                                 FFAppState().authCred = FFAppState().authCred;
                                 GoRouter.of(context).prepareAuthEvent();
                                 final user = await signInAnonymously(context);

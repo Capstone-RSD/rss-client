@@ -1,26 +1,30 @@
-import 'package:flutter/material.dart';
+import 'dart:convert';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:http/http.dart' as http;
 import 'package:rssclient/generated/rsd-dart-gen/rss_client.pbserver.dart';
 
 class RSSClient extends ChangeNotifier {
-  static const String URL = "pkc-3w22w.us-central1.gcp.confluent.cloud:443";
+  static const String URL =
+      "pkc-v12gj.northamerica-northeast2.gcp.confluent.cloud:443";
   static const String PATH = "/kafka/v3/clusters";
 
-  Client _rssClient = Client();
+  Client _client = Client();
 
-  Client get rssClient => _rssClient;
+  Client get client => _client;
 
-  set rssClient(Client value) {
-    _rssClient = value;
+  set client(Client value) {
+    _client = value;
     notifyListeners();
   }
 
   static const String TOPIC = "/rss_topic";
-  static const String CLUSTER_ID = "/lkc-d91ond";
+  static const String CLUSTER_ID = "/lkc-j375wq";
   static const int SCHEMA_ID = 100001;
   static const String API_KEY =
-      "NzJOM1dWWFJLU1AzQUZTQTpvTkU2eWVyYkNSSStVR05XalIwVkhJSFNUQzJBbVp2NmlBRW5malp6Y0gvMWM3NHY3UDJnSVltd3hlRnJ3eFc4";
+      "QkhKTEtLNDY0TlE2RUk2NDp3OHBkWWVTSEdDRml6UEFodG9BL2I2ZjdkN1o1c29VTTBxcTFydE9QNlU2Um9IWnB1SHllWnFFUlFYNnptdDQ3";
 
   static const rssChannel = MethodChannel("publishEvent");
 
@@ -68,14 +72,17 @@ class RSSClient extends ChangeNotifier {
     // final urlDownload = await
   }
 
-  Future<bool> publishToKafka() async {
+  Future publishToKafka() async {
+    // postRequest();
     var methodRes;
     // Map<String, dynamic> result=[];
+    print(json.encode(client.toProto3Json()).toString());
     try {
-      print(rssClient.toProto3Json());
-      methodRes = await rssChannel.invokeMethod("publishEvent",
-          {"client": rssClient.toBuilder().toProto3Json().toString()});
-      print(methodRes.toString());
+      methodRes = await rssChannel.invokeMethod(
+          "publishEvent", {"client": json.encode(client.toProto3Json())});
+      // if (kDebugMode) {
+      //   print(methodRes.toString());
+      // }
 
       // result= jsonDecode(methodRes);
       // print("Result from method channel $result");
@@ -83,6 +90,26 @@ class RSSClient extends ChangeNotifier {
       print(e.message);
     }
     // return result['errorCode'];
-    return true;
+    // return true;
+  }
+
+  Future<http.Response> postRequest() async {
+    var url = Uri.https("$URL", "$PATH$CLUSTER_ID/topics$TOPIC/records");
+
+    Map data = client.writeToJsonMap();
+    //encode Map to JSON
+    var body = json.encode(client.toProto3Json());
+
+    print(body);
+
+    var response = await http.post(url,
+        headers: {
+          "Content-Type": "application/json",
+          'Authorization': "Basic $API_KEY"
+        },
+        body: body);
+    print("${response.statusCode}");
+    print("${response.body}");
+    return response;
   }
 }

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+// import 'package:rssclient/generated/rsd-dart-gen/google/type/datetime.pb.dart';
+import 'package:rssclient/generated/rsd-dart-gen/google/type/latlng.pb.dart';
+import 'package:rssclient/generated/rsd-dart-gen/rss_client.pb.dart';
 import 'package:rssclient/models/rss_models.dart';
 
 import '../backend/firebase_storage/storage.dart';
@@ -22,6 +25,7 @@ class _CameraWidgetState extends State<CameraWidget> {
   late CameraModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  RSSClient rssClient = RSSClient();
 
   @override
   void initState() {
@@ -41,9 +45,8 @@ class _CameraWidgetState extends State<CameraWidget> {
   @override
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
-    RSSClient rssClient = RSSClient();
 
-    FFAppState().authCred
+    // FFAppState().authCred={}
 
     // return Consumer<RSSClient>(
     //     builder: (BuildContext context, notifier, child) {
@@ -87,27 +90,21 @@ class _CameraWidgetState extends State<CameraWidget> {
                         padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
                         child: InkWell(
                           onTap: () async {
-                            // TODO: impl and populate the client with the blob url
-                            // placeholder on how to use. Will be deleted
-                            // notifier.rssClient.name = "John Smith";
-
-                            // notifier.getCurrentLocation().then((value) => {
-                            //       // rssClient.
-                            //       setState(() {
-                            //         DamageLocation location = DamageLocation(
-                            //             latLng: LatLng(
-                            //                 latitude: value.latitude,
-                            //                 longitude: value.longitude));
-                            //         notifier.rssClient.damageLocation =
-                            //             location;
-                            //         notifier.rssClient.speed = value.speed;
-                            //         print(notifier.rssClient.toBuilder());
-                            //         debugPrint(
-                            //             "Longitude: ${value.longitude}");
-                            //         debugPrint("Latitude: ${value.latitude}");
-                            //       })
-                            //     });
-                            // notifier.liveLocation();
+                            rssClient.getCurrentLocation().then((value) => {
+                                  // rssClient.
+                                  setState(() {
+                                    DamageLocation location = DamageLocation(
+                                        latLng: LatLng(
+                                            latitude: value.latitude,
+                                            longitude: value.longitude));
+                                    rssClient.client.damageLocation = location;
+                                    rssClient.client.speed = value.speed;
+                                    print(rssClient.client.toBuilder());
+                                    debugPrint("Longitude: ${value.longitude}");
+                                    debugPrint("Latitude: ${value.latitude}");
+                                  })
+                                });
+                            rssClient.liveLocation();
 
                             final selectedMedia =
                                 await selectMediaWithSourceBottomSheet(
@@ -139,6 +136,7 @@ class _CameraWidgetState extends State<CameraWidget> {
                                     .where((u) => u != null)
                                     .map((u) => u!)
                                     .toList();
+                                print("Download URL: $downloadUrls");
                               } finally {
                                 _model.isMediaUploading = false;
                               }
@@ -150,13 +148,18 @@ class _CameraWidgetState extends State<CameraWidget> {
                                       selectedUploadedFiles.first;
                                   _model.uploadedFileUrl = downloadUrls.first;
                                 });
+
+                                rssClient.client.blobs.add(BlobSrc(
+                                    blobUrl: _model.uploadedFileUrl,
+                                    // datetimeCreated: DateTime().toUtc(),
+                                    image: "image"));
+                                // print(rssClient.client.toProto3Json().toString());
                               } else {
                                 setState(() {});
                                 return;
                               }
+                              print(rssClient.client.toString());
                             }
-
-                            context.goNamed('SuccessPage');
                           },
                           child: Container(
                             width: MediaQuery.of(context).size.width * 0.96,
@@ -261,14 +264,53 @@ class _CameraWidgetState extends State<CameraWidget> {
             padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
             child: FFButtonWidget(
               onPressed: () async {
-                print(FFAppState().authCred);
-
-                // notifier.
-
-                if (FFAppState().authCred != null) {
-                  context.goNamed('SuccessPage');
+                if (FFAppState().authCred == null ||
+                    !rssClient.client.isInitialized()) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(
+                        'User not authenticated. Post was not sent',
+                        style: TextStyle(
+                          color: FlutterFlowTheme.of(context).primaryText,
+                        ),
+                      ),
+                      duration: Duration(milliseconds: 4000),
+                      backgroundColor: Color(0x00000000),
+                      action: SnackBarAction(
+                        label: 'Navigate Home',
+                        textColor: Color(0x00000000),
+                        onPressed: () async {
+                          context.pushNamed(
+                            'HomePage',
+                            extra: <String, dynamic>{
+                              kTransitionInfoKey: TransitionInfo(
+                                hasTransition: true,
+                                transitionType: PageTransitionType.leftToRight,
+                              ),
+                            },
+                          );
+                        },
+                      ),
+                    ),
+                  );
                 } else {
-                  return;
+                  print("User Appstate: ${FFAppState().authCred}");
+                  print("Client: ${rssClient.client.toString()}");
+
+                  rssClient.client.name = FFAppState().authCred['name'];
+                  rssClient.client.email = FFAppState().authCred['email'];
+
+                  rssClient.publishToKafka();
+
+                  context.goNamed(
+                    'SuccessPage',
+                    extra: <String, dynamic>{
+                      kTransitionInfoKey: TransitionInfo(
+                        hasTransition: true,
+                        transitionType: PageTransitionType.rightToLeft,
+                      ),
+                    },
+                  );
                 }
               },
               text: FFLocalizations.of(context).getText(

@@ -36,7 +36,7 @@ void main() {
     test('Given the User taps Send Post an event is published to kafka',
         () async {
       RSSClient rssClient = RSSClient();
-      rssClient.rssClient = client;
+      rssClient.client = client;
       print(client.toProto3Json().toString());
       mockPackageInfo(rssClient);
     });
@@ -51,8 +51,7 @@ void mockPackageInfo(RSSClient client) {
 
   handler(MethodCall methodCall) async {
     if (methodCall.method == 'publishEvent') {
-      methodCall
-          .arguments(client.rssClient.toBuilder().toProto3Json().toString());
+      methodCall.arguments(client.client.toBuilder().toProto3Json().toString());
       // return client.rssClient.toBuilder().toProto3Json().toString();
     }
     return null;

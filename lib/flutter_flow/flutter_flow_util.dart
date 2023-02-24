@@ -23,7 +23,7 @@ export 'package:page_transition/page_transition.dart';
 export '../app_state.dart';
 export 'flutter_flow_model.dart';
 export 'internationalization.dart' show FFLocalizations;
-export 'lat_lng.dart';
+// export 'lat_lng.dart';
 export 'nav/nav.dart';
 export 'place.dart';
 export 'uploaded_file.dart';
