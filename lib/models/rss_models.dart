@@ -1,34 +1,29 @@
-import 'dart:convert';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:http/http.dart' as http;
 import 'package:rssclient/generated/rsd-dart-gen/rss_client.pbserver.dart';
 
 class RSSClient extends ChangeNotifier {
-  static const String URL =
-      "pkc-v12gj.northamerica-northeast2.gcp.confluent.cloud:443";
+  static const String URL = "pkc-3w22w.us-central1.gcp.confluent.cloud:443";
   static const String PATH = "/kafka/v3/clusters";
 
-  Client _client = Client();
+  Client _rssClient = Client();
 
-  Client get client => _client;
+  Client get rssClient => _rssClient;
 
-  set client(Client value) {
-    _client = value;
-    notifyListeners();
+  set rssClient(Client value) {
+    _rssClient = value;
   }
 
   static const String TOPIC = "/rss_topic";
-  static const String CLUSTER_ID = "/lkc-j375wq";
+  static const String CLUSTER_ID = "/lkc-d91ond";
   static const int SCHEMA_ID = 100001;
   static const String API_KEY =
-      "QkhKTEtLNDY0TlE2RUk2NDp3OHBkWWVTSEdDRml6UEFodG9BL2I2ZjdkN1o1c29VTTBxcTFydE9QNlU2Um9IWnB1SHllWnFFUlFYNnptdDQ3";
+      "NzJOM1dWWFJLU1AzQUZTQTpvTkU2eWVyYkNSSStVR05XalIwVkhJSFNUQzJBbVp2NmlBRW5malp6Y0gvMWM3NHY3UDJnSVltd3hlRnJ3eFc4";
 
-  static const rssChannel = MethodChannel("publishEvent");
+  static const rssChannel = MethodChannel("rssChannel");
 
-  Future<Position> getCurrentLocation() async {
+  Future<Position> _getCurrentLocation() async {
     bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
       return Future.error(
@@ -40,76 +35,51 @@ class RSSClient extends ChangeNotifier {
       locationPermission = await Geolocator.requestPermission();
       if (locationPermission == LocationPermission.denied ||
           locationPermission == LocationPermission.deniedForever) {
+        await Geolocator.openLocationSettings();
+
         return Future.error(
             "Location permissions has been denied. Please enable for functionality");
       }
     }
-
-    notifyListeners();
-
     return await Geolocator.getCurrentPosition();
   }
 
-  void liveLocation() {
-    LocationSettings locationSettings = const LocationSettings(
-        accuracy: LocationAccuracy.high, distanceFilter: 0);
+  void _liveLocation() {
+    late LocationSettings locationSettings;
+// Sets location permissions depending on platform
+    if (defaultTargetPlatform == TargetPlatform.android) {
+      locationSettings = AndroidSettings(
+          accuracy: LocationAccuracy.high,
+          distanceFilter: 100,
+          forceLocationManager: true,
+          intervalDuration: const Duration(seconds: 10),
+          //(Optional) Set foreground notification config to keep the app alive
+          //when going to the background
+          foregroundNotificationConfig: const ForegroundNotificationConfig(
+            notificationText:
+                "Example app will continue to receive your location even when you aren't using it",
+            notificationTitle: "Running in Background",
+            enableWakeLock: true,
+          ));
+    } else if (defaultTargetPlatform == TargetPlatform.iOS ||
+        defaultTargetPlatform == TargetPlatform.macOS) {
+      locationSettings = AppleSettings(
+        accuracy: LocationAccuracy.best,
+        activityType: ActivityType.fitness,
+        distanceFilter: 100,
+        pauseLocationUpdatesAutomatically: true,
+        // Only set to true if our app will be started up in the background.
+        showBackgroundLocationIndicator: false,
+      );
+    } else {
+      locationSettings = const LocationSettings(
+          accuracy: LocationAccuracy.best, distanceFilter: 10);
+    }
+
     Geolocator.getPositionStream(locationSettings: locationSettings)
         .listen((event) {
       debugPrint("Longitude: ${event.longitude}");
       debugPrint("Latitude: ${event.latitude}");
     });
-  }
-
-  Future<void> uploadImage(Client rssClient) async {
-    // final file = File();
-    final firebasePath = '${rssClient.email}/rss';
-    // final storageRef = FirebaseStorage.instance.ref().child(firebasePath);
-    // storageRef.putFile(blob);
-
-    // Uploading to firebase
-    // UploadTask task;
-    // final snapshot = await task.whenComplete(() => null);
-    // final urlDownload = await
-  }
-
-  Future publishToKafka() async {
-    // postRequest();
-    var methodRes;
-    // Map<String, dynamic> result=[];
-    print(json.encode(client.toProto3Json()).toString());
-    try {
-      methodRes = await rssChannel.invokeMethod(
-          "publishEvent", {"client": json.encode(client.toProto3Json())});
-      // if (kDebugMode) {
-      //   print(methodRes.toString());
-      // }
-
-      // result= jsonDecode(methodRes);
-      // print("Result from method channel $result");
-    } on PlatformException catch (e) {
-      print(e.message);
-    }
-    // return result['errorCode'];
-    // return true;
-  }
-
-  Future<http.Response> postRequest() async {
-    var url = Uri.https("$URL", "$PATH$CLUSTER_ID/topics$TOPIC/records");
-
-    Map data = client.writeToJsonMap();
-    //encode Map to JSON
-    var body = json.encode(client.toProto3Json());
-
-    print(body);
-
-    var response = await http.post(url,
-        headers: {
-          "Content-Type": "application/json",
-          'Authorization': "Basic $API_KEY"
-        },
-        body: body);
-    print("${response.statusCode}");
-    print("${response.body}");
-    return response;
   }
 }
