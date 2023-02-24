@@ -264,7 +264,8 @@ class _CameraWidgetState extends State<CameraWidget> {
             padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
             child: FFButtonWidget(
               onPressed: () async {
-                if (FFAppState().authCred == null) {
+                if (FFAppState().authCred == null ||
+                    !rssClient.client.isInitialized()) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                       content: Text(

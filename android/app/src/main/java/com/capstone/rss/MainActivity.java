@@ -21,6 +21,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -46,7 +47,16 @@ public class MainActivity extends FlutterActivity {
                 .setMethodCallHandler(
                         (call, result) -> {
                             // This method is invoked on the main thread.
-                            String client = call.argument("client");
+                            JSONObject client = call.argument("client");
+//                            assert client != null;
+//                            JSONObject jsonObject_client= null;
+//                            try {
+//                                jsonObject_client = new JSONObject(client);
+                            assert client != null;
+                            Log.i("Info",client.toString());
+//                            } catch (JSONException e) {
+//                                e.printStackTrace();
+//                            }
                             if (call.method.equals(CHANNEL)) {
                                 publishEvent(client);
 //                                if (!res.isEmpty()) {
@@ -67,13 +77,37 @@ public class MainActivity extends FlutterActivity {
      *
      * @return string
      */
-    private void publishEvent (String client) {
+    private void publishEvent (JSONObject client) {
         Log.i("publishEvent", "onMethodCall: " + client);
 
 //        final String[] res = {""};
 
+        JSONObject body = new JSONObject();
+        JSONObject key = new JSONObject();
+        JSONObject value = new JSONObject();
+        try {
+            key.put("subject_name_strategy", TOPIC.toUpperCase());
+            key.put("schema_id", JSONObject.NULL);
+            key.put("data", JSONObject.NULL);
+
+            value.put("type", "JSON");
+            value.put("data", client);
+
+            Log.d("key", key.toString());
+            Log.d("value", value.toString());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        try {
+            body.put("key", JSONObject.NULL);
+            body.put("value", value);
+            Log.d("Body", client.toString());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
         String postUrl = URL + CLUSTER_ID + "/topics" + TOPIC + "/records";
-        JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.POST, postUrl, null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.POST, postUrl, body, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Log.d("Volley REST Response", response.toString());
@@ -97,48 +131,48 @@ public class MainActivity extends FlutterActivity {
                 return headers;
             }
 
-            @Override
-            public byte[] getBody() {
-                JSONObject body = new JSONObject();
-                JSONObject key = new JSONObject();
-                JSONObject value = new JSONObject();
-                try {
-                    key.put("subject_name_strategy", TOPIC.toUpperCase());
-                    key.put("schema_id", JSONObject.NULL);
-                    key.put("data", JSONObject.NULL);
-
-                    value.put("type", "JSON");
-                    value.put("data", client);
-
-                    Log.d("key", key.toString());
-                    Log.d("value", value.toString());
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-//                catch (InvalidProtocolBufferException e) {
+//            @Override
+//            public byte[] getBody() {
+//                JSONObject body = new JSONObject();
+//                JSONObject key = new JSONObject();
+//                JSONObject value = new JSONObject();
+//                try {
+//                    key.put("subject_name_strategy", TOPIC.toUpperCase());
+//                    key.put("schema_id", JSONObject.NULL);
+//                    key.put("data", JSONObject.NULL);
+//
+//                    value.put("type", "JSON");
+//                    value.put("data", client);
+//
+//                    Log.d("key", key.toString());
+//                    Log.d("value", value.toString());
+//                } catch (JSONException e) {
 //                    e.printStackTrace();
 //                }
-                try {
-                    body.put("key", JSONObject.NULL);
-                    body.put("value", value);
-                    Log.d("Body", client);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+////                catch (InvalidProtocolBufferException e) {
+////                    e.printStackTrace();
+////                }
+//                try {
+//                    body.put("key", JSONObject.NULL);
+//                    body.put("value", value);
+//                    Log.d("Body", client.toString());
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+//
+//                return body.getBytes(StandardCharsets.UTF_8);
+//            }
 
-                return body.toString().getBytes();
-            }
-
-            @Override
-            protected Response parseNetworkResponse(NetworkResponse response) {
-                try {
-                    Log.i("Kafka rest proxy", "response data " + response.data);
-                    String jsonString = new String(response.data, HttpHeaderParser.parseCharset(response.headers));
-                    return Response.success(new JSONObject(jsonString), HttpHeaderParser.parseCacheHeaders(response));
-                } catch (UnsupportedEncodingException | JSONException e) {
-                    return Response.error(new ParseError(e));
-                }
-            }
+//            @Override
+//            protected Response parseNetworkResponse(NetworkResponse response) {
+//                try {
+//                    Log.i("Kafka rest proxy", "response data " + response.data);
+//                    String jsonString = new String(response.data, HttpHeaderParser.parseCharset(response.headers));
+//                    return Response.success(new JSONObject(jsonString), HttpHeaderParser.parseCacheHeaders(response));
+//                } catch (UnsupportedEncodingException | JSONException e) {
+//                    return Response.error(new ParseError(e));
+//                }
+//            }
 
         };
         Log.d("Kafka Proxy URL", stringRequest.getUrl());
