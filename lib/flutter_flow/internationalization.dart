@@ -105,21 +105,6 @@ Locale createLocale(String language) => language.contains('_')
     : Locale(language);
 
 final kTranslationsMap = <Map<String, Map<String, String>>>[
-  // onboarding
-  {
-    'hvoas3f9': {
-      'en': 'Welcome',
-      'fr': '',
-    },
-    'qc1y1u2g': {
-      'en': 'Help us to detect road damages around the city by using our app.',
-      'fr': '',
-    },
-    'lv4cshgv': {
-      'en': 'Explore Now',
-      'fr': '',
-    },
-  },
   // HomePage
   {
     'u6toodzu': {
@@ -237,6 +222,47 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': '',
     },
   },
+  // onboarding
+  {
+    '8v5010l2': {
+      'en': 'Welcome',
+      'fr': '',
+    },
+    'zfs2gvr6': {
+      'en': 'Help us to detect road damages around the city by using our app.',
+      'fr': '',
+    },
+    'lnw04ppg': {
+      'en': 'Explore Now',
+      'fr': '',
+    },
+    'y67xouur': {
+      'en': 'Message Friends',
+      'fr': '',
+    },
+    'm0f3nmfe': {
+      'en':
+          'Stay in the loop with trip plans, places to go and transportation.',
+      'fr': '',
+    },
+    'oa0spigg': {
+      'en': 'Explore Now',
+      'fr': '',
+    },
+    'b5axzzij': {
+      'en': 'Track Expenses',
+      'fr': '',
+    },
+    'efv4x5wm': {
+      'en':
+          'Don’t overspend on your trip, track all your expenses within the application.',
+      'fr': '',
+    },
+    'cxfswqix': {
+      'en': 'Explore Now',
+      'fr': '',
+    },
+  },
   // Miscellaneous
   {
     'csk68993': {
@@ -247,7 +273,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
       'fr': '',
     },
-    'wpnfrqn3': {
+    'v1tfi8y9': {
       'en':
           'In order to get accurate results this app requires permission to access your location',
       'fr': '',

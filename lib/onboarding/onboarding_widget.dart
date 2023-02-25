@@ -91,7 +91,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                     children: [
                                       Text(
                                         FFLocalizations.of(context).getText(
-                                          'hvoas3f9' /* Welcome */,
+                                          '8v5010l2' /* Welcome */,
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .title1
@@ -112,7 +112,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                       Expanded(
                                         child: Text(
                                           FFLocalizations.of(context).getText(
-                                            'qc1y1u2g' /* Help us to detect road damages... */,
+                                            'zfs2gvr6' /* Help us to detect road damages... */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .subtitle2
@@ -136,31 +136,236 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                             0, 16, 0, 0),
                                         child: FFButtonWidget(
                                           onPressed: () async {
-                                            if (Navigator.of(context)
-                                                .canPop()) {
-                                              context.pop();
-                                            }
-                                            context.pushNamed(
-                                              'HomePage',
-                                              extra: <String, dynamic>{
-                                                kTransitionInfoKey:
-                                                    TransitionInfo(
-                                                  hasTransition: true,
-                                                  transitionType:
-                                                      PageTransitionType.fade,
-                                                ),
-                                              },
-                                            );
+                                            context.goNamed('HomePage');
                                           },
                                           text: FFLocalizations.of(context)
                                               .getText(
-                                            'lv4cshgv' /* Explore Now */,
+                                            'lnw04ppg' /* Explore Now */,
                                           ),
                                           options: FFButtonOptions(
                                             width: 170,
                                             height: 50,
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryColor,
+                                            textStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .subtitle2
+                                                    .override(
+                                                      fontFamily: 'Lexend Deca',
+                                                      color: Colors.white,
+                                                      fontSize: 16,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                    ),
+                                            elevation: 2,
+                                            borderSide: BorderSide(
+                                              color: Colors.transparent,
+                                              width: 1,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            width: 100,
+                            height: 100,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context).primaryText,
+                            ),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0, 0, 0, 20),
+                                      child: Image.asset(
+                                        'assets/images/ON_messages@3x.png',
+                                        width: 350,
+                                        height: 400,
+                                        fit: BoxFit.fitWidth,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      20, 0, 20, 8),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Text(
+                                        FFLocalizations.of(context).getText(
+                                          'y67xouur' /* Message Friends */,
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .title1
+                                            .override(
+                                              fontFamily: 'Poppins',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                            ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      20, 0, 20, 8),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                          FFLocalizations.of(context).getText(
+                                            'm0f3nmfe' /* Stay in the loop with trip pla... */,
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .subtitle2,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      20, 0, 20, 8),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0, 16, 0, 0),
+                                        child: FFButtonWidget(
+                                          onPressed: () async {
+                                            context.pushNamed('HomePage');
+                                          },
+                                          text: FFLocalizations.of(context)
+                                              .getText(
+                                            'oa0spigg' /* Explore Now */,
+                                          ),
+                                          options: FFButtonOptions(
+                                            width: 170,
+                                            height: 50,
+                                            color: Colors.white,
+                                            textStyle: FlutterFlowTheme.of(
+                                                    context)
+                                                .subtitle2
+                                                .override(
+                                                  fontFamily: 'Lexend Deca',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryColor,
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                            elevation: 2,
+                                            borderSide: BorderSide(
+                                              color: Colors.transparent,
+                                              width: 1,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            width: 100,
+                            height: 100,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                            ),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0, 0, 0, 30),
+                                      child: Image.asset(
+                                        'assets/images/ON_expenses@3x.png',
+                                        width: 350,
+                                        height: 400,
+                                        fit: BoxFit.fitWidth,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      20, 0, 20, 8),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Text(
+                                        FFLocalizations.of(context).getText(
+                                          'b5axzzij' /* Track Expenses */,
+                                        ),
+                                        style:
+                                            FlutterFlowTheme.of(context).title1,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      20, 0, 20, 8),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                          FFLocalizations.of(context).getText(
+                                            'efv4x5wm' /* Don’t overspend on your trip, ... */,
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .subtitle2,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      20, 0, 20, 8),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0, 16, 0, 0),
+                                        child: FFButtonWidget(
+                                          onPressed: () {
+                                            print('Button pressed ...');
+                                          },
+                                          text: FFLocalizations.of(context)
+                                              .getText(
+                                            'cxfswqix' /* Explore Now */,
+                                          ),
+                                          options: FFButtonOptions(
+                                            width: 170,
+                                            height: 50,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryColor,
                                             textStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .subtitle2
@@ -194,7 +399,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                           child: smooth_page_indicator.SmoothPageIndicator(
                             controller: _model.pageViewController ??=
                                 PageController(initialPage: 0),
-                            count: 1,
+                            count: 3,
                             axisDirection: Axis.vertical,
                             onDotClicked: (i) {
                               _model.pageViewController!.animateToPage(
