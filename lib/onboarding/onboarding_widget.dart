@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
@@ -93,7 +92,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                     children: [
                                       Text(
                                         FFLocalizations.of(context).getText(
-                                          'hvoas3f9' /* Welcome */,
+                                          '8v5010l2' /* Welcome */,
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .title1
@@ -114,7 +113,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                       Expanded(
                                         child: Text(
                                           FFLocalizations.of(context).getText(
-                                            'qc1y1u2g' /* Help us to detect road damages... */,
+                                            'zfs2gvr6' /* Help us to detect road damages... */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .subtitle2
@@ -138,25 +137,11 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                             0, 16, 0, 0),
                                         child: FFButtonWidget(
                                           onPressed: () async {
-                                            if (Navigator.of(context)
-                                                .canPop()) {
-                                              context.pop();
-                                            }
-                                            context.pushNamed(
-                                              'HomePage',
-                                              extra: <String, dynamic>{
-                                                kTransitionInfoKey:
-                                                    TransitionInfo(
-                                                  hasTransition: true,
-                                                  transitionType:
-                                                      PageTransitionType.fade,
-                                                ),
-                                              },
-                                            );
+                                            context.goNamed('HomePage');
                                           },
                                           text: FFLocalizations.of(context)
                                               .getText(
-                                            'lv4cshgv' /* Explore Now */,
+                                            'lnw04ppg' /* Explore Now */,
                                           ),
                                           options: FFButtonOptions(
                                             width: 170,
@@ -221,7 +206,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                     children: [
                                       Text(
                                         FFLocalizations.of(context).getText(
-                                          '32pgwoom' /* Message Friends */,
+                                          'y67xouur' /* Message Friends */,
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .title1
@@ -244,7 +229,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                       Expanded(
                                         child: Text(
                                           FFLocalizations.of(context).getText(
-                                            'lavpnqul' /* Stay in the loop with trip pla... */,
+                                            'm0f3nmfe' /* Stay in the loop with trip pla... */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .subtitle2,
@@ -264,25 +249,11 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                             0, 16, 0, 0),
                                         child: FFButtonWidget(
                                           onPressed: () async {
-                                            if (Navigator.of(context)
-                                                .canPop()) {
-                                              context.pop();
-                                            }
-                                            context.pushNamed(
-                                              'HomePage',
-                                              extra: <String, dynamic>{
-                                                kTransitionInfoKey:
-                                                    TransitionInfo(
-                                                  hasTransition: true,
-                                                  transitionType:
-                                                      PageTransitionType.fade,
-                                                ),
-                                              },
-                                            );
+                                            context.pushNamed('HomePage');
                                           },
                                           text: FFLocalizations.of(context)
                                               .getText(
-                                            'lw9dh8t4' /* Explore Now */,
+                                            'oa0spigg' /* Explore Now */,
                                           ),
                                           options: FFButtonOptions(
                                             width: 170,
@@ -348,7 +319,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                     children: [
                                       Text(
                                         FFLocalizations.of(context).getText(
-                                          'vhc8tv00' /* Track Expenses */,
+                                          'b5axzzij' /* Track Expenses */,
                                         ),
                                         style:
                                             FlutterFlowTheme.of(context).title1,
@@ -365,7 +336,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                       Expanded(
                                         child: Text(
                                           FFLocalizations.of(context).getText(
-                                            'ia399r9e' /* Don’t overspend on your trip, ... */,
+                                            'efv4x5wm' /* Don’t overspend on your trip, ... */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .subtitle2,
@@ -389,7 +360,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                           },
                                           text: FFLocalizations.of(context)
                                               .getText(
-                                            '8n98x8u9' /* Explore Now */,
+                                            'cxfswqix' /* Explore Now */,
                                           ),
                                           options: FFButtonOptions(
                                             width: 170,

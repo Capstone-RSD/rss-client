@@ -295,7 +295,6 @@ class _CameraWidgetState extends State<CameraWidget> {
                   );
                 } else {
                   print("User Appstate: ${FFAppState().authCred}");
-                  print("Client: ${rssClient.client.toString()}");
 
                   rssClient.client.name = FFAppState().authCred['name'];
                   rssClient.client.email = FFAppState().authCred['email'];

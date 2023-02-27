@@ -1,29 +1,22 @@
+import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:rssclient/generated/rsd-dart-gen/rss_client.pbserver.dart';
 
 class RSSClient extends ChangeNotifier {
-  static const String URL = "pkc-3w22w.us-central1.gcp.confluent.cloud:443";
-  static const String PATH = "/kafka/v3/clusters";
+  Client _client = Client();
 
-  Client _rssClient = Client();
+  Client get client => _client;
 
-  Client get rssClient => _rssClient;
-
-  set rssClient(Client value) {
-    _rssClient = value;
+  set client(Client value) {
+    _client = value;
   }
 
-  static const String TOPIC = "/rss_topic";
-  static const String CLUSTER_ID = "/lkc-d91ond";
-  static const int SCHEMA_ID = 100001;
-  static const String API_KEY =
-      "NzJOM1dWWFJLU1AzQUZTQTpvTkU2eWVyYkNSSStVR05XalIwVkhJSFNUQzJBbVp2NmlBRW5malp6Y0gvMWM3NHY3UDJnSVltd3hlRnJ3eFc4";
+  static const rssChannel = MethodChannel("publishEvent");
 
-  static const rssChannel = MethodChannel("rssChannel");
-
-  Future<Position> _getCurrentLocation() async {
+  Future<Position> getCurrentLocation() async {
     bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
       return Future.error(
@@ -44,7 +37,7 @@ class RSSClient extends ChangeNotifier {
     return await Geolocator.getCurrentPosition();
   }
 
-  void _liveLocation() {
+  void liveLocation() {
     late LocationSettings locationSettings;
 // Sets location permissions depending on platform
     if (defaultTargetPlatform == TargetPlatform.android) {
@@ -81,5 +74,22 @@ class RSSClient extends ChangeNotifier {
       debugPrint("Longitude: ${event.longitude}");
       debugPrint("Latitude: ${event.latitude}");
     });
+  }
+
+  Future publishToKafka() async {
+    // postRequest();
+    var methodRes;
+    // Map<String, dynamic> result=[];
+    if (kDebugMode) {
+      print("Client: ${json.encode(client.toProto3Json())}");
+    }
+    try {
+      methodRes = await rssChannel.invokeMethod(
+          "publishEvent", {"client": json.encode(client.toProto3Json())});
+    } on PlatformException catch (e) {
+      print(e.message);
+    }
+    // return result['errorCode'];
+    // return true;
   }
 }

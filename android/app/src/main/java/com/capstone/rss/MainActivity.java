@@ -49,22 +49,13 @@ public class MainActivity extends FlutterActivity {
                             // This method is invoked on the main thread.
                             JSONObject client = call.argument("client");
 //                            assert client != null;
-//                            JSONObject jsonObject_client= null;
-//                            try {
-//                                jsonObject_client = new JSONObject(client);
-                            assert client != null;
-                            Log.i("Info",client.toString());
-//                            } catch (JSONException e) {
-//                                e.printStackTrace();
-//                            }
+                            Log.i("Info Client",client.toString());
                             if (call.method.equals(CHANNEL)) {
                                 publishEvent(client);
-//                                if (!res.isEmpty()) {
-//                                result.success(null);
                             }
-//                                } else {
-//                                    result.error("Publish Error", "Event was not published to the Kafka Cluster", null);
-//                                }
+                                 else {
+                                    result.error("Publish Error", "Event was not published to the Kafka Cluster", null);
+                                }
 //                            } else {
 //                                result.notImplemented();
 //                            }

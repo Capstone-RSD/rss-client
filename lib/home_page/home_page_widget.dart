@@ -5,6 +5,7 @@ import '../auth/auth_util.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import '../flutter_flow/permissions_util.dart';
 import 'home_page_model.dart';
 
 export 'home_page_model.dart';
@@ -175,6 +176,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
 
                                                 context.goNamedAuth(
                                                     'camera', mounted);
+
+                                                await requestPermission(
+                                                    locationPermission);
                                               },
                                               autofocus: true,
                                               autofillHints: [
