@@ -1,6 +1,6 @@
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
-import '../flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -207,6 +207,8 @@ class _ListPageWidgetState extends State<ListPageWidget> {
                     options: FFButtonOptions(
                       width: 300,
                       height: 50,
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                      iconPadding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                       color: FlutterFlowTheme.of(context).primaryText,
                       textStyle:
                           FlutterFlowTheme.of(context).subtitle1.override(

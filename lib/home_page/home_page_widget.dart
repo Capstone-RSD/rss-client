@@ -1,8 +1,7 @@
-import '../auth/auth_util.dart';
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
-import '../flutter_flow/flutter_flow_widgets.dart';
-import '../flutter_flow/permissions_util.dart';
+import '/auth/auth_util.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -92,15 +91,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   borderRadius: BorderRadius.circular(12),
                                 ),
                                 child: Container(
-                                  width: 48,
-                                  height: 48,
+                                  width: 150,
+                                  height: 150,
                                   decoration: BoxDecoration(
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
                                     image: DecorationImage(
                                       fit: BoxFit.cover,
                                       image: Image.asset(
-                                        'assets/images/DAAsset_1.png',
+                                        'assets/images/rss_logo.png',
                                       ).image,
                                     ),
                                     boxShadow: [
@@ -112,6 +111,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       )
                                     ],
                                     borderRadius: BorderRadius.circular(12),
+                                    shape: BoxShape.rectangle,
                                   ),
                                 ),
                               ),
@@ -394,8 +394,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   }
 
                                   context.pushNamedAuth('camera', mounted);
-
-                                  await requestPermission(locationPermission);
                                 },
                                 text: FFLocalizations.of(context).getText(
                                   'z50y3twz' /* SUBMIT */,
@@ -403,6 +401,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 options: FFButtonOptions(
                                   width: double.infinity,
                                   height: 44,
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 0, 0, 0),
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 0, 0, 0),
                                   color:
                                       FlutterFlowTheme.of(context).primaryColor,
                                   textStyle: FlutterFlowTheme.of(context)
