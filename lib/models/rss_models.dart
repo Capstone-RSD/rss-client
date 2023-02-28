@@ -18,6 +18,11 @@ class RSSClient extends ChangeNotifier {
 
   static const rssChannel = MethodChannel("publishEvent");
 
+  /// If the user has not enabled location services, request permission and open the location settings.
+  /// If the user has enabled location services, return the current location
+  ///
+  /// Returns:
+  ///   A Future<Position> object.
   Future<Position> getCurrentLocation() async {
     bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
@@ -31,13 +36,18 @@ class RSSClient extends ChangeNotifier {
         return Future.error(
             "Location permissions has been denied. Please enable for functionality");
       }
-      // return Future.error(
-      //     "Location service has been disabled. Please enable for functionality");
     }
 
     return await Geolocator.getCurrentPosition();
   }
 
+  ///
+  /// This function will check if the user has location permissions, if not it will request them, then
+  /// it will check if the location service is enabled, if not it will open the location settings, then
+  /// it will start a stream of location updates
+  ///
+  /// Returns:
+  ///   A stream of location data.
   void liveLocation() async {
     bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
@@ -95,6 +105,7 @@ class RSSClient extends ChangeNotifier {
     });
   }
 
+  /// It takes the client object, converts it to a json string, and passes it to the native code
   Future publishToKafka() async {
     // postRequest();
     var methodRes;

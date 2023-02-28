@@ -50,10 +50,6 @@ class _CameraWidgetState extends State<CameraWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    // FFAppState().authCred={}
-
-    // return Consumer<RSSClient>(
-    //     builder: (BuildContext context, notifier, child) {
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
