@@ -224,41 +224,40 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // onboarding
   {
-    '8v5010l2': {
+    'j4svfh17': {
       'en': 'Welcome',
       'fr': '',
     },
-    'zfs2gvr6': {
+    '329cjftw': {
       'en': 'Help us to detect road damages around the city by using our app.',
       'fr': '',
     },
-    'lnw04ppg': {
+    'djuiffjf': {
       'en': 'Explore Now',
       'fr': '',
     },
-    'y67xouur': {
-      'en': 'Message Friends',
+    '9dzjav81': {
+      'en': 'Estimate',
       'fr': '',
     },
-    'm0f3nmfe': {
+    'jkiin17r': {
       'en':
-          'Stay in the loop with trip plans, places to go and transportation.',
+          'Estimate the cost to repair potholes and cracks depending on severtiy of the damage.',
       'fr': '',
     },
-    'oa0spigg': {
+    'v8cgreya': {
       'en': 'Explore Now',
       'fr': '',
     },
-    'b5axzzij': {
+    '5nwlmqko': {
       'en': 'Track Expenses',
       'fr': '',
     },
-    'efv4x5wm': {
-      'en':
-          'Don’t overspend on your trip, track all your expenses within the application.',
+    '9tt77khz': {
+      'en': 'Track all your expense to repair road damages.',
       'fr': '',
     },
-    'cxfswqix': {
+    'x2pbt41h': {
       'en': 'Explore Now',
       'fr': '',
     },
