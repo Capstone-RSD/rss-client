@@ -56,13 +56,13 @@ class _CameraWidgetState extends State<CameraWidget> {
           style: FlutterFlowTheme.of(context).title2.override(
                 fontFamily: 'Lexend Deca',
                 color: FlutterFlowTheme.of(context).primaryText,
-                fontSize: 22,
+                fontSize: 22.0,
                 fontWeight: FontWeight.bold,
               ),
         ),
         actions: [],
         centerTitle: false,
-        elevation: 0,
+        elevation: 0.0,
       ),
       body: GestureDetector(
         onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
@@ -74,7 +74,7 @@ class _CameraWidgetState extends State<CameraWidget> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 12),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 12.0),
                   child: Container(
                     width: MediaQuery.of(context).size.width * 0.94,
                     decoration: BoxDecoration(),
@@ -82,7 +82,8 @@ class _CameraWidgetState extends State<CameraWidget> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 4.0, 0.0, 0.0),
                           child: InkWell(
                             onTap: () async {
                               await requestPermission(locationPermission);
@@ -145,10 +146,12 @@ class _CameraWidgetState extends State<CameraWidget> {
                                   backgroundColor: Color(0x00000000),
                                 ),
                               );
+
+                              context.goNamed('SuccessPage');
                             },
                             child: Container(
                               width: MediaQuery.of(context).size.width * 0.96,
-                              height: 350,
+                              height: 350.0,
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context)
                                     .uploadImgColour,
@@ -160,18 +163,20 @@ class _CameraWidgetState extends State<CameraWidget> {
                                 ),
                                 boxShadow: [
                                   BoxShadow(
-                                    blurRadius: 6,
+                                    blurRadius: 6.0,
                                     color: Color(0x3A000000),
-                                    offset: Offset(0, 2),
+                                    offset: Offset(0.0, 2.0),
                                   )
                                 ],
-                                borderRadius: BorderRadius.circular(8),
+                                borderRadius: BorderRadius.circular(8.0),
+                                shape: BoxShape.rectangle,
                               ),
                             ),
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 12.0, 0.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
@@ -189,47 +194,47 @@ class _CameraWidgetState extends State<CameraWidget> {
                                         .override(
                                           fontFamily: 'Lexend Deca',
                                           color: Color(0xFF95A1AC),
-                                          fontSize: 14,
+                                          fontSize: 14.0,
                                           fontWeight: FontWeight.normal,
                                         ),
                                     enabledBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
                                         color: Color(0xFFF1F4F8),
-                                        width: 2,
+                                        width: 2.0,
                                       ),
-                                      borderRadius: BorderRadius.circular(8),
+                                      borderRadius: BorderRadius.circular(8.0),
                                     ),
                                     focusedBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
                                         color: Color(0x00000000),
-                                        width: 2,
+                                        width: 2.0,
                                       ),
-                                      borderRadius: BorderRadius.circular(8),
+                                      borderRadius: BorderRadius.circular(8.0),
                                     ),
                                     errorBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
                                         color: Color(0x00000000),
-                                        width: 2,
+                                        width: 2.0,
                                       ),
-                                      borderRadius: BorderRadius.circular(8),
+                                      borderRadius: BorderRadius.circular(8.0),
                                     ),
                                     focusedErrorBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
                                         color: Color(0x00000000),
-                                        width: 2,
+                                        width: 2.0,
                                       ),
-                                      borderRadius: BorderRadius.circular(8),
+                                      borderRadius: BorderRadius.circular(8.0),
                                     ),
                                     contentPadding:
                                         EdgeInsetsDirectional.fromSTEB(
-                                            20, 32, 20, 12),
+                                            20.0, 32.0, 20.0, 12.0),
                                   ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyText1
                                       .override(
                                         fontFamily: 'Lexend Deca',
                                         color: Color(0xFF090F13),
-                                        fontSize: 14,
+                                        fontSize: 14.0,
                                         fontWeight: FontWeight.normal,
                                       ),
                                   textAlign: TextAlign.start,
@@ -248,7 +253,7 @@ class _CameraWidgetState extends State<CameraWidget> {
               ],
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
               child: FFButtonWidget(
                 onPressed: _model.isMediaUploading == false
                     ? null
@@ -284,36 +289,29 @@ class _CameraWidgetState extends State<CameraWidget> {
                             ),
                           );
                         } else {
-                          context.goNamed(
-                            'SuccessPage',
-                            extra: <String, dynamic>{
-                              kTransitionInfoKey: TransitionInfo(
-                                hasTransition: true,
-                                transitionType: PageTransitionType.rightToLeft,
-                              ),
-                            },
-                          );
+                          context.pushNamed('SuccessPage');
                         }
                       },
                 text: FFLocalizations.of(context).getText(
                   'te9retwb' /* Send Post */,
                 ),
                 options: FFButtonOptions(
-                  width: 270,
-                  height: 66,
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
-                  iconPadding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                  width: 270.0,
+                  height: 66.0,
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                  iconPadding:
+                      EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   color: Color(0xFF4B39EF),
                   textStyle: FlutterFlowTheme.of(context).subtitle2.override(
                         fontFamily: 'Lexend Deca',
                         color: Colors.white,
-                        fontSize: 16,
+                        fontSize: 16.0,
                         fontWeight: FontWeight.w500,
                       ),
-                  elevation: 3,
+                  elevation: 3.0,
                   borderSide: BorderSide(
                     color: Colors.transparent,
-                    width: 1,
+                    width: 1.0,
                   ),
                   disabledColor: FlutterFlowTheme.of(context).secondaryText,
                   disabledTextColor:

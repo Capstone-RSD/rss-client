@@ -1,22 +1,22 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:flutter/foundation.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'list_page_model.dart';
-export 'list_page_model.dart';
+import 'list_page_copy_model.dart';
+export 'list_page_copy_model.dart';
 
-class ListPageWidget extends StatefulWidget {
-  const ListPageWidget({Key? key}) : super(key: key);
+class ListPageCopyWidget extends StatefulWidget {
+  const ListPageCopyWidget({Key? key}) : super(key: key);
 
   @override
-  _ListPageWidgetState createState() => _ListPageWidgetState();
+  _ListPageCopyWidgetState createState() => _ListPageCopyWidgetState();
 }
 
-class _ListPageWidgetState extends State<ListPageWidget> {
-  late ListPageModel _model;
+class _ListPageCopyWidgetState extends State<ListPageCopyWidget> {
+  late ListPageCopyModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final _unfocusNode = FocusNode();
@@ -24,7 +24,7 @@ class _ListPageWidgetState extends State<ListPageWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => ListPageModel());
+    _model = createModel(context, () => ListPageCopyModel());
   }
 
   @override
@@ -45,7 +45,7 @@ class _ListPageWidgetState extends State<ListPageWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(70.0),
+          preferredSize: Size.fromHeight(65.0),
           child: AppBar(
             backgroundColor: FlutterFlowTheme.of(context).primaryColor,
             automaticallyImplyLeading: false,
@@ -57,13 +57,13 @@ class _ListPageWidgetState extends State<ListPageWidget> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Align(
-                    alignment: AlignmentDirectional(-1.0, 0.0),
+                    alignment: AlignmentDirectional(-1.0, -0.75),
                     child: Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 12.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
-                          'ktrob3n2' /* History */,
+                          'nyco10um' /* History */,
                         ),
                         style: FlutterFlowTheme.of(context).title2.override(
                               fontFamily: 'Poppins',
@@ -89,7 +89,7 @@ class _ListPageWidgetState extends State<ListPageWidget> {
               children: [
                 Container(
                   width: double.infinity,
-                  height: MediaQuery.of(context).size.height * 0.7,
+                  height: MediaQuery.of(context).size.height * 0.8,
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).secondaryBackground,
                     boxShadow: [
@@ -105,45 +105,17 @@ class _ListPageWidgetState extends State<ListPageWidget> {
                         EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              20.0, 0.0, 20.0, 0.0),
-                          child: InkWell(
-                            onTap: () async {
-                              final _datePickedDate = await showDatePicker(
-                                context: context,
-                                initialDate: getCurrentTimestamp,
-                                firstDate: getCurrentTimestamp,
-                                lastDate: DateTime(2050),
-                              );
-
-                              TimeOfDay? _datePickedTime;
-                              if (_datePickedDate != null) {
-                                _datePickedTime = await showTimePicker(
-                                  context: context,
-                                  initialTime: TimeOfDay.fromDateTime(
-                                      getCurrentTimestamp),
-                                );
-                              }
-
-                              if (_datePickedDate != null &&
-                                  _datePickedTime != null) {
-                                setState(() {
-                                  _model.datePicked = DateTime(
-                                    _datePickedDate.year,
-                                    _datePickedDate.month,
-                                    _datePickedDate.day,
-                                    _datePickedTime!.hour,
-                                    _datePickedTime.minute,
-                                  );
-                                });
-                              }
-                            },
+                        Align(
+                          alignment: AlignmentDirectional(-0.15, 0.0),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                20.0, 0.0, 20.0, 0.0),
                             child: Text(
                               FFLocalizations.of(context).getText(
-                                'uyriss1c' /* Monday, June 12 2022 */,
+                                'zsrr9xg2' /* Monday, June 12 2022 */,
                               ),
                               style: FlutterFlowTheme.of(context)
                                   .subtitle1
@@ -160,7 +132,7 @@ class _ListPageWidgetState extends State<ListPageWidget> {
                               20.0, 8.0, 20.0, 0.0),
                           child: Text(
                             FFLocalizations.of(context).getText(
-                              'qzebwtsu' /* Lorem ipsum dolor sit amet, co... */,
+                              'ng66jgx0' /* Lorem ipsum dolor sit amet, co... */,
                             ),
                             style: FlutterFlowTheme.of(context).bodyText1,
                           ),
@@ -170,28 +142,16 @@ class _ListPageWidgetState extends State<ListPageWidget> {
                               20.0, 12.0, 20.0, 0.0),
                           child: Text(
                             FFLocalizations.of(context).getText(
-                              'oiixrlbk' /* Attachment */,
+                              'l1ld9wni' /* Attachment */,
                             ),
                             style: FlutterFlowTheme.of(context).bodyText2,
                           ),
                         ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              16.0, 8.0, 16.0, 8.0),
-                          child: InkWell(
-                            onTap: () async {
-                              await launchURL('');
-                            },
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(8.0),
-                              child: Image.network(
-                                'https://media-cdn.tripadvisor.com/media/photo-s/0c/74/3c/4e/sample-receipt.jpg',
-                                width: double.infinity,
-                                height: 350.0,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
+                        Image.asset(
+                          'assets/images/istockphoto-182875254-612x612_jpg.rf.098155bca292934c2016b9cb3741b84e.jpg',
+                          width: 500.0,
+                          height: 500.0,
+                          fit: BoxFit.cover,
                         ),
                       ],
                     ),
@@ -205,7 +165,7 @@ class _ListPageWidgetState extends State<ListPageWidget> {
                         context.pop();
                       }
                       context.pushNamed(
-                        'camera',
+                        'onboarding',
                         extra: <String, dynamic>{
                           kTransitionInfoKey: TransitionInfo(
                             hasTransition: true,
@@ -215,11 +175,11 @@ class _ListPageWidgetState extends State<ListPageWidget> {
                       );
                     },
                     text: FFLocalizations.of(context).getText(
-                      'x20tbwo3' /* Home */,
+                      '3kwfrdxl' /* Home */,
                     ),
                     options: FFButtonOptions(
-                      width: 300.0,
-                      height: 50.0,
+                      width: 250.0,
+                      height: 70.0,
                       padding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       iconPadding:

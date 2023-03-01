@@ -52,17 +52,17 @@ class _SuccessPageWidgetState extends State<SuccessPageWidget> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 24),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Lottie.network(
                         'https://assets10.lottiefiles.com/packages/lf20_xlkxtmul.json',
-                        width: 200,
-                        height: 200,
+                        width: 200.0,
+                        height: 200.0,
                         fit: BoxFit.cover,
-                        frameRate: FrameRate(60),
+                        frameRate: FrameRate(60.0),
                         repeat: false,
                         animate: true,
                       ),
@@ -76,12 +76,12 @@ class _SuccessPageWidgetState extends State<SuccessPageWidget> {
                   style: FlutterFlowTheme.of(context).title2.override(
                         fontFamily: 'Outfit',
                         color: Colors.white,
-                        fontSize: 32,
+                        fontSize: 32.0,
                         fontWeight: FontWeight.w500,
                       ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                   child: Text(
                     FFLocalizations.of(context).getText(
                       'onadnle5' /* Thanks for sharing! */,
@@ -89,37 +89,39 @@ class _SuccessPageWidgetState extends State<SuccessPageWidget> {
                     style: FlutterFlowTheme.of(context).subtitle2.override(
                           fontFamily: 'Outfit',
                           color: Colors.white,
-                          fontSize: 20,
+                          fontSize: 20.0,
                           fontWeight: FontWeight.w300,
                         ),
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 44, 0, 0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 44.0, 0.0, 0.0),
                   child: FFButtonWidget(
                     onPressed: () async {
-                      context.pushNamed('ListPage');
+                      context.goNamed('ListPageCopy');
                     },
                     text: FFLocalizations.of(context).getText(
                       's4fvuvht' /* Go To List */,
                     ),
                     options: FFButtonOptions(
-                      width: 130,
-                      height: 50,
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
-                      iconPadding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                      width: 130.0,
+                      height: 50.0,
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      iconPadding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       color: Colors.white,
                       textStyle:
                           FlutterFlowTheme.of(context).subtitle2.override(
                                 fontFamily: 'Outfit',
                                 color: Color(0xFF39D2C0),
-                                fontSize: 16,
+                                fontSize: 16.0,
                                 fontWeight: FontWeight.normal,
                               ),
-                      elevation: 3,
+                      elevation: 3.0,
                       borderSide: BorderSide(
                         color: Colors.transparent,
-                        width: 1,
+                        width: 1.0,
                       ),
                     ),
                   ),

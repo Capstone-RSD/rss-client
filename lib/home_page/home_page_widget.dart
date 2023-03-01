@@ -57,12 +57,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             style: FlutterFlowTheme.of(context).title2.override(
                   fontFamily: 'Poppins',
                   color: Colors.white,
-                  fontSize: 22,
+                  fontSize: 22.0,
                 ),
           ),
           actions: [],
           centerTitle: false,
-          elevation: 2,
+          elevation: 2.0,
         ),
         body: SafeArea(
           child: GestureDetector(
@@ -70,29 +70,29 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             child: Stack(
               children: [
                 Align(
-                  alignment: AlignmentDirectional(0, 0),
+                  alignment: AlignmentDirectional(0.0, 0.0),
                   child: Container(
-                    width: 360,
+                    width: 360.0,
                     decoration: BoxDecoration(),
                     child: Align(
-                      alignment: AlignmentDirectional(0, 0),
+                      alignment: AlignmentDirectional(0.0, 0.0),
                       child: SingleChildScrollView(
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 0, 0, 24),
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 24.0),
                               child: Material(
                                 color: Colors.transparent,
-                                elevation: 0,
+                                elevation: 0.0,
                                 shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(12),
+                                  borderRadius: BorderRadius.circular(12.0),
                                 ),
                                 child: Container(
-                                  width: 150,
-                                  height: 150,
+                                  width: 150.0,
+                                  height: 150.0,
                                   decoration: BoxDecoration(
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
@@ -104,13 +104,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     ),
                                     boxShadow: [
                                       BoxShadow(
-                                        blurRadius: 8,
+                                        blurRadius: 8.0,
                                         color: Color(0x1917171C),
-                                        offset: Offset(0, 4),
-                                        spreadRadius: 0,
+                                        offset: Offset(0.0, 4.0),
+                                        spreadRadius: 0.0,
                                       )
                                     ],
-                                    borderRadius: BorderRadius.circular(12),
+                                    borderRadius: BorderRadius.circular(12.0),
                                     shape: BoxShape.rectangle,
                                   ),
                                 ),
@@ -124,14 +124,14 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               style:
                                   FlutterFlowTheme.of(context).title3.override(
                                         fontFamily: 'Poppins',
-                                        fontSize: 30,
+                                        fontSize: 30.0,
                                         fontWeight: FontWeight.w600,
                                         lineHeight: 1.2,
                                       ),
                             )),
                             Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 12.0, 0.0, 0.0),
                               child: SelectionArea(
                                   child: Text(
                                 FFLocalizations.of(context).getText(
@@ -146,8 +146,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               )),
                             ),
                             Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 32, 0, 0),
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 32.0, 0.0, 0.0),
                               child: Form(
                                 key: _model.formKey,
                                 autovalidateMode: AutovalidateMode.disabled,
@@ -205,7 +205,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                       UnderlineInputBorder(
                                                     borderSide: BorderSide(
                                                       color: Color(0x00000000),
-                                                      width: 1,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         const BorderRadius.only(
@@ -219,7 +219,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                       UnderlineInputBorder(
                                                     borderSide: BorderSide(
                                                       color: Color(0x00000000),
-                                                      width: 1,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         const BorderRadius.only(
@@ -233,7 +233,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                       UnderlineInputBorder(
                                                     borderSide: BorderSide(
                                                       color: Color(0x00000000),
-                                                      width: 1,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         const BorderRadius.only(
@@ -247,7 +247,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                       UnderlineInputBorder(
                                                     borderSide: BorderSide(
                                                       color: Color(0x00000000),
-                                                      width: 1,
+                                                      width: 1.0,
                                                     ),
                                                     borderRadius:
                                                         const BorderRadius.only(
@@ -272,7 +272,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 20, 0, 0),
+                                          0.0, 20.0, 0.0, 0.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
                                         crossAxisAlignment:
@@ -318,7 +318,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                   UnderlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 1,
+                                                  width: 1.0,
                                                 ),
                                                 borderRadius:
                                                     const BorderRadius.only(
@@ -331,7 +331,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                   UnderlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 1,
+                                                  width: 1.0,
                                                 ),
                                                 borderRadius:
                                                     const BorderRadius.only(
@@ -343,7 +343,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                               errorBorder: UnderlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 1,
+                                                  width: 1.0,
                                                 ),
                                                 borderRadius:
                                                     const BorderRadius.only(
@@ -356,7 +356,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                   UnderlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 1,
+                                                  width: 1.0,
                                                 ),
                                                 borderRadius:
                                                     const BorderRadius.only(
@@ -382,8 +382,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               ),
                             ),
                             Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 24.0, 0.0, 0.0),
                               child: FFButtonWidget(
                                 onPressed: () async {
                                   FFAppState().authCred = FFAppState().authCred;
@@ -400,11 +400,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 ),
                                 options: FFButtonOptions(
                                   width: double.infinity,
-                                  height: 44,
+                                  height: 44.0,
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 0, 0, 0),
+                                      0.0, 0.0, 0.0, 0.0),
                                   iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 0, 0, 0),
+                                      0.0, 0.0, 0.0, 0.0),
                                   color:
                                       FlutterFlowTheme.of(context).primaryColor,
                                   textStyle: FlutterFlowTheme.of(context)
@@ -415,9 +415,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       ),
                                   borderSide: BorderSide(
                                     color: Colors.transparent,
-                                    width: 1,
+                                    width: 1.0,
                                   ),
-                                  borderRadius: BorderRadius.circular(8),
+                                  borderRadius: BorderRadius.circular(8.0),
                                 ),
                               ),
                             ),
