@@ -455,8 +455,8 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 16.0, 0.0, 0.0),
                                         child: FFButtonWidget(
-                                          onPressed: () {
-                                            print('Button pressed ...');
+                                          onPressed: () async {
+                                            context.pushNamed('HomePage');
                                           },
                                           text: FFLocalizations.of(context)
                                               .getText(
