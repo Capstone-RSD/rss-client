@@ -16,8 +16,7 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  android-build:
+  flutter-test:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -38,6 +37,49 @@ jobs:
           cache: true
       - run: flutter pub get
       - run: flutter test
+     # - run: flutter build apk
+      #- run: flutter build appbundle
+      #- run: |
+       #       echo CACHE-PATH=${{ steps.flutter-action.outputs.CACHE-PATH }}
+        #      echo CACHE-KEY=${{ steps.flutter-action.outputs.CACHE-KEY }}
+        #      echo CHANNEL=${{ steps.flutter-action.outputs.CHANNEL }}
+         #     echo VERSION=${{ steps.flutter-action.outputs.VERSION }}
+          #    echo ARCHITECTURE=${{ steps.flutter-action.outputs.ARCHITECTURE }}
+        #shell: bash
+        
+      # Upload java artifacts
+      #- name: Upload build artifacts
+       # uses: actions/upload-artifact@v3.1.1
+        #with:
+         # name: rsd-java-src
+          #path: |
+           #     ${{github.workspace}}/protobuf-rsd-gen/java-src
+                
+                
+  # This workflow contains a single job called "build"
+  android-build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    name: "Build Flutter Android"
+    needs: [flutter-test]
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - name: Checkout Repository
+        # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+        uses: actions/checkout@v3.10.0
+      - uses: actions/setup-java@v2
+        with:
+          distribution: 'zulu'
+          java-version: '11'
+          cache: 'gradle'
+      - uses: subosito/flutter-action@v2.8.0
+        with:
+          channel: 'stable'
+          architecture: x64
+          cache: true
+      - run: flutter pub get
+      - run: flutter clean
       - run: flutter build apk
       - run: flutter build appbundle
       - run: |
@@ -46,18 +88,11 @@ jobs:
               echo CHANNEL=${{ steps.flutter-action.outputs.CHANNEL }}
               echo VERSION=${{ steps.flutter-action.outputs.VERSION }}
               echo ARCHITECTURE=${{ steps.flutter-action.outputs.ARCHITECTURE }}
-        shell: bash
-        
-      # Upload java artifacts
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v3.1.1
-        with:
-          name: rsd-java-src
-          path: |
-                ${{github.workspace}}/protobuf-rsd-gen/java-src
-      
+        shell: bash      
       
   ios-build:
+    name: "Build Flutter (iOS)"
+    needs: [flutter-test]
     runs-on: macos-latest
     steps:
     - uses: actions/checkout@v3
@@ -66,5 +101,5 @@ jobs:
         channel: 'stable'
         architecture: x64
     - run: flutter pub get
-    - run: flutter test
+    - run: flutter clean
     - run: flutter build ios --release --no-codesign
