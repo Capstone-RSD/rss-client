@@ -88,24 +88,24 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => HomePageWidget(),
             ),
             FFRoute(
-              name: 'onboarding',
-              path: 'onboarding',
-              builder: (context, params) => OnboardingWidget(),
-            ),
-            FFRoute(
-              name: 'camera',
-              path: 'camera',
-              builder: (context, params) => CameraWidget(),
-            ),
-            FFRoute(
               name: 'ListPage',
               path: 'listPage',
               builder: (context, params) => ListPageWidget(),
             ),
             FFRoute(
+              name: 'onboarding',
+              path: 'onboarding',
+              builder: (context, params) => OnboardingWidget(),
+            ),
+            FFRoute(
               name: 'ListPageCopy',
               path: 'listPageCopy',
               builder: (context, params) => ListPageCopyWidget(),
+            ),
+            FFRoute(
+              name: 'camera',
+              path: 'camera',
+              builder: (context, params) => CameraWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),

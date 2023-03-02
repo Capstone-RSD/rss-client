@@ -2,6 +2,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -89,7 +90,6 @@ class _ListPageCopyWidgetState extends State<ListPageCopyWidget> {
               children: [
                 Container(
                   width: double.infinity,
-                  height: MediaQuery.of(context).size.height * 0.8,
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).secondaryBackground,
                     boxShadow: [
@@ -113,17 +113,37 @@ class _ListPageCopyWidgetState extends State<ListPageCopyWidget> {
                           child: Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 20.0, 0.0, 20.0, 0.0),
-                            child: Text(
-                              FFLocalizations.of(context).getText(
-                                'zsrr9xg2' /* Monday, June 12 2022 */,
+                            child: InkWell(
+                              onTap: () async {
+                                final _datePickedDate = await showDatePicker(
+                                  context: context,
+                                  initialDate: getCurrentTimestamp,
+                                  firstDate: getCurrentTimestamp,
+                                  lastDate: DateTime(2050),
+                                );
+
+                                if (_datePickedDate != null) {
+                                  setState(() {
+                                    _model.datePicked = DateTime(
+                                      _datePickedDate.year,
+                                      _datePickedDate.month,
+                                      _datePickedDate.day,
+                                    );
+                                  });
+                                }
+                              },
+                              child: Text(
+                                FFLocalizations.of(context).getText(
+                                  'zsrr9xg2' /* Monday, June 12 2022 */,
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .subtitle1
+                                    .override(
+                                      fontFamily: 'Poppins',
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryColor,
+                                    ),
                               ),
-                              style: FlutterFlowTheme.of(context)
-                                  .subtitle1
-                                  .override(
-                                    fontFamily: 'Poppins',
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryColor,
-                                  ),
                             ),
                           ),
                         ),
@@ -150,51 +170,50 @@ class _ListPageCopyWidgetState extends State<ListPageCopyWidget> {
                         Image.asset(
                           'assets/images/istockphoto-182875254-612x612_jpg.rf.098155bca292934c2016b9cb3741b84e.jpg',
                           width: 500.0,
-                          height: 500.0,
+                          height: 476.8,
                           fit: BoxFit.cover,
                         ),
                       ],
                     ),
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
-                  child: FFButtonWidget(
-                    onPressed: () async {
-                      if (Navigator.of(context).canPop()) {
-                        context.pop();
-                      }
-                      context.pushNamed(
-                        'onboarding',
-                        extra: <String, dynamic>{
-                          kTransitionInfoKey: TransitionInfo(
-                            hasTransition: true,
-                            transitionType: PageTransitionType.leftToRight,
-                          ),
-                        },
-                      );
-                    },
-                    text: FFLocalizations.of(context).getText(
-                      '3kwfrdxl' /* Home */,
-                    ),
-                    options: FFButtonOptions(
-                      width: 250.0,
-                      height: 70.0,
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      iconPadding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: FlutterFlowTheme.of(context).primaryText,
-                      textStyle:
-                          FlutterFlowTheme.of(context).subtitle1.override(
-                                fontFamily: 'Poppins',
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                              ),
-                      elevation: 3.0,
-                      borderSide: BorderSide(
-                        color: Colors.transparent,
-                        width: 1.0,
+                Expanded(
+                  child: Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
+                    child: FFButtonWidget(
+                      onPressed: () async {
+                        context.goNamed(
+                          'onboarding',
+                          extra: <String, dynamic>{
+                            kTransitionInfoKey: TransitionInfo(
+                              hasTransition: true,
+                              transitionType: PageTransitionType.leftToRight,
+                            ),
+                          },
+                        );
+                      },
+                      text: FFLocalizations.of(context).getText(
+                        '3kwfrdxl' /* Home */,
+                      ),
+                      options: FFButtonOptions(
+                        width: 200.0,
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        iconPadding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: FlutterFlowTheme.of(context).primaryText,
+                        textStyle:
+                            FlutterFlowTheme.of(context).subtitle1.override(
+                                  fontFamily: 'Poppins',
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                ),
+                        elevation: 3.0,
+                        borderSide: BorderSide(
+                          color: Colors.transparent,
+                          width: 1.0,
+                        ),
                       ),
                     ),
                   ),

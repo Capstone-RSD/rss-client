@@ -289,7 +289,7 @@ class _CameraWidgetState extends State<CameraWidget> {
                             ),
                           );
                         } else {
-                          context.pushNamed('SuccessPage');
+                          context.pushNamed('HomePage');
                         }
                       },
                 text: FFLocalizations.of(context).getText(

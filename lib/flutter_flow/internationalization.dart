@@ -179,6 +179,34 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': '',
     },
   },
+  // ListPage
+  {
+    'ktrob3n2': {
+      'en': 'History',
+      'fr': '',
+    },
+    'uyriss1c': {
+      'en': 'Monday, June 12 2022',
+      'fr': '',
+    },
+    'qzebwtsu': {
+      'en':
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
+      'fr': '',
+    },
+    'oiixrlbk': {
+      'en': 'Attachment',
+      'fr': '',
+    },
+    'x20tbwo3': {
+      'en': 'Home',
+      'fr': '',
+    },
+    'h1nh570g': {
+      'en': 'Home',
+      'fr': '',
+    },
+  },
   // onboarding
   {
     'j4svfh17': {
@@ -219,49 +247,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': '',
     },
   },
-  // camera
-  {
-    'ptmxca6w': {
-      'en': 'Create Post',
-      'fr': '',
-    },
-    'cw4td9mz': {
-      'en': 'Enter post details here...',
-      'fr': '',
-    },
-    'te9retwb': {
-      'en': 'Send Post',
-      'fr': '',
-    },
-  },
-  // ListPage
-  {
-    'ktrob3n2': {
-      'en': 'History',
-      'fr': '',
-    },
-    'uyriss1c': {
-      'en': 'Monday, June 12 2022',
-      'fr': '',
-    },
-    'qzebwtsu': {
-      'en':
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
-      'fr': '',
-    },
-    'oiixrlbk': {
-      'en': 'Attachment',
-      'fr': '',
-    },
-    'x20tbwo3': {
-      'en': 'Home',
-      'fr': '',
-    },
-    'h1nh570g': {
-      'en': 'Home',
-      'fr': '',
-    },
-  },
   // ListPageCopy
   {
     'nyco10um': {
@@ -287,6 +272,21 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'l83802q4': {
       'en': 'Home',
+      'fr': '',
+    },
+  },
+  // camera
+  {
+    'ptmxca6w': {
+      'en': 'Create Post',
+      'fr': '',
+    },
+    'cw4td9mz': {
+      'en': 'Enter post details here...',
+      'fr': '',
+    },
+    'te9retwb': {
+      'en': 'Send Post',
       'fr': '',
     },
   },
