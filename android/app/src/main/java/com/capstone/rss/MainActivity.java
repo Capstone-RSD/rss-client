@@ -47,40 +47,41 @@ public class MainActivity extends FlutterActivity {
                 .setMethodCallHandler(
                         (call, result) -> {
                             // This method is invoked on the main thread.
-                            JSONObject client = call.argument("client");
-//                            assert client != null;
-//                            JSONObject jsonObject_client= null;
-//                            try {
-//                                jsonObject_client = new JSONObject(client);
-                            assert client != null;
-                            Log.i("Info",client.toString());
-//                            } catch (JSONException e) {
-//                                e.printStackTrace();
-//                            }
-                            if (call.method.equals(CHANNEL)) {
-                                publishEvent(client);
-//                                if (!res.isEmpty()) {
-//                                result.success(null);
+                            JSONObject client = null;
+                            try {
+                                client = new JSONObject(call.argument("client").toString());
+                            } catch (JSONException e) {
+                                e.printStackTrace();
                             }
-//                                } else {
-//                                    result.error("Publish Error", "Event was not published to the Kafka Cluster", null);
-//                                }
-//                            } else {
-//                                result.notImplemented();
-//                            }
+
+                            assert client != null;
+                            Log.i("Info Client", client.toString());
+                            boolean res;
+                            if (call.method.equals(CHANNEL)) {
+                                res = publishEvent(client);
+                                if (res) {
+                                    result.success(res);
+                                } else {
+                                    result.error("Publish Error", "Event was not published to the Kafka Cluster", null);
+                                }
+                            } else {
+                                result.notImplemented();
+                            }
                         }
                 );
     }
 
     /**
      * Sends the rssClient data to the Kafka Broker in a post request
+     * Publishes a RSS Client record to the Kafka cluster
      *
-     * @return string
+     * @param client The client is a proto msg in json format
+     * @return {@code true} if the repuest returns 200 otherwise return {@code false}
      */
-    private void publishEvent (JSONObject client) {
+    private boolean publishEvent(JSONObject client) {
         Log.i("publishEvent", "onMethodCall: " + client);
 
-//        final String[] res = {""};
+        final boolean[] res = {false};
 
         JSONObject body = new JSONObject();
         JSONObject key = new JSONObject();
@@ -106,18 +107,18 @@ public class MainActivity extends FlutterActivity {
             e.printStackTrace();
         }
 
+
         String postUrl = URL + CLUSTER_ID + "/topics" + TOPIC + "/records";
         JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.POST, postUrl, body, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
+                res[0] = true;
                 Log.d("Volley REST Response", response.toString());
-//                res[0] = response.toString();
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.d("Volley Response error", "onCreate: " + error.networkResponse.toString());
-//                res[0] = error.networkResponse.toString();
                 Toast.makeText(MainActivity.this, "There was an error. Please try again", Toast.LENGTH_SHORT).show();
             }
         }) {
@@ -131,55 +132,25 @@ public class MainActivity extends FlutterActivity {
                 return headers;
             }
 
-//            @Override
-//            public byte[] getBody() {
-//                JSONObject body = new JSONObject();
-//                JSONObject key = new JSONObject();
-//                JSONObject value = new JSONObject();
-//                try {
-//                    key.put("subject_name_strategy", TOPIC.toUpperCase());
-//                    key.put("schema_id", JSONObject.NULL);
-//                    key.put("data", JSONObject.NULL);
-//
-//                    value.put("type", "JSON");
-//                    value.put("data", client);
-//
-//                    Log.d("key", key.toString());
-//                    Log.d("value", value.toString());
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-////                catch (InvalidProtocolBufferException e) {
-////                    e.printStackTrace();
-////                }
-//                try {
-//                    body.put("key", JSONObject.NULL);
-//                    body.put("value", value);
-//                    Log.d("Body", client.toString());
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-//
-//                return body.getBytes(StandardCharsets.UTF_8);
-//            }
-
-//            @Override
-//            protected Response parseNetworkResponse(NetworkResponse response) {
-//                try {
-//                    Log.i("Kafka rest proxy", "response data " + response.data);
-//                    String jsonString = new String(response.data, HttpHeaderParser.parseCharset(response.headers));
-//                    return Response.success(new JSONObject(jsonString), HttpHeaderParser.parseCacheHeaders(response));
-//                } catch (UnsupportedEncodingException | JSONException e) {
-//                    return Response.error(new ParseError(e));
-//                }
-//            }
+            @Override
+            protected Response parseNetworkResponse(NetworkResponse response) {
+                try {
+                    Log.i("Kafka rest proxy", "response data " + response.data);
+                    String jsonString = new String(response.data, HttpHeaderParser.parseCharset(response.headers));
+                    JSONObject ret_obj = new JSONObject(jsonString);
+                    return Response.success(ret_obj, HttpHeaderParser.parseCacheHeaders(response));
+                } catch (UnsupportedEncodingException | JSONException e) {
+                    return Response.error(new ParseError(e));
+                }
+            }
 
         };
         Log.d("Kafka Proxy URL", stringRequest.getUrl());
+//        stringRequest.
         RequestQueue resquestQueue = Volley.newRequestQueue(MainActivity.this);
         resquestQueue.add(stringRequest);
 
-//        return res[0];
+        return res[0];
     }
 
 }

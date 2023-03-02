@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 
 class SuccessPageModel extends FlutterFlowModel {
   /// Initialization and disposal methods.

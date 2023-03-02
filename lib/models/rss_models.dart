@@ -1,50 +1,68 @@
+import 'dart:convert';
+import 'dart:developer';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:rssclient/generated/rsd-dart-gen/google/type/latlng.pb.dart';
 import 'package:rssclient/generated/rsd-dart-gen/rss_client.pbserver.dart';
 
 class RSSClient extends ChangeNotifier {
-  static const String URL = "pkc-3w22w.us-central1.gcp.confluent.cloud:443";
-  static const String PATH = "/kafka/v3/clusters";
+  Client _client = Client();
 
-  Client _rssClient = Client();
+  Client get client => _client;
 
-  Client get rssClient => _rssClient;
-
-  set rssClient(Client value) {
-    _rssClient = value;
+  set client(Client value) {
+    _client = value;
   }
 
-  static const String TOPIC = "/rss_topic";
-  static const String CLUSTER_ID = "/lkc-d91ond";
-  static const int SCHEMA_ID = 100001;
-  static const String API_KEY =
-      "NzJOM1dWWFJLU1AzQUZTQTpvTkU2eWVyYkNSSStVR05XalIwVkhJSFNUQzJBbVp2NmlBRW5malp6Y0gvMWM3NHY3UDJnSVltd3hlRnJ3eFc4";
+  static const rssChannel = MethodChannel("publishEvent");
 
-  static const rssChannel = MethodChannel("rssChannel");
-
-  Future<Position> _getCurrentLocation() async {
+  /// If the user has not enabled location services, request permission and open the location settings.
+  /// If the user has enabled location services, return the current location
+  ///
+  /// Returns:
+  ///   A Future<Position> object.
+  Future<Position> getCurrentLocation() async {
     bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
-      return Future.error(
-          "Location service has been disabled. Please enable for functionality");
-    }
-
-    LocationPermission locationPermission = await Geolocator.checkPermission();
-    if (locationPermission == LocationPermission.denied) {
-      locationPermission = await Geolocator.requestPermission();
+      LocationPermission locationPermission =
+          await Geolocator.checkPermission();
       if (locationPermission == LocationPermission.denied ||
           locationPermission == LocationPermission.deniedForever) {
+        locationPermission = await Geolocator.requestPermission();
         await Geolocator.openLocationSettings();
 
         return Future.error(
             "Location permissions has been denied. Please enable for functionality");
       }
     }
+
     return await Geolocator.getCurrentPosition();
   }
 
-  void _liveLocation() {
+  ///
+  /// This function will check if the user has location permissions, if not it will request them, then
+  /// it will check if the location service is enabled, if not it will open the location settings, then
+  /// it will start a stream of location updates
+  ///
+  /// Returns:
+  ///   A stream of location data.
+  void liveLocation() async {
+    bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      LocationPermission locationPermission =
+          await Geolocator.checkPermission();
+      if (locationPermission == LocationPermission.denied ||
+          locationPermission == LocationPermission.deniedForever) {
+        locationPermission = await Geolocator.requestPermission();
+        await Geolocator.openLocationSettings();
+
+        return Future.error(
+            "Location permissions has been denied. Please enable for functionality");
+      }
+    }
+
     late LocationSettings locationSettings;
 // Sets location permissions depending on platform
     if (defaultTargetPlatform == TargetPlatform.android) {
@@ -57,9 +75,9 @@ class RSSClient extends ChangeNotifier {
           //when going to the background
           foregroundNotificationConfig: const ForegroundNotificationConfig(
             notificationText:
-                "Example app will continue to receive your location even when you aren't using it",
+                "RSSClient will continue to receive your location even when you aren't using it",
             notificationTitle: "Running in Background",
-            enableWakeLock: true,
+            // notificationIcon: AndroidResource(name: name),
           ));
     } else if (defaultTargetPlatform == TargetPlatform.iOS ||
         defaultTargetPlatform == TargetPlatform.macOS) {
@@ -78,8 +96,29 @@ class RSSClient extends ChangeNotifier {
 
     Geolocator.getPositionStream(locationSettings: locationSettings)
         .listen((event) {
+      client.damageLocation = DamageLocation(
+          latLng: LatLng(longitude: event.longitude, latitude: event.latitude));
+      client.speed = event.speed;
       debugPrint("Longitude: ${event.longitude}");
       debugPrint("Latitude: ${event.latitude}");
+      log("Speed: ${event.speed}");
     });
+  }
+
+  /// It takes the client object, converts it to a json string, and passes it to the native code
+  Future publishToKafka() async {
+    // postRequest();
+    var methodRes;
+    if (kDebugMode) {
+      print("Client: ${client.toProto3Json()}");
+    }
+    try {
+      methodRes = await rssChannel.invokeMethod("publishEvent",
+          {"client": json.encode(client.toBuilder().toProto3Json())});
+    } on PlatformException catch (e) {
+      print(e.message);
+    }
+
+    // return methodRes;
   }
 }

@@ -89,7 +89,7 @@ dependencies {
     // https://mvnrepository.com/artifact/com.google.api.grpc/proto-google-common-protos
 //    implementation group: 'com.google.api.grpc', name: 'proto-google-common-protos', version: '2.11.0'
     // https://mvnrepository.com/artifact/com.google.protobuf/protobuf-java-util
-    implementation group: 'com.google.protobuf', name: 'protobuf-java-util', version: '4.0.0-rc-2'
+//    implementation group: 'com.google.protobuf', name: 'protobuf-java-util', version: '4.0.0-rc-2'
 
     // HTTP Requests
     // https://mvnrepository.com/artifact/com.android.volley/volley
@@ -113,7 +113,7 @@ protobuf {
         all().each { task ->
             task.builtins {
 //                java {
-//                    remove java
+                    remove java
 //                    option "lite"
 //                }
 //                python {

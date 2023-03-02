@@ -15,25 +15,20 @@ class FFLocalizations {
   static List<String> languages() => ['en', 'fr'];
 
   static late SharedPreferences _prefs;
-
   static Future initialize() async =>
       _prefs = await SharedPreferences.getInstance();
-
   static Future storeLocale(String locale) =>
       _prefs.setString(_kLocaleStorageKey, locale);
-
   static Locale? getStoredLocale() {
     final locale = _prefs.getString(_kLocaleStorageKey);
     return locale != null && locale.isNotEmpty ? createLocale(locale) : null;
   }
 
   String get languageCode => locale.toString();
-
   String? get languageShortCode =>
       _languagesWithShortCode.contains(locale.toString())
           ? '${locale.toString()}_short'
           : null;
-
   int get languageIndex => languages().contains(languageCode)
       ? languages().indexOf(languageCode)
       : 0;
@@ -110,47 +105,6 @@ Locale createLocale(String language) => language.contains('_')
     : Locale(language);
 
 final kTranslationsMap = <Map<String, Map<String, String>>>[
-  // onboarding
-  {
-    'hvoas3f9': {
-      'en': 'Welcome',
-      'fr': '',
-    },
-    'qc1y1u2g': {
-      'en': 'Help us to detect road damages around the city by using our app.',
-      'fr': '',
-    },
-    'lv4cshgv': {
-      'en': 'Explore Now',
-      'fr': '',
-    },
-    '32pgwoom': {
-      'en': 'Message Friends',
-      'fr': '',
-    },
-    'lavpnqul': {
-      'en':
-          'Stay in the loop with trip plans, places to go and transportation.',
-      'fr': '',
-    },
-    'lw9dh8t4': {
-      'en': 'Explore Now',
-      'fr': '',
-    },
-    'vhc8tv00': {
-      'en': 'Track Expenses',
-      'fr': '',
-    },
-    'ia399r9e': {
-      'en':
-          'Don’t overspend on your trip, track all your expenses within the application.',
-      'fr': '',
-    },
-    '8n98x8u9': {
-      'en': 'Explore Now',
-      'fr': '',
-    },
-  },
   // HomePage
   {
     'u6toodzu': {
@@ -268,6 +222,46 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': '',
     },
   },
+  // onboarding
+  {
+    'j4svfh17': {
+      'en': 'Welcome',
+      'fr': '',
+    },
+    '329cjftw': {
+      'en': 'Help us to detect road damages around the city by using our app.',
+      'fr': '',
+    },
+    'djuiffjf': {
+      'en': 'Explore Now',
+      'fr': '',
+    },
+    '9dzjav81': {
+      'en': 'Estimate',
+      'fr': '',
+    },
+    'jkiin17r': {
+      'en':
+          'Estimate the cost to repair potholes and cracks depending on severtiy of the damage.',
+      'fr': '',
+    },
+    'v8cgreya': {
+      'en': 'Explore Now',
+      'fr': '',
+    },
+    '5nwlmqko': {
+      'en': 'Track Expenses',
+      'fr': '',
+    },
+    '9tt77khz': {
+      'en': 'Track all your expense to repair road damages.',
+      'fr': '',
+    },
+    'x2pbt41h': {
+      'en': 'Explore Now',
+      'fr': '',
+    },
+  },
   // Miscellaneous
   {
     'csk68993': {
@@ -278,7 +272,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
       'fr': '',
     },
-    'wpnfrqn3': {
+    'v1tfi8y9': {
       'en':
           'In order to get accurate results this app requires permission to access your location',
       'fr': '',
