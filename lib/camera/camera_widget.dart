@@ -2,6 +2,8 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:rssclient/generated/rsd-dart-gen/google/type/datetime.pb.dart'
+    as rss_date;
 import 'package:rssclient/generated/rsd-dart-gen/google/type/latlng.pb.dart';
 import 'package:rssclient/generated/rsd-dart-gen/rss_client.pb.dart';
 import 'package:rssclient/models/rss_models.dart';
@@ -164,10 +166,20 @@ class _CameraWidgetState extends State<CameraWidget> {
                                       _model.uploadedFileUrl =
                                           downloadUrls.first;
                                     });
-
+                                    final current_datetime = DateTime.now();
                                     rssClient.client.blobs.add(BlobSrc(
                                         blobUrl: _model.uploadedFileUrl,
-                                        // datetimeCreated: DateTime().toUtc(),
+                                        datetimeCreated: rss_date.DateTime(
+                                            day: current_datetime.day,
+                                            year: current_datetime.year,
+                                            hours: current_datetime.hour,
+                                            minutes: current_datetime.minute,
+                                            month: current_datetime.month,
+                                            seconds: current_datetime.second,
+                                            // nanos: current_datetime.millisecond,
+                                            timeZone: rss_date.TimeZone(
+                                                id: current_datetime
+                                                    .timeZoneName)),
                                         image: "image"));
                                   } else {
                                     setState(() {});
