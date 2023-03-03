@@ -25,7 +25,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 apply plugin: 'com.google.gms.google-services'  // Google Services plugin
-apply plugin: "com.google.protobuf"
+//apply plugin: "com.google.protobuf"
 //apply plugin: 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 
 def keystoreProperties = new Properties()
@@ -99,42 +99,42 @@ dependencies {
     implementation "androidx.multidex:multidex:$multidex_version"
 
 }
-
-protobuf {
-    protoc {
-        artifact = 'com.google.protobuf:protoc:3.8.0'
-    }
-    plugins {
-        javalite {
-            artifact = 'com.google.protobuf:protoc-gen-javalite:3.0.0'
-        }
-    }
-    generateProtoTasks {
-        all().each { task ->
-            task.builtins {
-//                java {
-                    remove java
-//                    option "lite"
-//                }
-//                python {
-//                }
-            }
-//            task.plugins {
-//                javalite { }
+//
+//protobuf {
+//    protoc {
+//        artifact = 'com.google.protobuf:protoc:3.8.0'
+//    }
+//    plugins {
+//        javalite {
+//            artifact = 'com.google.protobuf:protoc-gen-javalite:3.0.0'
+//        }
+//    }
+//    generateProtoTasks {
+//        all().each { task ->
+//            task.builtins {
+////                java {
+//                    remove java
+////                    option "lite"
+////                }
+////                python {
+////                }
 //            }
-            task.generateDescriptorSet = true
-
-            // Allows to override the default for the descriptor set location
-//            task.descriptorSetOptions.path = "${projectDir}/build/descriptors/${task.sourceSet.name}.dsc"
-
-            // If true, the descriptor set will contain line number information
-            // and comments. Default is false.
-            task.descriptorSetOptions.includeSourceInfo = true
-
-            // If true, the descriptor set will contain all transitive imports and
-            // is therefore self-contained. Default is false.
-            task.descriptorSetOptions.includeImports = true
-        }
-    }
-    generatedFilesBaseDir = "$projectDir/src/generated"
-}
+////            task.plugins {
+////                javalite { }
+////            }
+//            task.generateDescriptorSet = true
+//
+//            // Allows to override the default for the descriptor set location
+////            task.descriptorSetOptions.path = "${projectDir}/build/descriptors/${task.sourceSet.name}.dsc"
+//
+//            // If true, the descriptor set will contain line number information
+//            // and comments. Default is false.
+//            task.descriptorSetOptions.includeSourceInfo = true
+//
+//            // If true, the descriptor set will contain all transitive imports and
+//            // is therefore self-contained. Default is false.
+//            task.descriptorSetOptions.includeImports = true
+//        }
+//    }
+//    generatedFilesBaseDir = "$projectDir/src/generated"
+//}
