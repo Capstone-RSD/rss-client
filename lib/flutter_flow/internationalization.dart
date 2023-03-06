@@ -207,6 +207,34 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': '',
     },
   },
+  // ListPageCopy
+  {
+    'nyco10um': {
+      'en': 'History',
+      'fr': '',
+    },
+    'zsrr9xg2': {
+      'en': 'Monday, June 12 2022',
+      'fr': '',
+    },
+    'ng66jgx0': {
+      'en':
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
+      'fr': '',
+    },
+    'l1ld9wni': {
+      'en': 'Attachment',
+      'fr': '',
+    },
+    '3kwfrdxl': {
+      'en': 'Home',
+      'fr': '',
+    },
+    'l83802q4': {
+      'en': 'Home',
+      'fr': '',
+    },
+  },
   // onboarding
   {
     'j4svfh17': {
@@ -247,46 +275,33 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': '',
     },
   },
-  // ListPageCopy
-  {
-    'nyco10um': {
-      'en': 'History',
-      'fr': '',
-    },
-    'zsrr9xg2': {
-      'en': 'Monday, June 12 2022',
-      'fr': '',
-    },
-    'ng66jgx0': {
-      'en':
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
-      'fr': '',
-    },
-    'l1ld9wni': {
-      'en': 'Attachment',
-      'fr': '',
-    },
-    '3kwfrdxl': {
-      'en': 'Home',
-      'fr': '',
-    },
-    'l83802q4': {
-      'en': 'Home',
-      'fr': '',
-    },
-  },
   // camera
   {
     'ptmxca6w': {
       'en': 'Create Post',
       'fr': '',
     },
-    'cw4td9mz': {
+    'te9retwb': {
+      'en': 'Send Post',
+      'fr': '',
+    },
+  },
+  // test
+  {
+    'dq11eei8': {
+      'en': 'Create Post',
+      'fr': '',
+    },
+    'wkxo38au': {
       'en': 'Enter post details here...',
       'fr': '',
     },
-    'te9retwb': {
-      'en': 'Send Post',
+    'z3g6e5yx': {
+      'en': 'Tag Location',
+      'fr': '',
+    },
+    'r5ethqbf': {
+      'en': 'Create Post',
       'fr': '',
     },
   },
