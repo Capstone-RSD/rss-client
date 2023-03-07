@@ -1,5 +1,5 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 const _kLocaleStorageKey = '__locale_key__';
@@ -200,34 +200,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': '',
     },
   },
-  // ListPage
-  {
-    'ktrob3n2': {
-      'en': 'History',
-      'fr': '',
-    },
-    'uyriss1c': {
-      'en': 'Monday, June 12 2022',
-      'fr': '',
-    },
-    'qzebwtsu': {
-      'en':
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
-      'fr': '',
-    },
-    'oiixrlbk': {
-      'en': 'Attachment',
-      'fr': '',
-    },
-    'x20tbwo3': {
-      'en': 'Home',
-      'fr': '',
-    },
-    'h1nh570g': {
-      'en': 'Home',
-      'fr': '',
-    },
-  },
   // ListPageCopy
   {
     'nyco10um': {
@@ -283,25 +255,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'te9retwb': {
       'en': 'Send Post',
-      'fr': '',
-    },
-  },
-  // test
-  {
-    'sto79dgs': {
-      'en': 'Create Post',
-      'fr': '',
-    },
-    'u9yc5nt5': {
-      'en': 'Enter post details here...',
-      'fr': '',
-    },
-    'airf5j32': {
-      'en': 'Tag Location',
-      'fr': '',
-    },
-    '3e2ftizr': {
-      'en': 'Create Post',
       'fr': '',
     },
   },

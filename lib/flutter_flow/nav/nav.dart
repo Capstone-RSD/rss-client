@@ -3,13 +3,18 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
+import '../flutter_flow_theme.dart';
+import '../../backend/backend.dart';
 
 import '../../auth/firebase_user_provider.dart';
+
 import '../../index.dart';
+import '../../main.dart';
+import '../lat_lng.dart';
+import '../place.dart';
 import 'serialization_util.dart';
 
 export 'package:go_router/go_router.dart';
-
 export 'serialization_util.dart';
 
 const kTransitionInfoKey = '__transition_info__';
@@ -83,11 +88,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => HomePageWidget(),
             ),
             FFRoute(
-              name: 'ListPage',
-              path: 'listPage',
-              builder: (context, params) => ListPageWidget(),
-            ),
-            FFRoute(
               name: 'ListPageCopy',
               path: 'listPageCopy',
               builder: (context, params) => ListPageCopyWidget(),
@@ -101,12 +101,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'camera',
               path: 'camera',
               builder: (context, params) => CameraWidget(),
-            ),
-            // FFRoute(
-            //   name: 'test',
-            //   path: 'test',
-            //   builder: (context, params) => TestWidget(),
-            // )
+            )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),
       ],
