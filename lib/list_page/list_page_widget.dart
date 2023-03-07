@@ -45,7 +45,7 @@ class _ListPageWidgetState extends State<ListPageWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(110),
+          preferredSize: Size.fromHeight(70.0),
           child: AppBar(
             backgroundColor: FlutterFlowTheme.of(context).primaryColor,
             automaticallyImplyLeading: false,
@@ -56,16 +56,20 @@ class _ListPageWidgetState extends State<ListPageWidget> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(20, 0, 0, 12),
-                    child: Text(
-                      FFLocalizations.of(context).getText(
-                        'ktrob3n2' /* History */,
+                  Align(
+                    alignment: AlignmentDirectional(-1.0, 0.0),
+                    child: Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 12.0),
+                      child: Text(
+                        FFLocalizations.of(context).getText(
+                          'ktrob3n2' /* History */,
+                        ),
+                        style: FlutterFlowTheme.of(context).title2.override(
+                              fontFamily: 'Poppins',
+                              color: FlutterFlowTheme.of(context).primaryText,
+                            ),
                       ),
-                      style: FlutterFlowTheme.of(context).title2.override(
-                            fontFamily: 'Poppins',
-                            color: FlutterFlowTheme.of(context).primaryText,
-                          ),
                     ),
                   ),
                 ],
@@ -73,7 +77,7 @@ class _ListPageWidgetState extends State<ListPageWidget> {
               centerTitle: true,
               expandedTitleScale: 1.0,
             ),
-            elevation: 0,
+            elevation: 0.0,
           ),
         ),
         body: SafeArea(
@@ -90,20 +94,22 @@ class _ListPageWidgetState extends State<ListPageWidget> {
                     color: FlutterFlowTheme.of(context).secondaryBackground,
                     boxShadow: [
                       BoxShadow(
-                        blurRadius: 5,
+                        blurRadius: 5.0,
                         color: Color(0x2E000000),
-                        offset: Offset(0, 2),
+                        offset: Offset(0.0, 2.0),
                       )
                     ],
                   ),
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 12),
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              20.0, 0.0, 20.0, 0.0),
                           child: InkWell(
                             onTap: () async {
                               final _datePickedDate = await showDatePicker(
@@ -150,7 +156,8 @@ class _ListPageWidgetState extends State<ListPageWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(20, 8, 20, 0),
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              20.0, 8.0, 20.0, 0.0),
                           child: Text(
                             FFLocalizations.of(context).getText(
                               'qzebwtsu' /* Lorem ipsum dolor sit amet, co... */,
@@ -159,8 +166,8 @@ class _ListPageWidgetState extends State<ListPageWidget> {
                           ),
                         ),
                         Padding(
-                          padding:
-                              EdgeInsetsDirectional.fromSTEB(20, 12, 20, 0),
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              20.0, 12.0, 20.0, 0.0),
                           child: Text(
                             FFLocalizations.of(context).getText(
                               'oiixrlbk' /* Attachment */,
@@ -169,14 +176,20 @@ class _ListPageWidgetState extends State<ListPageWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(16, 8, 16, 8),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(8),
-                            child: Image.network(
-                              'https://media-cdn.tripadvisor.com/media/photo-s/0c/74/3c/4e/sample-receipt.jpg',
-                              width: double.infinity,
-                              height: 350,
-                              fit: BoxFit.cover,
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              16.0, 8.0, 16.0, 8.0),
+                          child: InkWell(
+                            onTap: () async {
+                              await launchURL('');
+                            },
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(8.0),
+                              child: Image.network(
+                                'https://media-cdn.tripadvisor.com/media/photo-s/0c/74/3c/4e/sample-receipt.jpg',
+                                width: double.infinity,
+                                height: 350.0,
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           ),
                         ),
@@ -185,7 +198,7 @@ class _ListPageWidgetState extends State<ListPageWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 16),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
                   child: FFButtonWidget(
                     onPressed: () async {
                       if (Navigator.of(context).canPop()) {
@@ -196,7 +209,7 @@ class _ListPageWidgetState extends State<ListPageWidget> {
                         extra: <String, dynamic>{
                           kTransitionInfoKey: TransitionInfo(
                             hasTransition: true,
-                            transitionType: PageTransitionType.rightToLeft,
+                            transitionType: PageTransitionType.leftToRight,
                           ),
                         },
                       );
@@ -205,8 +218,12 @@ class _ListPageWidgetState extends State<ListPageWidget> {
                       'x20tbwo3' /* Home */,
                     ),
                     options: FFButtonOptions(
-                      width: 300,
-                      height: 50,
+                      width: 300.0,
+                      height: 50.0,
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      iconPadding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       color: FlutterFlowTheme.of(context).primaryText,
                       textStyle:
                           FlutterFlowTheme.of(context).subtitle1.override(
@@ -214,10 +231,10 @@ class _ListPageWidgetState extends State<ListPageWidget> {
                                 color: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
                               ),
-                      elevation: 3,
+                      elevation: 3.0,
                       borderSide: BorderSide(
                         color: Colors.transparent,
-                        width: 1,
+                        width: 1.0,
                       ),
                     ),
                   ),

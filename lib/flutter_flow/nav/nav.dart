@@ -73,9 +73,24 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               appStateNotifier.loggedIn ? CameraWidget() : OnboardingWidget(),
           routes: [
             FFRoute(
+              name: 'onboarding',
+              path: 'onboarding',
+              builder: (context, params) => OnboardingWidget(),
+            ),
+            FFRoute(
               name: 'HomePage',
               path: 'homePage',
               builder: (context, params) => HomePageWidget(),
+            ),
+            FFRoute(
+              name: 'ListPage',
+              path: 'listPage',
+              builder: (context, params) => ListPageWidget(),
+            ),
+            FFRoute(
+              name: 'ListPageCopy',
+              path: 'listPageCopy',
+              builder: (context, params) => ListPageCopyWidget(),
             ),
             FFRoute(
               name: 'SuccessPage',
@@ -87,16 +102,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'camera',
               builder: (context, params) => CameraWidget(),
             ),
-            FFRoute(
-              name: 'ListPage',
-              path: 'listPage',
-              builder: (context, params) => ListPageWidget(),
-            ),
-            FFRoute(
-              name: 'onboarding',
-              path: 'onboarding',
-              builder: (context, params) => OnboardingWidget(),
-            )
+            // FFRoute(
+            //   name: 'test',
+            //   path: 'test',
+            //   builder: (context, params) => TestWidget(),
+            // )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),
       ],
@@ -271,8 +281,8 @@ class FFRoute {
               ? Container(
                   color: Colors.transparent,
                   child: Image.asset(
-                    'assets/images/istockphoto-157418325-612x612.jpg',
-                    fit: BoxFit.cover,
+                    'assets/images/rss_logo.png',
+                    fit: BoxFit.scaleDown,
                   ),
                 )
               : page;

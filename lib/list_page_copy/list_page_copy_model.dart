@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '/flutter_flow/flutter_flow_util.dart';
 
-class ListPageModel extends FlutterFlowModel {
+class ListPageCopyModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
   DateTime? datePicked;
