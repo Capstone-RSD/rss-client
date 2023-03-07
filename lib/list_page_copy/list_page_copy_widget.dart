@@ -137,7 +137,7 @@ class _ListPageCopyWidgetState extends State<ListPageCopyWidget> {
                                 },
                                 child: Text(
                                   FFLocalizations.of(context).getText(
-                                    'zsrr9xg2' /* Monday, June 12 2022 */,
+                                    'zsrr9xg2' /* Tuesday,March  7 2023 */,
                                   ),
                                   style: FlutterFlowTheme.of(context)
                                       .subtitle1

@@ -105,78 +105,43 @@ Locale createLocale(String language) => language.contains('_')
     : Locale(language);
 
 final kTranslationsMap = <Map<String, Map<String, String>>>[
-  // SuccessPage
+  // onboarding
   {
-    'gwz2gb95': {
-      'en': 'Congrats!',
+    'j4svfh17': {
+      'en': 'Welcome',
       'fr': '',
     },
-    'onadnle5': {
-      'en': 'Thanks for sharing!',
+    '329cjftw': {
+      'en': 'Help us to detect road damages around the city by using our app.',
       'fr': '',
     },
-    's4fvuvht': {
-      'en': 'Go To List',
+    'djuiffjf': {
+      'en': 'Explore Now',
       'fr': '',
     },
-    'dvzs17y1': {
-      'en': 'Home',
+    '9dzjav81': {
+      'en': 'Estimate',
       'fr': '',
     },
-  },
-  // ListPageCopy
-  {
-    'nyco10um': {
-      'en': 'History',
-      'fr': '',
-    },
-    'zsrr9xg2': {
-      'en': 'Monday, June 12 2022',
-      'fr': '',
-    },
-    'ng66jgx0': {
+    'jkiin17r': {
       'en':
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
+          'Estimate the cost to repair potholes and cracks depending on severtiy of the damage.',
       'fr': '',
     },
-    'l1ld9wni': {
-      'en': 'Attachment',
+    'v8cgreya': {
+      'en': 'Explore Now',
       'fr': '',
     },
-    '3kwfrdxl': {
-      'en': 'Home',
+    '5nwlmqko': {
+      'en': 'Track Expenses',
       'fr': '',
     },
-    'l83802q4': {
-      'en': 'Home',
+    '9tt77khz': {
+      'en': 'Track all your expense to repair road damages.',
       'fr': '',
     },
-  },
-  // ListPage
-  {
-    'ktrob3n2': {
-      'en': 'History',
-      'fr': '',
-    },
-    'uyriss1c': {
-      'en': 'Monday, June 12 2022',
-      'fr': '',
-    },
-    'qzebwtsu': {
-      'en':
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
-      'fr': '',
-    },
-    'oiixrlbk': {
-      'en': 'Attachment',
-      'fr': '',
-    },
-    'x20tbwo3': {
-      'en': 'Home',
-      'fr': '',
-    },
-    'h1nh570g': {
-      'en': 'Home',
+    'x2pbt41h': {
+      'en': 'Explore Now',
       'fr': '',
     },
   },
@@ -235,6 +200,81 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': '',
     },
   },
+  // ListPage
+  {
+    'ktrob3n2': {
+      'en': 'History',
+      'fr': '',
+    },
+    'uyriss1c': {
+      'en': 'Monday, June 12 2022',
+      'fr': '',
+    },
+    'qzebwtsu': {
+      'en':
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
+      'fr': '',
+    },
+    'oiixrlbk': {
+      'en': 'Attachment',
+      'fr': '',
+    },
+    'x20tbwo3': {
+      'en': 'Home',
+      'fr': '',
+    },
+    'h1nh570g': {
+      'en': 'Home',
+      'fr': '',
+    },
+  },
+  // ListPageCopy
+  {
+    'nyco10um': {
+      'en': 'History',
+      'fr': '',
+    },
+    'zsrr9xg2': {
+      'en': 'Tuesday,March  7 2023',
+      'fr': '',
+    },
+    'ng66jgx0': {
+      'en':
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
+      'fr': '',
+    },
+    'l1ld9wni': {
+      'en': 'Attachment',
+      'fr': '',
+    },
+    '3kwfrdxl': {
+      'en': 'Home',
+      'fr': '',
+    },
+    'l83802q4': {
+      'en': 'Home',
+      'fr': '',
+    },
+  },
+  // SuccessPage
+  {
+    'gwz2gb95': {
+      'en': 'Congrats!',
+      'fr': '',
+    },
+    'onadnle5': {
+      'en': 'Thanks for sharing!',
+      'fr': '',
+    },
+    's4fvuvht': {
+      'en': 'Go To List',
+      'fr': '',
+    },
+    'dvzs17y1': {
+      'en': 'Home',
+      'fr': '',
+    },
+  },
   // camera
   {
     'ptmxca6w': {
@@ -243,46 +283,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'te9retwb': {
       'en': 'Send Post',
-      'fr': '',
-    },
-  },
-  // onboarding
-  {
-    'j4svfh17': {
-      'en': 'Welcome',
-      'fr': '',
-    },
-    '329cjftw': {
-      'en': 'Help us to detect road damages around the city by using our app.',
-      'fr': '',
-    },
-    'djuiffjf': {
-      'en': 'Explore Now',
-      'fr': '',
-    },
-    '9dzjav81': {
-      'en': 'Estimate',
-      'fr': '',
-    },
-    'jkiin17r': {
-      'en':
-          'Estimate the cost to repair potholes and cracks depending on severtiy of the damage.',
-      'fr': '',
-    },
-    'v8cgreya': {
-      'en': 'Explore Now',
-      'fr': '',
-    },
-    '5nwlmqko': {
-      'en': 'Track Expenses',
-      'fr': '',
-    },
-    '9tt77khz': {
-      'en': 'Track all your expense to repair road damages.',
-      'fr': '',
-    },
-    'x2pbt41h': {
-      'en': 'Explore Now',
       'fr': '',
     },
   },

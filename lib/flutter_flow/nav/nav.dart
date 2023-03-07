@@ -78,19 +78,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               appStateNotifier.loggedIn ? CameraWidget() : OnboardingWidget(),
           routes: [
             FFRoute(
-              name: 'SuccessPage',
-              path: 'successPage',
-              builder: (context, params) => SuccessPageWidget(),
-            ),
-            FFRoute(
-              name: 'ListPageCopy',
-              path: 'listPageCopy',
-              builder: (context, params) => ListPageCopyWidget(),
-            ),
-            FFRoute(
-              name: 'ListPage',
-              path: 'listPage',
-              builder: (context, params) => ListPageWidget(),
+              name: 'onboarding',
+              path: 'onboarding',
+              builder: (context, params) => OnboardingWidget(),
             ),
             FFRoute(
               name: 'HomePage',
@@ -98,14 +88,24 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => HomePageWidget(),
             ),
             FFRoute(
+              name: 'ListPage',
+              path: 'listPage',
+              builder: (context, params) => ListPageWidget(),
+            ),
+            FFRoute(
+              name: 'ListPageCopy',
+              path: 'listPageCopy',
+              builder: (context, params) => ListPageCopyWidget(),
+            ),
+            FFRoute(
+              name: 'SuccessPage',
+              path: 'successPage',
+              builder: (context, params) => SuccessPageWidget(),
+            ),
+            FFRoute(
               name: 'camera',
               path: 'camera',
               builder: (context, params) => CameraWidget(),
-            ),
-            FFRoute(
-              name: 'onboarding',
-              path: 'onboarding',
-              builder: (context, params) => OnboardingWidget(),
             ),
             FFRoute(
               name: 'test',
