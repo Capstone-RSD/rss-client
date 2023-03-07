@@ -61,7 +61,6 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                         children: [
                           Container(
                             width: 100.0,
-                            height: 100.0,
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context).primaryColor,
                             ),
@@ -104,9 +103,9 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                               transitionOnUserGestures: true,
                                               child: Image.asset(
                                                 'assets/images/istockphoto-157418325-612x612.jpg',
-                                                width: 400.0,
-                                                height: 500.0,
-                                                fit: BoxFit.cover,
+                                                width: double.infinity,
+                                                height: 450.0,
+                                                fit: BoxFit.fitHeight,
                                               ),
                                             ),
                                           ),
@@ -176,7 +175,6 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                             ),
                                             options: FFButtonOptions(
                                               width: 170.0,
-                                              height: 50.0,
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
                                               iconPadding: EdgeInsetsDirectional
@@ -210,7 +208,6 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                           ),
                           Container(
                             width: 100.0,
-                            height: 100.0,
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context).primaryText,
                             ),
@@ -325,7 +322,6 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                           ),
                                           options: FFButtonOptions(
                                             width: 170.0,
-                                            height: 50.0,
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 0.0),
@@ -360,7 +356,6 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                           ),
                           Container(
                             width: 100.0,
-                            height: 100.0,
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
@@ -464,7 +459,6 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                           ),
                                           options: FFButtonOptions(
                                             width: 170.0,
-                                            height: 50.0,
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 0.0),

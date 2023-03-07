@@ -52,7 +52,7 @@ class _TestWidgetState extends State<TestWidget> {
         automaticallyImplyLeading: false,
         title: Text(
           FFLocalizations.of(context).getText(
-            'dq11eei8' /* Create Post */,
+            'sto79dgs' /* Create Post */,
           ),
           style: FlutterFlowTheme.of(context).title2,
         ),
@@ -180,7 +180,7 @@ class _TestWidgetState extends State<TestWidget> {
                                 obscureText: false,
                                 decoration: InputDecoration(
                                   hintText: FFLocalizations.of(context).getText(
-                                    'wkxo38au' /* Enter post details here... */,
+                                    'u9yc5nt5' /* Enter post details here... */,
                                   ),
                                   hintStyle:
                                       FlutterFlowTheme.of(context).bodyText2,
@@ -243,7 +243,7 @@ class _TestWidgetState extends State<TestWidget> {
                 setState(() => _model.placePickerValue = place);
               },
               defaultText: FFLocalizations.of(context).getText(
-                'z3g6e5yx' /* Tag Location */,
+                'airf5j32' /* Tag Location */,
               ),
               icon: Icon(
                 Icons.place,
@@ -274,7 +274,7 @@ class _TestWidgetState extends State<TestWidget> {
                 print('Button pressed ...');
               },
               text: FFLocalizations.of(context).getText(
-                'r5ethqbf' /* Create Post */,
+                '3e2ftizr' /* Create Post */,
               ),
               options: FFButtonOptions(
                 width: 270.0,

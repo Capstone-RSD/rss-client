@@ -83,9 +83,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => SuccessPageWidget(),
             ),
             FFRoute(
-              name: 'HomePage',
-              path: 'homePage',
-              builder: (context, params) => HomePageWidget(),
+              name: 'ListPageCopy',
+              path: 'listPageCopy',
+              builder: (context, params) => ListPageCopyWidget(),
             ),
             FFRoute(
               name: 'ListPage',
@@ -93,9 +93,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => ListPageWidget(),
             ),
             FFRoute(
-              name: 'ListPageCopy',
-              path: 'listPageCopy',
-              builder: (context, params) => ListPageCopyWidget(),
+              name: 'HomePage',
+              path: 'homePage',
+              builder: (context, params) => HomePageWidget(),
             ),
             FFRoute(
               name: 'onboarding',

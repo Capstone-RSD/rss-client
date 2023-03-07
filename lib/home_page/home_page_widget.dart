@@ -72,7 +72,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 Align(
                   alignment: AlignmentDirectional(0.0, 0.0),
                   child: Container(
-                    width: 360.0,
+                    width: MediaQuery.of(context).size.width * 1.0,
+                    height: MediaQuery.of(context).size.height * 1.0,
                     decoration: BoxDecoration(),
                     child: Align(
                       alignment: AlignmentDirectional(0.0, 0.0),
@@ -80,6 +81,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
