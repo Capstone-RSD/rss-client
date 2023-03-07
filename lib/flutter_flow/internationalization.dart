@@ -235,6 +235,17 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': '',
     },
   },
+  // camera
+  {
+    'ptmxca6w': {
+      'en': 'Create Post',
+      'fr': '',
+    },
+    'te9retwb': {
+      'en': 'Send Post',
+      'fr': '',
+    },
+  },
   // onboarding
   {
     'j4svfh17': {
@@ -272,17 +283,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'x2pbt41h': {
       'en': 'Explore Now',
-      'fr': '',
-    },
-  },
-  // camera
-  {
-    'ptmxca6w': {
-      'en': 'Create Post',
-      'fr': '',
-    },
-    'te9retwb': {
-      'en': 'Send Post',
       'fr': '',
     },
   },

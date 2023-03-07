@@ -98,14 +98,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => HomePageWidget(),
             ),
             FFRoute(
-              name: 'onboarding',
-              path: 'onboarding',
-              builder: (context, params) => OnboardingWidget(),
-            ),
-            FFRoute(
               name: 'camera',
               path: 'camera',
               builder: (context, params) => CameraWidget(),
+            ),
+            FFRoute(
+              name: 'onboarding',
+              path: 'onboarding',
+              builder: (context, params) => OnboardingWidget(),
             ),
             FFRoute(
               name: 'test',
@@ -286,8 +286,8 @@ class FFRoute {
               ? Container(
                   color: Colors.transparent,
                   child: Image.asset(
-                    'assets/images/istockphoto-157418325-612x612.jpg',
-                    fit: BoxFit.cover,
+                    'assets/images/rss_logo.png',
+                    fit: BoxFit.scaleDown,
                   ),
                 )
               : page;
