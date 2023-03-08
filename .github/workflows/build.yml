@@ -46,7 +46,7 @@ jobs:
          #     echo VERSION=${{ steps.flutter-action.outputs.VERSION }}
           #    echo ARCHITECTURE=${{ steps.flutter-action.outputs.ARCHITECTURE }}
         #shell: bash
-        
+
       # Upload java artifacts
       #- name: Upload build artifacts
        # uses: actions/upload-artifact@v3.1.1
@@ -54,8 +54,8 @@ jobs:
          # name: rsd-java-src
           #path: |
            #     ${{github.workspace}}/protobuf-rsd-gen/java-src
-                
-                
+
+
   # This workflow contains a single job called "build"
   android-build:
     # The type of runner that the job will run on
@@ -88,30 +88,30 @@ jobs:
               echo CHANNEL=${{ steps.flutter-action.outputs.CHANNEL }}
               echo VERSION=${{ steps.flutter-action.outputs.VERSION }}
               echo ARCHITECTURE=${{ steps.flutter-action.outputs.ARCHITECTURE }}
-        shell: bash      
+        shell: bash
       - uses: actions/upload-artifact@v3.1.2
         with:
           name: RSD
           path: build/app/outputs/bundle/release/*.aab, build/app/outputs/bundle/release/*.apk
-      
-  ios-build:
-    name: "Build Flutter (iOS)"
-    needs: [flutter-test]
-    runs-on: macos-latest
-    steps:
-    - uses: actions/checkout@v3
-    - uses: subosito/flutter-action@v2
-      with:
-        channel: 'stable'
-        architecture: x64
-    - run: flutter pub get
-    - run: flutter clean
-    - run: flutter build ios --release --no-codesign
+
+  # ios-build:
+  #   name: "Build Flutter (iOS)"
+  #   needs: [flutter-test]
+  #   runs-on: macos-latest
+  #   steps:
+  #   - uses: actions/checkout@v3
+  #   - uses: subosito/flutter-action@v2
+  #     with:
+  #       channel: 'stable'
+  #       architecture: x64
+  #   - run: flutter pub get
+  #   - run: flutter clean
+  #   - run: flutter build ios --release --no-codesign
 #     - uses: actions/upload-artifact@master
 #       with:
 #         name: RSD
 #         path: build/app/outputs/bundle/release/*.aab
-    
+
   release-assets:
     runs-on: ubuntu-latest
     needs: [android-build,ios-build]
@@ -121,10 +121,10 @@ jobs:
         with:
           name: RSD
           path: build/app/outputs/bundle/release/*.aab
-          
+
       - name: Create Release
         uses: ncipollo/release-action@v1.12.0
 #         if: startsWith(github.ref, 'refs/tags/')
         with:
-          artifacts: 
+          artifacts:
             "build/app/outputs/bundle/release/*.aab"
