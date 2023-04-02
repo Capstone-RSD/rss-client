@@ -3,13 +3,18 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
+import '../flutter_flow_theme.dart';
+import '../../backend/backend.dart';
 
 import '../../auth/firebase_user_provider.dart';
+
 import '../../index.dart';
+import '../../main.dart';
+import '../lat_lng.dart';
+import '../place.dart';
 import 'serialization_util.dart';
 
 export 'package:go_router/go_router.dart';
-
 export 'serialization_util.dart';
 
 const kTransitionInfoKey = '__transition_info__';
@@ -73,9 +78,19 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               appStateNotifier.loggedIn ? CameraWidget() : OnboardingWidget(),
           routes: [
             FFRoute(
+              name: 'onboarding',
+              path: 'onboarding',
+              builder: (context, params) => OnboardingWidget(),
+            ),
+            FFRoute(
               name: 'HomePage',
               path: 'homePage',
               builder: (context, params) => HomePageWidget(),
+            ),
+            FFRoute(
+              name: 'ListPageCopy',
+              path: 'listPageCopy',
+              builder: (context, params) => ListPageCopyWidget(),
             ),
             FFRoute(
               name: 'SuccessPage',
@@ -86,16 +101,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'camera',
               path: 'camera',
               builder: (context, params) => CameraWidget(),
-            ),
-            FFRoute(
-              name: 'ListPage',
-              path: 'listPage',
-              builder: (context, params) => ListPageWidget(),
-            ),
-            FFRoute(
-              name: 'onboarding',
-              path: 'onboarding',
-              builder: (context, params) => OnboardingWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),
@@ -271,8 +276,8 @@ class FFRoute {
               ? Container(
                   color: Colors.transparent,
                   child: Image.asset(
-                    'assets/images/istockphoto-157418325-612x612.jpg',
-                    fit: BoxFit.cover,
+                    'assets/images/rss_logo.png',
+                    fit: BoxFit.scaleDown,
                   ),
                 )
               : page;

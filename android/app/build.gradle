@@ -116,8 +116,8 @@ dependencies {
 //                    remove java
 ////                    option "lite"
 ////                }
-////                python {
-////                }
+//                python {
+//                }
 //            }
 ////            task.plugins {
 ////                javalite { }

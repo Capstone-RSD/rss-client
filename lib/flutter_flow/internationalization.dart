@@ -1,5 +1,5 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 const _kLocaleStorageKey = '__locale_key__';
@@ -105,6 +105,46 @@ Locale createLocale(String language) => language.contains('_')
     : Locale(language);
 
 final kTranslationsMap = <Map<String, Map<String, String>>>[
+  // onboarding
+  {
+    'j4svfh17': {
+      'en': 'Welcome',
+      'fr': '',
+    },
+    '329cjftw': {
+      'en': 'Help us to detect road damages around the city by using our app.',
+      'fr': '',
+    },
+    'djuiffjf': {
+      'en': 'Explore Now',
+      'fr': '',
+    },
+    '9dzjav81': {
+      'en': 'Estimate',
+      'fr': '',
+    },
+    'jkiin17r': {
+      'en':
+          'Estimate the cost to repair potholes and cracks depending on severtiy of the damage.',
+      'fr': '',
+    },
+    'v8cgreya': {
+      'en': 'Explore Now',
+      'fr': '',
+    },
+    '5nwlmqko': {
+      'en': 'Track Expenses',
+      'fr': '',
+    },
+    '9tt77khz': {
+      'en': 'Track all your expense to repair road damages.',
+      'fr': '',
+    },
+    'x2pbt41h': {
+      'en': 'Explore Now',
+      'fr': '',
+    },
+  },
   // HomePage
   {
     'u6toodzu': {
@@ -160,6 +200,34 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': '',
     },
   },
+  // ListPageCopy
+  {
+    'nyco10um': {
+      'en': 'History',
+      'fr': '',
+    },
+    'zsrr9xg2': {
+      'en': 'Tuesday,March  7 2023',
+      'fr': '',
+    },
+    'ng66jgx0': {
+      'en':
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
+      'fr': '',
+    },
+    'l1ld9wni': {
+      'en': 'Attachment',
+      'fr': '',
+    },
+    '3kwfrdxl': {
+      'en': 'Home',
+      'fr': '',
+    },
+    'l83802q4': {
+      'en': 'Home',
+      'fr': '',
+    },
+  },
   // SuccessPage
   {
     'gwz2gb95': {
@@ -185,80 +253,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Create Post',
       'fr': '',
     },
-    'cw4td9mz': {
-      'en': 'Enter post details here...',
-      'fr': '',
-    },
     'te9retwb': {
       'en': 'Send Post',
-      'fr': '',
-    },
-  },
-  // ListPage
-  {
-    'ktrob3n2': {
-      'en': 'History',
-      'fr': '',
-    },
-    'uyriss1c': {
-      'en': 'Monday, June 12 2022',
-      'fr': '',
-    },
-    'qzebwtsu': {
-      'en':
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
-      'fr': '',
-    },
-    'oiixrlbk': {
-      'en': 'Attachment',
-      'fr': '',
-    },
-    'x20tbwo3': {
-      'en': 'Home',
-      'fr': '',
-    },
-    'h1nh570g': {
-      'en': 'Home',
-      'fr': '',
-    },
-  },
-  // onboarding
-  {
-    'j4svfh17': {
-      'en': 'Welcome',
-      'fr': '',
-    },
-    '329cjftw': {
-      'en': 'Help us to detect road damages around the city by using our app.',
-      'fr': '',
-    },
-    'djuiffjf': {
-      'en': 'Explore Now',
-      'fr': '',
-    },
-    '9dzjav81': {
-      'en': 'Estimate',
-      'fr': '',
-    },
-    'jkiin17r': {
-      'en':
-          'Estimate the cost to repair potholes and cracks depending on severtiy of the damage.',
-      'fr': '',
-    },
-    'v8cgreya': {
-      'en': 'Explore Now',
-      'fr': '',
-    },
-    '5nwlmqko': {
-      'en': 'Track Expenses',
-      'fr': '',
-    },
-    '9tt77khz': {
-      'en': 'Track all your expense to repair road damages.',
-      'fr': '',
-    },
-    'x2pbt41h': {
-      'en': 'Explore Now',
       'fr': '',
     },
   },
@@ -275,6 +271,86 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'v1tfi8y9': {
       'en':
           'In order to get accurate results this app requires permission to access your location',
+      'fr': '',
+    },
+    '9j3mzjc5': {
+      'en': '',
+      'fr': '',
+    },
+    '6brtei00': {
+      'en': '',
+      'fr': '',
+    },
+    'c9sm5b2e': {
+      'en': '',
+      'fr': '',
+    },
+    'rsjo4r6m': {
+      'en': '',
+      'fr': '',
+    },
+    'xcoaxozl': {
+      'en': '',
+      'fr': '',
+    },
+    '4g4ywkus': {
+      'en': '',
+      'fr': '',
+    },
+    'ydsxmu6e': {
+      'en': '',
+      'fr': '',
+    },
+    'of1vv2zt': {
+      'en': '',
+      'fr': '',
+    },
+    'abprhcon': {
+      'en': '',
+      'fr': '',
+    },
+    '74gsjiyu': {
+      'en': '',
+      'fr': '',
+    },
+    'm4wgsblh': {
+      'en': '',
+      'fr': '',
+    },
+    'ewf1gbqz': {
+      'en': '',
+      'fr': '',
+    },
+    'pig6oo3k': {
+      'en': '',
+      'fr': '',
+    },
+    'fu4akeps': {
+      'en': '',
+      'fr': '',
+    },
+    '9xrey7bt': {
+      'en': '',
+      'fr': '',
+    },
+    'h6iftl3r': {
+      'en': '',
+      'fr': '',
+    },
+    '6e1rnheb': {
+      'en': '',
+      'fr': '',
+    },
+    'o74lc1ib': {
+      'en': '',
+      'fr': '',
+    },
+    'bhwivo9t': {
+      'en': '',
+      'fr': '',
+    },
+    '1j9zw02c': {
+      'en': '',
       'fr': '',
     },
   },
