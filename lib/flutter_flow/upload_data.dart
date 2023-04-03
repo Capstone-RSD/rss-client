@@ -1,6 +1,8 @@
+import 'dart:typed_data';
+
 import 'package:file_picker/file_picker.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mime_type/mime_type.dart';
@@ -229,10 +231,10 @@ bool validateFileFormat(String filePath, BuildContext context) {
 
 Future<SelectedMedia?> selectFile({
   String? storageFolderPath,
-  List<String> allowedExtensions = const ['pdf'],
+  List<String>? allowedExtensions,
 }) async {
   final pickedFiles = await FilePicker.platform.pickFiles(
-    type: FileType.custom,
+    type: allowedExtensions != null ? FileType.custom : FileType.any,
     allowedExtensions: allowedExtensions,
     withData: true,
   );

@@ -17,6 +17,7 @@ class RSSClient extends ChangeNotifier {
   }
 
   static const rssChannel = MethodChannel("publishEvent");
+  static const rssPresChannel = MethodChannel("publishPresEvent");
 
   /// If the user has not enabled location services, request permission and open the location settings.
   /// If the user has enabled location services, return the current location
@@ -106,12 +107,11 @@ class RSSClient extends ChangeNotifier {
   }
 
   /// It takes the client object, converts it to a json string, and passes it to the native code
-  Future publishToKafka() async {
+  Future publishToRSSTopic() async {
     // postRequest();
     var methodRes;
-    if (kDebugMode) {
-      print("Client: ${client.toProto3Json()}");
-    }
+    print("Client: ${client.toProto3Json()}");
+    // if (kDebugMode) {}
     try {
       methodRes = await rssChannel.invokeMethod("publishEvent",
           {"client": json.encode(client.toBuilder().toProto3Json())});
@@ -120,5 +120,25 @@ class RSSClient extends ChangeNotifier {
     }
 
     // return methodRes;
+  }
+
+  /// A function to publish system state messages to
+  ///
+  /// Publishes to the __RSSPresTopic__ topic
+  ///
+  /// Takes a **String** message as  parameter
+  Future publishToRSSPresTopic(String message) async {
+    var methodRes;
+    if (kDebugMode) {
+      print("message: $message");
+    }
+    try {
+      methodRes = await rssPresChannel
+          .invokeMethod("publishPresEvent", {"rss_state": "Stage: $message"});
+    } on PlatformException catch (e) {
+      if (kDebugMode) {
+        print(e.message);
+      }
+    }
   }
 }

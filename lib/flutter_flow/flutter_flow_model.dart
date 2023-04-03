@@ -37,9 +37,7 @@ T createModel<T extends FlutterFlowModel>(
 abstract class FlutterFlowModel {
   // Initialization methods
   bool _isInitialized = false;
-
   void initState(BuildContext context);
-
   void _init(BuildContext context) {
     if (!_isInitialized) {
       initState(context);
@@ -52,9 +50,7 @@ abstract class FlutterFlowModel {
   // disposed. By default this is true for pages and false for components,
   // as page/component models handle the disposal of their children.
   bool disposeOnWidgetDisposal = true;
-
   void dispose();
-
   void maybeDispose() {
     if (disposeOnWidgetDisposal) {
       dispose();
@@ -63,12 +59,9 @@ abstract class FlutterFlowModel {
 
   // Whether to update the containing page / component on updates.
   bool updateOnChange = false;
-
   // Function to call when the model receives an update.
   VoidCallback _updateCallback = () {};
-
   void onUpdate() => updateOnChange ? _updateCallback() : () {};
-
   FlutterFlowModel setOnUpdate({
     bool updateOnChange = false,
     required VoidCallback onUpdate,
@@ -76,7 +69,6 @@ abstract class FlutterFlowModel {
       this
         .._updateCallback = onUpdate
         ..updateOnChange = updateOnChange;
-
   // Update the containing page when this model received an update.
   void updatePage(VoidCallback callback) {
     callback();
