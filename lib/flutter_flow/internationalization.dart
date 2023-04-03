@@ -190,19 +190,19 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Email',
       'fr': '',
     },
-    'bjnnps2n': {
+    'g1agua6v': {
       'en': 'Field is required',
       'fr': '',
     },
-    'zg39xnth': {
+    'e141eili': {
       'en': 'Please choose an option from the dropdown',
       'fr': '',
     },
-    'jdyi5zsw': {
+    'jpgam4x0': {
       'en': 'Field is required',
       'fr': '',
     },
-    'za8120na': {
+    'zy0g99oo': {
       'en': 'Please choose an option from the dropdown',
       'fr': '',
     },
@@ -222,7 +222,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': '',
     },
     'te9retwb': {
-      'en': 'Send Post',
+      'en': 'Demo Post',
+      'fr': '',
+    },
+    'lhqtadhk': {
+      'en': 'Post',
       'fr': '',
     },
   },
@@ -232,7 +236,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Create Post',
       'fr': '',
     },
-    '4i6iaph1': {
+    '9z4jpfbz': {
       'en': 'Longitude',
       'fr': '',
     },
@@ -240,7 +244,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Longitude',
       'fr': '',
     },
-    'cuwtmp1c': {
+    'zry46cjs': {
       'en': 'Latitude',
       'fr': '',
     },
@@ -256,26 +260,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // demopage
   {
     'cxarp99z': {
-      'en': 'Create Post',
-      'fr': '',
-    },
-    '7rc4lai9': {
-      'en': 'Longitude',
-      'fr': '',
-    },
-    '4hdyubc5': {
-      'en': 'Longitude',
-      'fr': '',
-    },
-    'rfopc3ki': {
-      'en': 'Latitude',
-      'fr': '',
-    },
-    'wd9whf9q': {
-      'en': 'Latitude',
-      'fr': '',
-    },
-    'tegavkjd': {
       'en': 'Create Post',
       'fr': '',
     },

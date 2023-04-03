@@ -16,7 +16,7 @@ class HomePageModel extends FlutterFlowModel {
   String? _nameControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
-        'bjnnps2n' /* Field is required */,
+        'g1agua6v' /* Field is required */,
       );
     }
 
@@ -32,7 +32,7 @@ class HomePageModel extends FlutterFlowModel {
   String? _emailControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
-        'jdyi5zsw' /* Field is required */,
+        'jpgam4x0' /* Field is required */,
       );
     }
 

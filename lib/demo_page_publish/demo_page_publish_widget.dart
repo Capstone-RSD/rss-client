@@ -79,22 +79,22 @@ class _DemoPagePublishWidgetState extends State<DemoPagePublishWidget> {
                     PageTransition(
                       type: PageTransitionType.fade,
                       child: FlutterFlowExpandedImageView(
-                        image: Image.asset(
-                          'assets/images/img-541_jpg.rf.342f9848c81786dba5c7983582718506.jpg',
+                        image: Image.network(
+                          widget.damageImage!,
                           fit: BoxFit.contain,
                         ),
                         allowRotation: false,
-                        tag: 'damageImageTag',
+                        tag: widget.damageImage!,
                         useHeroAnimation: true,
                       ),
                     ),
                   );
                 },
                 child: Hero(
-                  tag: 'damageImageTag',
+                  tag: widget.damageImage!,
                   transitionOnUserGestures: true,
-                  child: Image.asset(
-                    'assets/images/img-541_jpg.rf.342f9848c81786dba5c7983582718506.jpg',
+                  child: Image.network(
+                    widget.damageImage!,
                     width: MediaQuery.of(context).size.width * 0.9,
                     height: MediaQuery.of(context).size.height * 0.4,
                     fit: BoxFit.cover,
@@ -112,7 +112,7 @@ class _DemoPagePublishWidgetState extends State<DemoPagePublishWidget> {
                 obscureText: false,
                 decoration: InputDecoration(
                   labelText: FFLocalizations.of(context).getText(
-                    '4i6iaph1' /* Longitude */,
+                    '9z4jpfbz' /* Longitude */,
                   ),
                   hintText: FFLocalizations.of(context).getText(
                     'rmt38ti7' /* Longitude */,
@@ -171,7 +171,7 @@ class _DemoPagePublishWidgetState extends State<DemoPagePublishWidget> {
                 obscureText: false,
                 decoration: InputDecoration(
                   labelText: FFLocalizations.of(context).getText(
-                    'cuwtmp1c' /* Latitude */,
+                    'zry46cjs' /* Latitude */,
                   ),
                   hintText: FFLocalizations.of(context).getText(
                     'dy7ku1ll' /* Latitude */,

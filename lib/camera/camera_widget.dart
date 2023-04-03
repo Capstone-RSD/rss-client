@@ -189,6 +189,67 @@ class _CameraWidgetState extends State<CameraWidget> {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                 child: FFButtonWidget(
+                  onPressed: () async {
+                    if (FFAppState().authCred == null) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            'User not authenticated. Post was not sent',
+                            style: TextStyle(
+                              color: FlutterFlowTheme.of(context).primaryText,
+                            ),
+                          ),
+                          duration: Duration(milliseconds: 4000),
+                          backgroundColor: Color(0x00000000),
+                          action: SnackBarAction(
+                            label: 'Navigate Home',
+                            textColor: Color(0x00000000),
+                            onPressed: () async {
+                              context.pushNamed(
+                                'HomePage',
+                                extra: <String, dynamic>{
+                                  kTransitionInfoKey: TransitionInfo(
+                                    hasTransition: true,
+                                    transitionType:
+                                        PageTransitionType.leftToRight,
+                                  ),
+                                },
+                              );
+                            },
+                          ),
+                        ),
+                      );
+                    } else {
+                      context.pushNamed('demopage');
+                    }
+                  },
+                  text: FFLocalizations.of(context).getText(
+                    'te9retwb' /* Demo Post */,
+                  ),
+                  options: FFButtonOptions(
+                    width: 270.0,
+                    height: 66.0,
+                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    iconPadding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    color: Color(0xFF4B39EF),
+                    textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                          fontFamily: 'Lexend Deca',
+                          color: Colors.white,
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.w500,
+                        ),
+                    elevation: 3.0,
+                    borderSide: BorderSide(
+                      color: Colors.transparent,
+                      width: 1.0,
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                child: FFButtonWidget(
                   onPressed: _model.isDataUploading == false
                       ? null
                       : () async {
@@ -227,7 +288,7 @@ class _CameraWidgetState extends State<CameraWidget> {
                           }
                         },
                   text: FFLocalizations.of(context).getText(
-                    'te9retwb' /* Send Post */,
+                    'lhqtadhk' /* Post */,
                   ),
                   options: FFButtonOptions(
                     width: 270.0,
