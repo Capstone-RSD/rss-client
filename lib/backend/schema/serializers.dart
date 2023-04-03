@@ -1,8 +1,9 @@
 import 'package:built_value/standard_json_plugin.dart';
 import 'package:from_css_color/from_css_color.dart';
 
-import 'index.dart';
 import 'users_record.dart';
+
+import 'index.dart';
 
 export 'index.dart';
 

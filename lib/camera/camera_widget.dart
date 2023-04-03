@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rssclient/generated/rsd-dart-gen/google/type/datetime.pb.dart'
     as rss_date;
-import 'package:rssclient/generated/rsd-dart-gen/google/type/latlng.pb.dart';
+import 'package:rssclient/generated/rsd-dart-gen/google/type/latlng.pb.dart'
+    as rss_LatLng;
 import 'package:rssclient/generated/rsd-dart-gen/rss_client.pb.dart';
 import 'package:rssclient/models/rss_models.dart';
 
@@ -12,7 +13,7 @@ import '/backend/firebase_storage/storage.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/upload_media.dart';
+import '/flutter_flow/upload_data.dart';
 import '../flutter_flow/permissions_util.dart';
 import 'camera_model.dart';
 
@@ -62,7 +63,7 @@ class _CameraWidgetState extends State<CameraWidget> {
           FFLocalizations.of(context).getText(
             'ptmxca6w' /* Create Post */,
           ),
-          style: FlutterFlowTheme.of(context).title2.override(
+          style: FlutterFlowTheme.of(context).headlineMedium.override(
                 fontFamily: 'Lexend Deca',
                 color: FlutterFlowTheme.of(context).primaryText,
                 fontSize: 22,
@@ -104,7 +105,7 @@ class _CameraWidgetState extends State<CameraWidget> {
                                           setState(() {
                                             DamageLocation location =
                                                 DamageLocation(
-                                                    latLng: LatLng(
+                                                    latLng: rss_LatLng.LatLng(
                                                         latitude:
                                                             value.latitude,
                                                         longitude:
@@ -118,6 +119,8 @@ class _CameraWidgetState extends State<CameraWidget> {
                                                 "Longitude: ${value.longitude}");
                                             debugPrint(
                                                 "Latitude: ${value.latitude}");
+                                            rssClient.publishToRSSPresTopic(
+                                                "Data Collection - Road condition location captured");
                                           })
                                         })
                                     .onError((error, stackTrace) =>
@@ -127,8 +130,7 @@ class _CameraWidgetState extends State<CameraWidget> {
                                     selectedMedia.every((m) =>
                                         validateFileFormat(
                                             m.storagePath, context))) {
-                                  setState(
-                                      () => _model.isMediaUploading = true);
+                                  setState(() => _model.isDataUploading = true);
                                   var selectedUploadedFiles =
                                       <FFUploadedFile>[];
                                   var downloadUrls = <String>[];
@@ -154,7 +156,7 @@ class _CameraWidgetState extends State<CameraWidget> {
                                         .toList();
                                     print("Blob Download URL: $downloadUrls");
                                   } finally {
-                                    _model.isMediaUploading = false;
+                                    _model.isDataUploading = false;
                                   }
                                   if (selectedUploadedFiles.length ==
                                           selectedMedia.length &&
@@ -165,6 +167,8 @@ class _CameraWidgetState extends State<CameraWidget> {
                                           selectedUploadedFiles.first;
                                       _model.uploadedFileUrl =
                                           downloadUrls.first;
+                                      rssClient.publishToRSSPresTopic(
+                                          "Data Collection - Road condition image captured and stored in firebase");
                                     });
                                     final current_datetime = DateTime.now();
                                     rssClient.client.blobs.add(BlobSrc(
@@ -211,78 +215,6 @@ class _CameraWidgetState extends State<CameraWidget> {
                               ),
                             ),
                           ),
-                          Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Expanded(
-                                  child: TextFormField(
-                                    controller: _model.textController,
-                                    obscureText: false,
-                                    decoration: InputDecoration(
-                                      hintText:
-                                          FFLocalizations.of(context).getText(
-                                        'cw4td9mz' /* Enter post details here... */,
-                                      ),
-                                      hintStyle: FlutterFlowTheme.of(context)
-                                          .bodyText2
-                                          .override(
-                                            fontFamily: 'Lexend Deca',
-                                            color: Color(0xFF95A1AC),
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                      enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Color(0xFFF1F4F8),
-                                          width: 2,
-                                        ),
-                                        borderRadius: BorderRadius.circular(8),
-                                      ),
-                                      focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Color(0x00000000),
-                                          width: 2,
-                                        ),
-                                        borderRadius: BorderRadius.circular(8),
-                                      ),
-                                      errorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Color(0x00000000),
-                                          width: 2,
-                                        ),
-                                        borderRadius: BorderRadius.circular(8),
-                                      ),
-                                      focusedErrorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Color(0x00000000),
-                                          width: 2,
-                                        ),
-                                        borderRadius: BorderRadius.circular(8),
-                                      ),
-                                      contentPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
-                                              20, 32, 20, 12),
-                                    ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyText1
-                                        .override(
-                                          fontFamily: 'Lexend Deca',
-                                          color: Color(0xFF090F13),
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.normal,
-                                        ),
-                                    textAlign: TextAlign.start,
-                                    maxLines: 4,
-                                    validator: _model.textControllerValidator
-                                        .asValidator(context),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
                         ],
                       ),
                     ),
@@ -290,11 +222,71 @@ class _CameraWidgetState extends State<CameraWidget> {
                 ],
               ),
               Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                child: FFButtonWidget(
+                  onPressed: () async {
+                    if (FFAppState().authCred == null) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            'User not authenticated. Post was not sent',
+                            style: TextStyle(
+                              color: FlutterFlowTheme.of(context).primaryText,
+                            ),
+                          ),
+                          duration: Duration(milliseconds: 4000),
+                          backgroundColor: Color(0x00000000),
+                          action: SnackBarAction(
+                            label: 'Navigate Home',
+                            textColor: Color(0x00000000),
+                            onPressed: () async {
+                              context.pushNamed(
+                                'HomePage',
+                                extra: <String, dynamic>{
+                                  kTransitionInfoKey: TransitionInfo(
+                                    hasTransition: true,
+                                    transitionType:
+                                        PageTransitionType.leftToRight,
+                                  ),
+                                },
+                              );
+                            },
+                          ),
+                        ),
+                      );
+                    } else {
+                      context.pushNamed('demopage');
+                    }
+                  },
+                  text: FFLocalizations.of(context).getText(
+                    'te9retwb' /* Demo Post */,
+                  ),
+                  options: FFButtonOptions(
+                    width: 270.0,
+                    height: 66.0,
+                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    iconPadding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    color: Color(0xFF4B39EF),
+                    textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                          fontFamily: 'Lexend Deca',
+                          color: Colors.white,
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.w500,
+                        ),
+                    elevation: 3.0,
+                    borderSide: BorderSide(
+                      color: Colors.transparent,
+                      width: 1.0,
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
                 child: FFButtonWidget(
                   onPressed: () async {
-                    if (FFAppState().authCred == null ||
-                        !rssClient.client.isInitialized()) {
+                    if (FFAppState().authCred == null) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
                           content: Text(
@@ -329,7 +321,7 @@ class _CameraWidgetState extends State<CameraWidget> {
                       rssClient.client.name = FFAppState().authCred['name'];
                       rssClient.client.email = FFAppState().authCred['email'];
 
-                      rssClient.publishToKafka();
+                      rssClient.publishToRSSTopic();
 
                       context.goNamed(
                         'SuccessPage',
@@ -343,13 +335,13 @@ class _CameraWidgetState extends State<CameraWidget> {
                     }
                   },
                   text: FFLocalizations.of(context).getText(
-                    'te9retwb' /* Send Post */,
+                    'lhqtadhk' /* Post */,
                   ),
                   options: FFButtonOptions(
                     width: 270,
                     height: 66,
                     color: Color(0xFF4B39EF),
-                    textStyle: FlutterFlowTheme.of(context).subtitle2.override(
+                    textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily: 'Lexend Deca',
                           color: Colors.white,
                           fontSize: 16,

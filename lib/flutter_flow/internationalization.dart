@@ -105,6 +105,21 @@ Locale createLocale(String language) => language.contains('_')
     : Locale(language);
 
 final kTranslationsMap = <Map<String, Map<String, String>>>[
+  // SuccessPage
+  {
+    'onadnle5': {
+      'en': 'Thanks for sharing!',
+      'fr': '',
+    },
+    's4fvuvht': {
+      'en': 'Return to Camera Page',
+      'fr': '',
+    },
+    'dvzs17y1': {
+      'en': 'Home',
+      'fr': '',
+    },
+  },
   // onboarding
   {
     'j4svfh17': {
@@ -175,19 +190,19 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Email',
       'fr': '',
     },
-    '2999asy2': {
-      'en': 'Email is required.',
+    'g1agua6v': {
+      'en': 'Field is required',
       'fr': '',
     },
-    '7w6yohcy': {
+    'e141eili': {
       'en': 'Please choose an option from the dropdown',
       'fr': '',
     },
-    'ta30tah5': {
-      'en': 'Password is required.',
+    'jpgam4x0': {
+      'en': 'Field is required',
       'fr': '',
     },
-    '5rzo5b3q': {
+    'zy0g99oo': {
       'en': 'Please choose an option from the dropdown',
       'fr': '',
     },
@@ -200,53 +215,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': '',
     },
   },
-  // ListPageCopy
-  {
-    'nyco10um': {
-      'en': 'History',
-      'fr': '',
-    },
-    'zsrr9xg2': {
-      'en': 'Tuesday,March  7 2023',
-      'fr': '',
-    },
-    'ng66jgx0': {
-      'en':
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
-      'fr': '',
-    },
-    'l1ld9wni': {
-      'en': 'Attachment',
-      'fr': '',
-    },
-    '3kwfrdxl': {
-      'en': 'Home',
-      'fr': '',
-    },
-    'l83802q4': {
-      'en': 'Home',
-      'fr': '',
-    },
-  },
-  // SuccessPage
-  {
-    'gwz2gb95': {
-      'en': 'Congrats!',
-      'fr': '',
-    },
-    'onadnle5': {
-      'en': 'Thanks for sharing!',
-      'fr': '',
-    },
-    's4fvuvht': {
-      'en': 'Go To List',
-      'fr': '',
-    },
-    'dvzs17y1': {
-      'en': 'Home',
-      'fr': '',
-    },
-  },
   // camera
   {
     'ptmxca6w': {
@@ -254,7 +222,60 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': '',
     },
     'te9retwb': {
-      'en': 'Send Post',
+      'en': 'Demo Post',
+      'fr': '',
+    },
+    'lhqtadhk': {
+      'en': 'Post',
+      'fr': '',
+    },
+  },
+  // demoPagePublish
+  {
+    'uwsfsryb': {
+      'en': 'Create Post',
+      'fr': '',
+    },
+    '9z4jpfbz': {
+      'en': 'Longitude',
+      'fr': '',
+    },
+    'rmt38ti7': {
+      'en': 'Longitude',
+      'fr': '',
+    },
+    'zry46cjs': {
+      'en': 'Latitude',
+      'fr': '',
+    },
+    'dy7ku1ll': {
+      'en': 'Latitude',
+      'fr': '',
+    },
+    '72uui0nt': {
+      'en': 'Create Post',
+      'fr': '',
+    },
+  },
+  // demopage
+  {
+    'cxarp99z': {
+      'en': 'Create Post',
+      'fr': '',
+    },
+  },
+  // SuccessPagePres
+  {
+    'i68gshd3': {
+      'en': 'Thanks for sharing!',
+      'fr': '',
+    },
+    'ytibweqb': {
+      'en': 'Return to Camera Page',
+      'fr': '',
+    },
+    '64w83s6t': {
+      'en': 'Home',
       'fr': '',
     },
   },
