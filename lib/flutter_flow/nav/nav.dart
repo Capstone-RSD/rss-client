@@ -78,6 +78,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               appStateNotifier.loggedIn ? CameraWidget() : OnboardingWidget(),
           routes: [
             FFRoute(
+              name: 'SuccessPage',
+              path: 'successPage',
+              builder: (context, params) => SuccessPageWidget(),
+            ),
+            FFRoute(
               name: 'onboarding',
               path: 'onboarding',
               builder: (context, params) => OnboardingWidget(),
@@ -88,23 +93,30 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => HomePageWidget(),
             ),
             FFRoute(
-              name: 'ListPageCopy',
-              path: 'listPageCopy',
-              builder: (context, params) => ListPageCopyWidget(),
-            ),
-            FFRoute(
-              name: 'SuccessPage',
-              path: 'successPage',
-              builder: (context, params) => SuccessPageWidget(),
-            ),
-            FFRoute(
               name: 'camera',
               path: 'camera',
               builder: (context, params) => CameraWidget(),
+            ),
+            FFRoute(
+              name: 'demoPagePublish',
+              path: 'demoPagePublish',
+              builder: (context, params) => DemoPagePublishWidget(
+                damageImage: params.getParam('damageImage', ParamType.String),
+              ),
+            ),
+            FFRoute(
+              name: 'demopage',
+              path: 'demopage',
+              builder: (context, params) => DemopageWidget(),
+            ),
+            FFRoute(
+              name: 'SuccessPagePres',
+              path: 'successPagePres',
+              builder: (context, params) => SuccessPagePresWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
-        ).toRoute(appStateNotifier),
-      ],
+        ),
+      ].map((r) => r.toRoute(appStateNotifier)).toList(),
       urlPathStrategy: UrlPathStrategy.path,
     );
 
@@ -150,6 +162,16 @@ extension NavigationExtensions on BuildContext {
               queryParams: queryParams,
               extra: extra,
             );
+
+  void safePop() {
+    // If there is only one route on the stack, navigate to the initial
+    // page instead of popping.
+    if (GoRouter.of(this).routerDelegate.matches.length <= 1) {
+      go('/');
+    } else {
+      pop();
+    }
+  }
 }
 
 extension GoRouterExtensions on GoRouter {
@@ -161,6 +183,7 @@ extension GoRouterExtensions on GoRouter {
           : appState.updateNotifyOnAuthChange(false);
   bool shouldRedirect(bool ignoreRedirect) =>
       !ignoreRedirect && appState.hasRedirect();
+  void clearRedirectLocation() => appState.clearRedirectLocation();
   void setRedirectLocationIfUnset(String location) =>
       (routerDelegate.refreshListenable as AppStateNotifier)
           .updateNotifyOnAuthChange(false);
@@ -274,10 +297,10 @@ class FFRoute {
               : builder(context, ffParams);
           final child = appStateNotifier.loading
               ? Container(
-                  color: Colors.transparent,
+                  color: FlutterFlowTheme.of(context).primaryBtnText,
                   child: Image.asset(
-                    'assets/images/rss_logo.png',
-                    fit: BoxFit.scaleDown,
+                    'assets/images/black_whitebackground-01.jpg',
+                    fit: BoxFit.contain,
                   ),
                 )
               : page;

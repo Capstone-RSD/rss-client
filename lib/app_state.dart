@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'backend/backend.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:csv/csv.dart';
-import 'flutter_flow/lat_lng.dart';
+import 'flutter_flow/flutter_flow_util.dart';
 import 'dart:convert';
 
 class FFAppState extends ChangeNotifier {
@@ -43,6 +44,30 @@ class FFAppState extends ChangeNotifier {
 
   void deleteAuthCred() {
     secureStorage.delete(key: 'ff_authCred');
+  }
+
+  bool _damageImage4 = true;
+  bool get damageImage4 => _damageImage4;
+  set damageImage4(bool _value) {
+    _damageImage4 = _value;
+  }
+
+  bool _damageImage1 = true;
+  bool get damageImage1 => _damageImage1;
+  set damageImage1(bool _value) {
+    _damageImage1 = _value;
+  }
+
+  bool _damageImage2 = true;
+  bool get damageImage2 => _damageImage2;
+  set damageImage2(bool _value) {
+    _damageImage2 = _value;
+  }
+
+  bool _damageImage3 = true;
+  bool get damageImage3 => _damageImage3;
+  set damageImage3(bool _value) {
+    _damageImage3 = _value;
   }
 }
 

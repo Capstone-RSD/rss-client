@@ -2,7 +2,7 @@ import '/backend/firebase_storage/storage.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/upload_media.dart';
+import '/flutter_flow/upload_data.dart';
 import '/flutter_flow/permissions_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -51,7 +51,7 @@ class _CameraWidgetState extends State<CameraWidget> {
           FFLocalizations.of(context).getText(
             'ptmxca6w' /* Create Post */,
           ),
-          style: FlutterFlowTheme.of(context).title2.override(
+          style: FlutterFlowTheme.of(context).headlineMedium.override(
                 fontFamily: 'Lexend Deca',
                 color: FlutterFlowTheme.of(context).primaryText,
                 fontSize: 22.0,
@@ -96,8 +96,7 @@ class _CameraWidgetState extends State<CameraWidget> {
                                     selectedMedia.every((m) =>
                                         validateFileFormat(
                                             m.storagePath, context))) {
-                                  setState(
-                                      () => _model.isMediaUploading = true);
+                                  setState(() => _model.isDataUploading = true);
                                   var selectedUploadedFiles =
                                       <FFUploadedFile>[];
                                   var downloadUrls = <String>[];
@@ -122,7 +121,7 @@ class _CameraWidgetState extends State<CameraWidget> {
                                         .map((u) => u!)
                                         .toList();
                                   } finally {
-                                    _model.isMediaUploading = false;
+                                    _model.isDataUploading = false;
                                   }
                                   if (selectedUploadedFiles.length ==
                                           selectedMedia.length &&
@@ -190,7 +189,7 @@ class _CameraWidgetState extends State<CameraWidget> {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                 child: FFButtonWidget(
-                  onPressed: _model.isMediaUploading == false
+                  onPressed: _model.isDataUploading == false
                       ? null
                       : () async {
                           if (FFAppState().authCred == null) {
@@ -237,7 +236,7 @@ class _CameraWidgetState extends State<CameraWidget> {
                     iconPadding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                     color: Color(0xFF4B39EF),
-                    textStyle: FlutterFlowTheme.of(context).subtitle2.override(
+                    textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily: 'Lexend Deca',
                           color: Colors.white,
                           fontSize: 16.0,

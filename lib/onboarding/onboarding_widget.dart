@@ -62,7 +62,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                           Container(
                             width: 100.0,
                             decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context).primaryColor,
+                              color: FlutterFlowTheme.of(context).primary,
                             ),
                             child: SingleChildScrollView(
                               child: Column(
@@ -124,7 +124,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                             'j4svfh17' /* Welcome */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
-                                              .title1
+                                              .displaySmall
                                               .override(
                                                 fontFamily: 'Poppins',
                                                 color: Colors.white,
@@ -145,7 +145,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                               '329cjftw' /* Help us to detect road damages... */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
-                                                .subtitle2
+                                                .titleSmall
                                                 .override(
                                                   fontFamily: 'Poppins',
                                                   color: Color(0xC8FFFFFF),
@@ -181,10 +181,10 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .secondaryColor,
+                                                      .secondary,
                                               textStyle: FlutterFlowTheme.of(
                                                       context)
-                                                  .subtitle2
+                                                  .titleSmall
                                                   .override(
                                                     fontFamily: 'Lexend Deca',
                                                     color: Colors.white,
@@ -270,7 +270,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                             '9dzjav81' /* Estimate */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
-                                              .title1
+                                              .displaySmall
                                               .override(
                                                 fontFamily: 'Poppins',
                                                 color:
@@ -293,7 +293,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                               'jkiin17r' /* Estimate the cost to repair po... */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
-                                                .subtitle2
+                                                .titleSmall
                                                 .override(
                                                   fontFamily: 'Poppins',
                                                   color: FlutterFlowTheme.of(
@@ -332,12 +332,12 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                               color: Colors.white,
                                               textStyle: FlutterFlowTheme.of(
                                                       context)
-                                                  .subtitle2
+                                                  .titleSmall
                                                   .override(
                                                     fontFamily: 'Lexend Deca',
                                                     color: FlutterFlowTheme.of(
                                                             context)
-                                                        .secondaryColor,
+                                                        .secondary,
                                                     fontSize: 16.0,
                                                     fontWeight: FontWeight.w500,
                                                   ),
@@ -421,7 +421,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                             '5nwlmqko' /* Track Expenses */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
-                                              .title1,
+                                              .displaySmall,
                                         ),
                                       ],
                                     ),
@@ -438,7 +438,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                               '9tt77khz' /* Track all your expense to repa... */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
-                                                .subtitle2,
+                                                .titleSmall,
                                           ),
                                         ),
                                       ],
@@ -470,10 +470,10 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .primaryColor,
+                                                      .primary,
                                               textStyle: FlutterFlowTheme.of(
                                                       context)
-                                                  .subtitle2
+                                                  .titleSmall
                                                   .override(
                                                     fontFamily: 'Lexend Deca',
                                                     color: Colors.white,
@@ -523,7 +523,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                               dotColor:
                                   FlutterFlowTheme.of(context).secondaryText,
                               activeDotColor:
-                                  FlutterFlowTheme.of(context).tertiaryColor,
+                                  FlutterFlowTheme.of(context).tertiary,
                               paintStyle: PaintingStyle.fill,
                             ),
                           ),

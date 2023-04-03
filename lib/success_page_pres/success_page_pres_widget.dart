@@ -5,18 +5,18 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
-import 'success_page_model.dart';
-export 'success_page_model.dart';
+import 'success_page_pres_model.dart';
+export 'success_page_pres_model.dart';
 
-class SuccessPageWidget extends StatefulWidget {
-  const SuccessPageWidget({Key? key}) : super(key: key);
+class SuccessPagePresWidget extends StatefulWidget {
+  const SuccessPagePresWidget({Key? key}) : super(key: key);
 
   @override
-  _SuccessPageWidgetState createState() => _SuccessPageWidgetState();
+  _SuccessPagePresWidgetState createState() => _SuccessPagePresWidgetState();
 }
 
-class _SuccessPageWidgetState extends State<SuccessPageWidget> {
-  late SuccessPageModel _model;
+class _SuccessPagePresWidgetState extends State<SuccessPagePresWidget> {
+  late SuccessPagePresModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final _unfocusNode = FocusNode();
@@ -24,7 +24,7 @@ class _SuccessPageWidgetState extends State<SuccessPageWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => SuccessPageModel());
+    _model = createModel(context, () => SuccessPagePresModel());
   }
 
   @override
@@ -73,7 +73,7 @@ class _SuccessPageWidgetState extends State<SuccessPageWidget> {
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                   child: Text(
                     FFLocalizations.of(context).getText(
-                      'onadnle5' /* Thanks for sharing! */,
+                      'i68gshd3' /* Thanks for sharing! */,
                     ),
                     style: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily: 'Outfit',
@@ -87,10 +87,10 @@ class _SuccessPageWidgetState extends State<SuccessPageWidget> {
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 44.0, 0.0, 0.0),
                   child: FFButtonWidget(
                     onPressed: () async {
-                      context.goNamed('camera');
+                      context.pushNamed('SuccessPagePres');
                     },
                     text: FFLocalizations.of(context).getText(
-                      's4fvuvht' /* Return to Camera Page */,
+                      'ytibweqb' /* Return to Camera Page */,
                     ),
                     options: FFButtonOptions(
                       width: 130.0,
