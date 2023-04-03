@@ -432,7 +432,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       _model.nameController?.value.text;
                                   FFAppState().authCred["email"] =
                                       _model.emailController?.value.text;
-                                  print(FFAppState().authCred.toString());
+                                  // print(FFAppState().authCred.toString());
                                   FFAppState().authCred = FFAppState().authCred;
                                   GoRouter.of(context).prepareAuthEvent();
                                   final user = await signInAnonymously(context);

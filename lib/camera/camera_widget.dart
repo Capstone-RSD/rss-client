@@ -114,11 +114,11 @@ class _CameraWidgetState extends State<CameraWidget> {
                                                 location;
                                             rssClient.client.speed =
                                                 value.speed;
-                                            print(rssClient.client.toBuilder());
-                                            debugPrint(
-                                                "Longitude: ${value.longitude}");
-                                            debugPrint(
-                                                "Latitude: ${value.latitude}");
+                                            // print(rssClient.client.toBuilder());
+                                            // debugPrint(
+                                            //     "Longitude: ${value.longitude}");
+                                            // debugPrint(
+                                            //     "Latitude: ${value.latitude}");
                                             rssClient.publishToRSSPresTopic(
                                                 "Data Collection - Road condition location captured");
                                           })
@@ -154,7 +154,7 @@ class _CameraWidgetState extends State<CameraWidget> {
                                         .where((u) => u != null)
                                         .map((u) => u!)
                                         .toList();
-                                    print("Blob Download URL: $downloadUrls");
+                                    // print("Blob Download URL: $downloadUrls");
                                   } finally {
                                     _model.isDataUploading = false;
                                   }
@@ -316,7 +316,7 @@ class _CameraWidgetState extends State<CameraWidget> {
                         ),
                       );
                     } else {
-                      print("User Appstate: ${FFAppState().authCred}");
+                      // print("User Appstate: ${FFAppState().authCred}");
 
                       rssClient.client.name = FFAppState().authCred['name'];
                       rssClient.client.email = FFAppState().authCred['email'];
