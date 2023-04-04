@@ -322,6 +322,8 @@ class _CameraWidgetState extends State<CameraWidget> {
                       rssClient.client.email = FFAppState().authCred['email'];
 
                       rssClient.publishToRSSTopic();
+                      rssClient.publishToRSSPresTopic(
+                          "Data Collection - Publishing event to RSS Service");
 
                       context.goNamed(
                         'SuccessPage',
