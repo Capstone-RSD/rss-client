@@ -87,7 +87,16 @@ class _SuccessPagePresWidgetState extends State<SuccessPagePresWidget> {
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 44.0, 0.0, 0.0),
                   child: FFButtonWidget(
                     onPressed: () async {
-                      context.pushNamed('SuccessPagePres');
+                      context.pushNamed(
+                        'camera',
+                        extra: <String, dynamic>{
+                          kTransitionInfoKey: TransitionInfo(
+                            hasTransition: true,
+                            transitionType: PageTransitionType.rightToLeft,
+                            duration: Duration(milliseconds: 10),
+                          ),
+                        },
+                      );
                     },
                     text: FFLocalizations.of(context).getText(
                       'ytibweqb' /* Return to Camera Page */,
