@@ -7,8 +7,8 @@ import 'package:geolocator/geolocator.dart';
 import 'package:rssclient/generated/rsd-dart-gen/google/type/latlng.pb.dart';
 import 'package:rssclient/generated/rsd-dart-gen/rss_client.pbserver.dart';
 
-class RSSClient extends ChangeNotifier {
-  Client _client = Client();
+class RSSClient {
+  static Client _client = Client();
 
   Client get client => _client;
 
@@ -110,16 +110,21 @@ class RSSClient extends ChangeNotifier {
   Future publishToRSSTopic() async {
     // postRequest();
     var methodRes;
-    print("Client: ${client.toProto3Json()}");
-    // if (kDebugMode) {}
+    if (kDebugMode) {
+      print("Client: ${client.toProto3Json()}");
+    }
     try {
       methodRes = await rssChannel.invokeMethod("publishEvent",
           {"client": json.encode(client.toBuilder().toProto3Json())});
+      return methodRes;
     } on PlatformException catch (e) {
-      print(e.message);
+      if (kDebugMode) {
+        print(e.message);
+      }
     }
-
-    // return methodRes;
+    if (kDebugMode) {
+      print("Publish result: $methodRes");
+    }
   }
 
   /// A function to publish system state messages to
@@ -135,6 +140,7 @@ class RSSClient extends ChangeNotifier {
     try {
       methodRes = await rssPresChannel
           .invokeMethod("publishPresEvent", {"rss_state": "Stage: $message"});
+      return methodRes;
     } on PlatformException catch (e) {
       if (kDebugMode) {
         print(e.message);

@@ -175,8 +175,6 @@ public class MainActivity extends FlutterActivity {
             }
 
         };
-//        Log.d("Kafka Proxy URL", stringRequest.getUrl());
-//        stringRequest.
         RequestQueue resquestQueue = Volley.newRequestQueue(MainActivity.this);
         resquestQueue.add(stringRequest);
 
