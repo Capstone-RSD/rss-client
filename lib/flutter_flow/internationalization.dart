@@ -244,7 +244,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
       'fr': '',
     },
-    '5tyjlgt8': {
+    '0aqbckzi': {
       'en': '43.9470',
       'fr': '',
     },
@@ -256,47 +256,47 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Latitude',
       'fr': '',
     },
-    'ay7r972i': {
+    'ppja0qpm': {
       'en': '-78.8965',
       'fr': '',
     },
-    '4udb82ju': {
+    'xpqb7p1o': {
       'en': 'Field is required',
       'fr': '',
     },
-    '4m5kuan8': {
+    '19dmnam7': {
       'en': 'Pattern to follow: \"-12.345678\". The negative is optional',
       'fr': '',
     },
-    '86wdzek4': {
+    'ji4xv8fz': {
       'en': 'Pattern to follow: \"-12.345678\". The negative is optional',
       'fr': '',
     },
-    'hjyw38dn': {
+    'yzb7yhgh': {
       'en': 'Pattern to follow: \"-12.345678\". The negative is optional',
       'fr': '',
     },
-    'z8dyrd1z': {
+    'pt517utf': {
       'en': 'Please choose an option from the dropdown',
       'fr': '',
     },
-    'i5p1ruq4': {
+    'awat13md': {
       'en': 'Field is required',
       'fr': '',
     },
-    '5zid44jv': {
+    'pb95sdm5': {
       'en': 'Pattern to follow: \"-12.345678\". The negative is optional',
       'fr': '',
     },
-    '7s7gxku6': {
+    'ns3x5jp7': {
       'en': 'Pattern to follow: \"-12.345678\". The negative is optional',
       'fr': '',
     },
-    'dsw6yjil': {
+    'orvqlopu': {
       'en': 'Pattern to follow: \"-12.345678\". The negative is optional',
       'fr': '',
     },
-    'j76vrvvg': {
+    'smgrz8i7': {
       'en': 'Please choose an option from the dropdown',
       'fr': '',
     },
@@ -309,6 +309,38 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'cxarp99z': {
       'en': 'Create Post',
+      'fr': '',
+    },
+    '4iq245ul': {
+      'en': 'Pothole Demo 1',
+      'fr': '',
+    },
+    'bddgz4aj': {
+      'en': '1.dmg@email.com',
+      'fr': '',
+    },
+    '8i2alvhn': {
+      'en': 'Aligator Demo',
+      'fr': '',
+    },
+    '93smpp2f': {
+      'en': '2.dmg@email.com',
+      'fr': '',
+    },
+    '61t0axyf': {
+      'en': 'Traverse Demo',
+      'fr': '',
+    },
+    'hu7srfn9': {
+      'en': '3.dmg@email.com',
+      'fr': '',
+    },
+    'f3pwvz3v': {
+      'en': 'Pothole Demo 2',
+      'fr': '',
+    },
+    '69qt9g1z': {
+      'en': '4.dmg@email.com',
       'fr': '',
     },
   },

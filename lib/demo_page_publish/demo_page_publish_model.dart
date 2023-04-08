@@ -17,23 +17,23 @@ class DemoPagePublishModel extends FlutterFlowModel {
   String? _longitudeControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
-        '4udb82ju' /* Field is required */,
+        'xpqb7p1o' /* Field is required */,
       );
     }
 
     if (val.length < 9) {
       return FFLocalizations.of(context).getText(
-        '4m5kuan8' /* Pattern to follow: "-12.345678... */,
+        '19dmnam7' /* Pattern to follow: "-12.345678... */,
       );
     }
     if (val.length > 10) {
       return FFLocalizations.of(context).getText(
-        '86wdzek4' /* Pattern to follow: "-12.345678... */,
+        'ji4xv8fz' /* Pattern to follow: "-12.345678... */,
       );
     }
     if (!RegExp('^.*\\d\\d\\.\\d\\d\\d\\d\\d[123456789]\$').hasMatch(val)) {
       return FFLocalizations.of(context).getText(
-        'hjyw38dn' /* Pattern to follow: "-12.345678... */,
+        'yzb7yhgh' /* Pattern to follow: "-12.345678... */,
       );
     }
     return null;
@@ -45,23 +45,23 @@ class DemoPagePublishModel extends FlutterFlowModel {
   String? _latitudeControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
-        'i5p1ruq4' /* Field is required */,
+        'awat13md' /* Field is required */,
       );
     }
 
     if (val.length < 9) {
       return FFLocalizations.of(context).getText(
-        '5zid44jv' /* Pattern to follow: "-12.345678... */,
+        'pb95sdm5' /* Pattern to follow: "-12.345678... */,
       );
     }
     if (val.length > 10) {
       return FFLocalizations.of(context).getText(
-        '7s7gxku6' /* Pattern to follow: "-12.345678... */,
+        'ns3x5jp7' /* Pattern to follow: "-12.345678... */,
       );
     }
     if (!RegExp('^.*\\d\\d\\.\\d\\d\\d\\d\\d[123456789]\$').hasMatch(val)) {
       return FFLocalizations.of(context).getText(
-        'dsw6yjil' /* Pattern to follow: "-12.345678... */,
+        'orvqlopu' /* Pattern to follow: "-12.345678... */,
       );
     }
     return null;

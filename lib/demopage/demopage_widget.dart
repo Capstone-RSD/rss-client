@@ -84,6 +84,18 @@ class _DemopageWidgetState extends State<DemopageWidget> {
                                 'https://firebasestorage.googleapis.com/v0/b/rss-client-21d3b.appspot.com/o/users%2Fuploads%2F1676141606845000.jpg?alt=media&token=43df8ff5-d667-4508-b7b5-a5a0b80ea801',
                                 ParamType.String,
                               ),
+                              'name': serializeParam(
+                                FFLocalizations.of(context).getText(
+                                  '4iq245ul' /* Pothole Demo 1 */,
+                                ),
+                                ParamType.String,
+                              ),
+                              'email': serializeParam(
+                                FFLocalizations.of(context).getText(
+                                  'bddgz4aj' /* 1.dmg@email.com */,
+                                ),
+                                ParamType.String,
+                              ),
                             }.withoutNulls,
                           );
                         },
@@ -120,6 +132,18 @@ class _DemopageWidgetState extends State<DemopageWidget> {
                                 'https://firebasestorage.googleapis.com/v0/b/rss-client-21d3b.appspot.com/o/users%2Fuploads%2F1674200049338000.jpg?alt=media&token=f009a5b1-a78f-4d53-b3db-e944524ca6a1',
                                 ParamType.String,
                               ),
+                              'name': serializeParam(
+                                FFLocalizations.of(context).getText(
+                                  '8i2alvhn' /* Aligator Demo */,
+                                ),
+                                ParamType.String,
+                              ),
+                              'email': serializeParam(
+                                FFLocalizations.of(context).getText(
+                                  '93smpp2f' /* 2.dmg@email.com */,
+                                ),
+                                ParamType.String,
+                              ),
                             }.withoutNulls,
                           );
                         },
@@ -153,6 +177,18 @@ class _DemopageWidgetState extends State<DemopageWidget> {
                             queryParams: {
                               'damageImage': serializeParam(
                                 'https://firebasestorage.googleapis.com/v0/b/rss-client-21d3b.appspot.com/o/users%2Fuploads%2Fus14--38-_jpg.rf.7067e4519392d181489b82ca5f8586c4.jpg?alt=media&token=f2fcf254-17c4-4ce8-ad61-69a0779bfbc5',
+                                ParamType.String,
+                              ),
+                              'name': serializeParam(
+                                FFLocalizations.of(context).getText(
+                                  '61t0axyf' /* Traverse Demo */,
+                                ),
+                                ParamType.String,
+                              ),
+                              'email': serializeParam(
+                                FFLocalizations.of(context).getText(
+                                  'hu7srfn9' /* 3.dmg@email.com */,
+                                ),
                                 ParamType.String,
                               ),
                             }.withoutNulls,
@@ -190,6 +226,18 @@ class _DemopageWidgetState extends State<DemopageWidget> {
                             queryParams: {
                               'damageImage': serializeParam(
                                 'https://firebasestorage.googleapis.com/v0/b/rss-client-21d3b.appspot.com/o/users%2Fuploads%2F1674193684337000.jpg?alt=media&token=468de141-cdf1-4f1b-b655-5e715919e10a',
+                                ParamType.String,
+                              ),
+                              'name': serializeParam(
+                                FFLocalizations.of(context).getText(
+                                  'f3pwvz3v' /* Pothole Demo 2 */,
+                                ),
+                                ParamType.String,
+                              ),
+                              'email': serializeParam(
+                                FFLocalizations.of(context).getText(
+                                  '69qt9g1z' /* 4.dmg@email.com */,
+                                ),
                                 ParamType.String,
                               ),
                             }.withoutNulls,

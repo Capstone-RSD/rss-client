@@ -13,9 +13,14 @@ class DemoPagePublishWidget extends StatefulWidget {
   const DemoPagePublishWidget({
     Key? key,
     this.damageImage,
-  }) : super(key: key);
+    String? name,
+    this.email,
+  })  : this.name = name ?? '',
+        super(key: key);
 
   final String? damageImage;
+  final String name;
+  final String? email;
 
   @override
   _DemoPagePublishWidgetState createState() => _DemoPagePublishWidgetState();
@@ -36,10 +41,10 @@ class _DemoPagePublishWidgetState extends State<DemoPagePublishWidget> {
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {
           _model.longitudeController?.text =
               FFLocalizations.of(context).getText(
-            '5tyjlgt8' /* 43.9470 */,
+            '0aqbckzi' /* 43.9470 */,
           );
           _model.latitudeController?.text = FFLocalizations.of(context).getText(
-            'ay7r972i' /* -78.8965 */,
+            'ppja0qpm' /* -78.8965 */,
           );
         }));
   }

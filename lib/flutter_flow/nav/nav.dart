@@ -102,6 +102,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'demoPagePublish',
               builder: (context, params) => DemoPagePublishWidget(
                 damageImage: params.getParam('damageImage', ParamType.String),
+                name: params.getParam('name', ParamType.String),
+                email: params.getParam('email', ParamType.String),
               ),
             ),
             FFRoute(
