@@ -330,5 +330,7 @@ Future publishDemoToKafka(String? lng, String? lat, String? damageImageUrl,
       speed: 0);
 
   rssClient.client = client;
+  await RSSClient().publishToRSSPresTopic(
+      "Data Collection - Road condition location captured, Stored, and Published");
   return await RSSClient().publishToRSSTopic();
 }

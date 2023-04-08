@@ -5,7 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 void main() async {
   TestWidgetsFlutterBinding.ensureInitialized();
   final storage = MockFirebaseStorage();
-  const filename = 'rss_logo.png';
+  const filename = 'black_whitebackground-01.jpg';
   final storageRef = storage.ref().child(filename);
   final localImage = await rootBundle.load("assets/images/$filename");
   final task = await storageRef.putData(localImage.buffer.asUint8List());
