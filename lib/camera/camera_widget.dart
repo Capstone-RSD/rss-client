@@ -41,30 +41,30 @@ class _CameraWidgetState extends State<CameraWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-      appBar: AppBar(
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      child: Scaffold(
+        key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        automaticallyImplyLeading: false,
-        title: Text(
-          FFLocalizations.of(context).getText(
-            'ptmxca6w' /* Create Post */,
+        appBar: AppBar(
+          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+          automaticallyImplyLeading: false,
+          title: Text(
+            FFLocalizations.of(context).getText(
+              'ptmxca6w' /* Create Post */,
+            ),
+            style: FlutterFlowTheme.of(context).headlineMedium.override(
+                  fontFamily: 'Lexend Deca',
+                  color: FlutterFlowTheme.of(context).primaryText,
+                  fontSize: 22.0,
+                  fontWeight: FontWeight.bold,
+                ),
           ),
-          style: FlutterFlowTheme.of(context).headlineMedium.override(
-                fontFamily: 'Lexend Deca',
-                color: FlutterFlowTheme.of(context).primaryText,
-                fontSize: 22.0,
-                fontWeight: FontWeight.bold,
-              ),
+          actions: [],
+          centerTitle: false,
+          elevation: 0.0,
         ),
-        actions: [],
-        centerTitle: false,
-        elevation: 0.0,
-      ),
-      body: GestureDetector(
-        onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
-        child: SingleChildScrollView(
+        body: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
@@ -284,7 +284,7 @@ class _CameraWidgetState extends State<CameraWidget> {
                               ),
                             );
                           } else {
-                            context.pushNamed('HomePage');
+                            context.goNamed('SuccessPage');
                           }
                         },
                   text: FFLocalizations.of(context).getText(

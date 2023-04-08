@@ -241,7 +241,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': '',
     },
     'rmt38ti7': {
-      'en': 'Longitude',
+      'en': '',
+      'fr': '',
+    },
+    '5tyjlgt8': {
+      'en': '43.9470',
       'fr': '',
     },
     'zry46cjs': {
@@ -250,6 +254,50 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'dy7ku1ll': {
       'en': 'Latitude',
+      'fr': '',
+    },
+    'ay7r972i': {
+      'en': '-78.8965',
+      'fr': '',
+    },
+    '4udb82ju': {
+      'en': 'Field is required',
+      'fr': '',
+    },
+    '4m5kuan8': {
+      'en': 'Pattern to follow: \"-12.345678\". The negative is optional',
+      'fr': '',
+    },
+    '86wdzek4': {
+      'en': 'Pattern to follow: \"-12.345678\". The negative is optional',
+      'fr': '',
+    },
+    'hjyw38dn': {
+      'en': 'Pattern to follow: \"-12.345678\". The negative is optional',
+      'fr': '',
+    },
+    'z8dyrd1z': {
+      'en': 'Please choose an option from the dropdown',
+      'fr': '',
+    },
+    'i5p1ruq4': {
+      'en': 'Field is required',
+      'fr': '',
+    },
+    '5zid44jv': {
+      'en': 'Pattern to follow: \"-12.345678\". The negative is optional',
+      'fr': '',
+    },
+    '7s7gxku6': {
+      'en': 'Pattern to follow: \"-12.345678\". The negative is optional',
+      'fr': '',
+    },
+    'dsw6yjil': {
+      'en': 'Pattern to follow: \"-12.345678\". The negative is optional',
+      'fr': '',
+    },
+    'j76vrvvg': {
+      'en': 'Please choose an option from the dropdown',
       'fr': '',
     },
     '72uui0nt': {
