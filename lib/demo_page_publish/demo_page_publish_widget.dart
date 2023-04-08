@@ -1,21 +1,32 @@
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:rssclient/generated/rsd-dart-gen/google/type/datetime.pb.dart'
+    as rss_date;
+import 'package:rssclient/generated/rsd-dart-gen/google/type/latlng.pb.dart'
+    as rss_LatLng;
+import 'package:rssclient/generated/rsd-dart-gen/rss_client.pb.dart';
+import 'package:rssclient/models/rss_models.dart';
+
 import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:page_transition/page_transition.dart';
-import 'package:provider/provider.dart';
 import 'demo_page_publish_model.dart';
+
 export 'demo_page_publish_model.dart';
 
 class DemoPagePublishWidget extends StatefulWidget {
   const DemoPagePublishWidget({
     Key? key,
     this.damageImage,
-  }) : super(key: key);
+    String? name,
+    this.email,
+  })  : this.name = name ?? '',
+        super(key: key);
 
   final String? damageImage;
+  final String name;
+  final String? email;
 
   @override
   _DemoPagePublishWidgetState createState() => _DemoPagePublishWidgetState();
@@ -33,6 +44,15 @@ class _DemoPagePublishWidgetState extends State<DemoPagePublishWidget> {
 
     _model.longitudeController ??= TextEditingController();
     _model.latitudeController ??= TextEditingController();
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {
+          _model.longitudeController?.text =
+              FFLocalizations.of(context).getText(
+            '0aqbckzi' /* 43.9470 */,
+          );
+          _model.latitudeController?.text = FFLocalizations.of(context).getText(
+            'ppja0qpm' /* -78.8965 */,
+          );
+        }));
   }
 
   @override
@@ -103,134 +123,150 @@ class _DemoPagePublishWidgetState extends State<DemoPagePublishWidget> {
               ),
             ],
           ),
-          Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              TextFormField(
-                controller: _model.longitudeController,
-                autofocus: true,
-                obscureText: false,
-                decoration: InputDecoration(
-                  labelText: FFLocalizations.of(context).getText(
-                    '9z4jpfbz' /* Longitude */,
+          Form(
+            key: _model.formKey,
+            autovalidateMode: AutovalidateMode.always,
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                TextFormField(
+                  controller: _model.longitudeController,
+                  autofocus: true,
+                  obscureText: false,
+                  decoration: InputDecoration(
+                    labelText: FFLocalizations.of(context).getText(
+                      '9z4jpfbz' /* Longitude */,
+                    ),
+                    hintStyle: FlutterFlowTheme.of(context).bodySmall,
+                    enabledBorder: const UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color(0x00000000),
+                        width: 1.0,
+                      ),
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(4.0),
+                        topRight: Radius.circular(4.0),
+                      ),
+                    ),
+                    focusedBorder: const UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color(0x00000000),
+                        width: 1.0,
+                      ),
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(4.0),
+                        topRight: Radius.circular(4.0),
+                      ),
+                    ),
+                    errorBorder: const UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color(0x00000000),
+                        width: 1.0,
+                      ),
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(4.0),
+                        topRight: Radius.circular(4.0),
+                      ),
+                    ),
+                    focusedErrorBorder: const UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color(0x00000000),
+                        width: 1.0,
+                      ),
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(4.0),
+                        topRight: Radius.circular(4.0),
+                      ),
+                    ),
                   ),
-                  hintText: FFLocalizations.of(context).getText(
-                    'rmt38ti7' /* Longitude */,
-                  ),
-                  hintStyle: FlutterFlowTheme.of(context).bodySmall,
-                  enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Color(0x00000000),
-                      width: 1.0,
-                    ),
-                    borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(4.0),
-                      topRight: Radius.circular(4.0),
-                    ),
-                  ),
-                  focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Color(0x00000000),
-                      width: 1.0,
-                    ),
-                    borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(4.0),
-                      topRight: Radius.circular(4.0),
-                    ),
-                  ),
-                  errorBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Color(0x00000000),
-                      width: 1.0,
-                    ),
-                    borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(4.0),
-                      topRight: Radius.circular(4.0),
-                    ),
-                  ),
-                  focusedErrorBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Color(0x00000000),
-                      width: 1.0,
-                    ),
-                    borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(4.0),
-                      topRight: Radius.circular(4.0),
-                    ),
-                  ),
+                  style: FlutterFlowTheme.of(context).bodyMedium,
+                  keyboardType: const TextInputType.numberWithOptions(
+                      signed: true, decimal: true),
+                  validator:
+                      _model.longitudeControllerValidator.asValidator(context),
                 ),
-                style: FlutterFlowTheme.of(context).bodyMedium,
-                keyboardType: const TextInputType.numberWithOptions(
-                    signed: true, decimal: true),
-                validator:
-                    _model.longitudeControllerValidator.asValidator(context),
-              ),
-              TextFormField(
-                controller: _model.latitudeController,
-                autofocus: true,
-                obscureText: false,
-                decoration: InputDecoration(
-                  labelText: FFLocalizations.of(context).getText(
-                    'zry46cjs' /* Latitude */,
-                  ),
-                  hintText: FFLocalizations.of(context).getText(
-                    'dy7ku1ll' /* Latitude */,
-                  ),
-                  hintStyle: FlutterFlowTheme.of(context).bodySmall,
-                  enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Color(0x00000000),
-                      width: 1.0,
+                TextFormField(
+                  controller: _model.latitudeController,
+                  autofocus: true,
+                  obscureText: false,
+                  decoration: InputDecoration(
+                    labelText: FFLocalizations.of(context).getText(
+                      'zry46cjs' /* Latitude */,
                     ),
-                    borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(4.0),
-                      topRight: Radius.circular(4.0),
+                    hintText: FFLocalizations.of(context).getText(
+                      'dy7ku1ll' /* Latitude */,
                     ),
-                  ),
-                  focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Color(0x00000000),
-                      width: 1.0,
+                    hintStyle: FlutterFlowTheme.of(context).bodySmall,
+                    enabledBorder: const UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color(0x00000000),
+                        width: 1.0,
+                      ),
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(4.0),
+                        topRight: Radius.circular(4.0),
+                      ),
                     ),
-                    borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(4.0),
-                      topRight: Radius.circular(4.0),
+                    focusedBorder: const UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color(0x00000000),
+                        width: 1.0,
+                      ),
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(4.0),
+                        topRight: Radius.circular(4.0),
+                      ),
                     ),
-                  ),
-                  errorBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Color(0x00000000),
-                      width: 1.0,
+                    errorBorder: const UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color(0x00000000),
+                        width: 1.0,
+                      ),
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(4.0),
+                        topRight: Radius.circular(4.0),
+                      ),
                     ),
-                    borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(4.0),
-                      topRight: Radius.circular(4.0),
-                    ),
-                  ),
-                  focusedErrorBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Color(0x00000000),
-                      width: 1.0,
-                    ),
-                    borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(4.0),
-                      topRight: Radius.circular(4.0),
+                    focusedErrorBorder: const UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color(0x00000000),
+                        width: 1.0,
+                      ),
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(4.0),
+                        topRight: Radius.circular(4.0),
+                      ),
                     ),
                   ),
+                  style: FlutterFlowTheme.of(context).bodyMedium,
+                  keyboardType: const TextInputType.numberWithOptions(
+                      signed: true, decimal: true),
+                  validator:
+                      _model.latitudeControllerValidator.asValidator(context),
                 ),
-                style: FlutterFlowTheme.of(context).bodyMedium,
-                keyboardType: const TextInputType.numberWithOptions(
-                    signed: true, decimal: true),
-                validator:
-                    _model.latitudeControllerValidator.asValidator(context),
-              ),
-            ],
+              ],
+            ),
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
             child: FFButtonWidget(
-              onPressed: () {
-                print('Button pressed ...');
+              onPressed: () async {
+                await publishDemoToKafka(
+                        _model.longitudeController?.value.text,
+                        _model.latitudeController?.value.text,
+                        widget.damageImage,
+                        widget.email,
+                        widget.name)
+                    .then((value) => print("Publish Successful: $value"));
+                context.goNamed(
+                  'SuccessPagePres',
+                  extra: <String, dynamic>{
+                    kTransitionInfoKey: const TransitionInfo(
+                      hasTransition: true,
+                      transitionType: PageTransitionType.rightToLeft,
+                    ),
+                  },
+                );
               },
               text: FFLocalizations.of(context).getText(
                 '72uui0nt' /* Create Post */,
@@ -238,8 +274,10 @@ class _DemoPagePublishWidgetState extends State<DemoPagePublishWidget> {
               options: FFButtonOptions(
                 width: 270.0,
                 height: 50.0,
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                padding:
+                    const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                iconPadding:
+                    const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                 color: FlutterFlowTheme.of(context).primary,
                 textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                       fontFamily: 'Lexend Deca',
@@ -248,7 +286,7 @@ class _DemoPagePublishWidgetState extends State<DemoPagePublishWidget> {
                       fontWeight: FontWeight.w500,
                     ),
                 elevation: 3.0,
-                borderSide: BorderSide(
+                borderSide: const BorderSide(
                   color: Colors.transparent,
                   width: 1.0,
                 ),
@@ -259,4 +297,38 @@ class _DemoPagePublishWidgetState extends State<DemoPagePublishWidget> {
       ),
     );
   }
+}
+
+/// An asynchronous function to stream pre-populated client data for the exhibition.
+Future publishDemoToKafka(String? lng, String? lat, String? damageImageUrl,
+    String? email, String? name) async {
+  final currentDatetime = DateTime.now();
+  RSSClient rssClient = RSSClient();
+  Client client = Client(
+      name: name,
+      email: email,
+      blobs: [
+        BlobSrc(
+            blobUrl: damageImageUrl,
+            datetimeCreated: rss_date.DateTime(
+                day: currentDatetime.day,
+                year: currentDatetime.year,
+                hours: currentDatetime.hour,
+                minutes: currentDatetime.minute,
+                month: currentDatetime.month,
+                seconds: currentDatetime.second,
+                // nanos: current_datetime.millisecond,
+                timeZone: rss_date.TimeZone(id: currentDatetime.timeZoneName)),
+            image: "image")
+      ],
+      damageLocation: DamageLocation(
+        latLng: rss_LatLng.LatLng(
+          latitude: double.parse(lat!),
+          longitude: double.parse(lng!),
+        ),
+      ),
+      speed: 0);
+
+  rssClient.client = client;
+  return await RSSClient().publishToRSSTopic();
 }

@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 const _kLocaleStorageKey = '__locale_key__';
@@ -241,7 +241,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': '',
     },
     'rmt38ti7': {
-      'en': 'Longitude',
+      'en': '',
+      'fr': '',
+    },
+    '0aqbckzi': {
+      'en': '43.9470',
       'fr': '',
     },
     'zry46cjs': {
@@ -250,6 +254,50 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'dy7ku1ll': {
       'en': 'Latitude',
+      'fr': '',
+    },
+    'ppja0qpm': {
+      'en': '-78.8965',
+      'fr': '',
+    },
+    'xpqb7p1o': {
+      'en': 'Field is required',
+      'fr': '',
+    },
+    '19dmnam7': {
+      'en': 'Pattern to follow: \"-12.345678\". The negative is optional',
+      'fr': '',
+    },
+    'ji4xv8fz': {
+      'en': 'Pattern to follow: \"-12.345678\". The negative is optional',
+      'fr': '',
+    },
+    'yzb7yhgh': {
+      'en': 'Pattern to follow: \"-12.345678\". The negative is optional',
+      'fr': '',
+    },
+    'pt517utf': {
+      'en': 'Please choose an option from the dropdown',
+      'fr': '',
+    },
+    'awat13md': {
+      'en': 'Field is required',
+      'fr': '',
+    },
+    'pb95sdm5': {
+      'en': 'Pattern to follow: \"-12.345678\". The negative is optional',
+      'fr': '',
+    },
+    'ns3x5jp7': {
+      'en': 'Pattern to follow: \"-12.345678\". The negative is optional',
+      'fr': '',
+    },
+    'orvqlopu': {
+      'en': 'Pattern to follow: \"-12.345678\". The negative is optional',
+      'fr': '',
+    },
+    'smgrz8i7': {
+      'en': 'Please choose an option from the dropdown',
       'fr': '',
     },
     '72uui0nt': {
@@ -261,6 +309,38 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'cxarp99z': {
       'en': 'Create Post',
+      'fr': '',
+    },
+    '4iq245ul': {
+      'en': 'Pothole Demo 1',
+      'fr': '',
+    },
+    'bddgz4aj': {
+      'en': '1.dmg@email.com',
+      'fr': '',
+    },
+    '8i2alvhn': {
+      'en': 'Aligator Demo',
+      'fr': '',
+    },
+    '93smpp2f': {
+      'en': '2.dmg@email.com',
+      'fr': '',
+    },
+    '61t0axyf': {
+      'en': 'Traverse Demo',
+      'fr': '',
+    },
+    'hu7srfn9': {
+      'en': '3.dmg@email.com',
+      'fr': '',
+    },
+    'f3pwvz3v': {
+      'en': 'Pothole Demo 2',
+      'fr': '',
+    },
+    '69qt9g1z': {
+      'en': '4.dmg@email.com',
       'fr': '',
     },
   },
