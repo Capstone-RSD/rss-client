@@ -1,9 +1,12 @@
 # FROM ubuntu:20.10
 FROM ubuntu:18.04
+# FROM ghcr.io/cirruslabs/flutter:latest
 
 # Prerequisites
 RUN apt update && apt install -y curl git unzip xz-utils zip libglu1-mesa openjdk-8-jdk wget cmake ninja-build build-essential
 
+# WORKDIR /workspace
+# COPY . /workspace
 # Set up new user
 RUN useradd -ms /bin/bash developer
 USER developer

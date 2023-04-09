@@ -9,33 +9,22 @@
 		"dockerfile": "../Dockerfile"
 	},
 
-	// "dockerComposeFile": [
-	// 	"../docker-compose.yml",
-	// 	"docker-compose.yml"
-	// ],
-
 	// "workspaceFolder": "/workspace",
 
-    // "workspaceMount": "source=/workspace,target=/workspace,type=bind,consistency=delegated",
     "workspaceMount": "source=${localWorkspaceFolder},target=/home/developer/workspace,type=bind,consistency=delegated",
-    // "workspaceMount": "source=${localWorkspaceFolder}/workspace,target=/home/developer/workspace,type=bind,consistency=delegated",
     "workspaceFolder": "/home/developer/workspace",
-	// "service": "rsd-yolov5-model",
 
+	// Features to add to the dev container. More info: https://containers.dev/features.
 	"features": {
 		"ghcr.io/devcontainers/features/git:1": {},
 		"ghcr.io/devcontainers/features/git-lfs:1": {},
 		"ghcr.io/devcontainers/features/github-cli:1": {},
-		// "ghcr.io/devcontainers/features/nvidia-cuda:1": {
-		// 	"version": "latest",
-		// },
-		// "ghcr.io/devcontainers-contrib/features/firebase-cli:2": {}
+		"ghcr.io/dhoeric/features/act": {},
+		"ghcr.io/devcontainers/features/docker-in-docker": {},
+		// "ghcr.io/jarrodcolburn/features/flutter-sdk": {}
 	},
 
 	"runArgs": [ "--privileged"],
-
-	// Features to add to the dev container. More info: https://containers.dev/features.
-	// "features": {},
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
@@ -59,16 +48,3 @@
 	"remoteUser": "developer"
 	// "remoteUser": "devcontainer" // leave commented
 }
-
-
-// {
-//     "name": "flutter_docker",
-//     "context": "..",
-//     "dockerFile": "../Dockerfile",
-//     "remoteUser": "developer",
-//     "settings": {
-//       "terminal.integrated.shell.linux": null
-//     },
-//     "runArgs": ["--privileged"],
-//     "extensions": ["dart-code.flutter"],
-//   }
