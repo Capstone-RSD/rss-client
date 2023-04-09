@@ -260,6 +260,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '-78.8965',
       'fr': '',
     },
+    '72uui0nt': {
+      'en': 'Create Post',
+      'fr': '',
+    },
     'xpqb7p1o': {
       'en': 'Field is required',
       'fr': '',
@@ -300,10 +304,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Please choose an option from the dropdown',
       'fr': '',
     },
-    '72uui0nt': {
-      'en': 'Create Post',
-      'fr': '',
-    },
   },
   // demopage
   {
@@ -311,35 +311,35 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Create Post',
       'fr': '',
     },
-    '4iq245ul': {
+    'movohn0q': {
       'en': 'Pothole Demo 1',
       'fr': '',
     },
-    'bddgz4aj': {
+    '45yni5ys': {
       'en': '1.dmg@email.com',
       'fr': '',
     },
-    '8i2alvhn': {
+    'rr5m5hns': {
       'en': 'Aligator Demo',
       'fr': '',
     },
-    '93smpp2f': {
+    'fyyqjhh7': {
       'en': '2.dmg@email.com',
       'fr': '',
     },
-    '61t0axyf': {
+    'esaspteg': {
       'en': 'Traverse Demo',
       'fr': '',
     },
-    'hu7srfn9': {
+    'amxa7fk5': {
       'en': '3.dmg@email.com',
       'fr': '',
     },
-    'f3pwvz3v': {
+    '1pkzh5ro': {
       'en': 'Pothole Demo 2',
       'fr': '',
     },
-    '69qt9g1z': {
+    'drkgorqd': {
       'en': '4.dmg@email.com',
       'fr': '',
     },
