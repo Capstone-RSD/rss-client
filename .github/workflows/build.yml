@@ -83,7 +83,7 @@ jobs:
       - run: flutter build apk --release
 #       - run: flutter build appbundle
       - run: |
-              ls build/app/outputs/release -al
+              ls build/app/outputs/ -al
         shell: bash
       - uses: actions/upload-artifact@v3.1.2
         with:
