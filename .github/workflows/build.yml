@@ -37,11 +37,6 @@ jobs:
           distribution: 'zulu'
           java-version: '11'
           cache: 'gradle'
-      - name: Make gradlew executable
-        run: |
-              ls -al
-              cd android/
-              chmod +x ./gradlew
       - name: Update API_KEY from Secrets
         run: echo API_KEY=${{ secrets.RSS_API_KEY }} > ./local.properties
       - uses: subosito/flutter-action@v2.8.0
