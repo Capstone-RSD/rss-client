@@ -81,19 +81,14 @@ jobs:
       - run: flutter pub get
       - run: flutter clean
       - run: flutter build apk --release
-      - run: flutter build appbundle
+#       - run: flutter build appbundle
       - run: |
-              echo CACHE-PATH=${{ steps.flutter-action.outputs.CACHE-PATH }}
-              echo CACHE-KEY=${{ steps.flutter-action.outputs.CACHE-KEY }}
-              echo CHANNEL=${{ steps.flutter-action.outputs.CHANNEL }}
-              echo VERSION=${{ steps.flutter-action.outputs.VERSION }}
-              echo ARCHITECTURE=${{ steps.flutter-action.outputs.ARCHITECTURE }}
               ls ${{ github.workspace }}/build/app/outputs/release -al
         shell: bash
       - uses: actions/upload-artifact@v3.1.2
         with:
           name: app-release
-          path: ${{ github.workspace }}/build/app/outputs/apk/release/*.apk,${{ github.workspace }}/build/app/outputs/bundle/release/*.aab
+          path: build/app/outputs/apk/release/*.apk
 
   # ios-build:
   #   name: "Build Flutter (iOS)"
