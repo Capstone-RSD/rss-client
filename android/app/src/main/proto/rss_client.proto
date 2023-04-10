@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+package RSS;// RSS=Road Surface Status
+
+// Resource: https://github.com/protocolbuffers/protobuf/blob/main/examples/addressbook.proto
+
+// Imports
+// Resource: https://developers.google.com/protocol-buffers/docs/overview#common-types
+import "google/protobuf/timestamp.proto";
+import "google/type/datetime.proto";
+import "google/type/latlng.proto";
+import "google/type/postal_address.proto";
+
+// [START global_declaration]
+option optimize_for = LITE_RUNTIME; // Enabled by default
+// [END global_declaration]
+
+
+// [START java_declaration]
+option java_multiple_files = true; // enables generating a separate .java file for each generated class
+option java_package = "com.capstone.rss";
+// option java_outer_classname = "RSD";
+// [END java_declaration]
+
+
+message Client {
+  string name = 1;
+  int32 id = 2;
+  string email = 3;
+
+  DamageLocation damageLocation =4;
+
+  double speed = 6;
+
+  repeated BlobSrc blobs = 7;
+
+
+  /* A key value pair mapping of the BlobSrc objects.
+  The keys are represented as hashed name and the BlobSrc as the value.
+   Use the repeated attribute instead  */
+  map<string,BlobSrc> blob_map = 8 [deprecated=true];
+}
+
+/* Latitude and Longitude of the captured road surface damage */
+message DamageLocation{
+  google.type.LatLng lat_lng = 1;
+  google.type.PostalAddress address = 2;
+}
+
+/* Represets the blob and its parameters. */
+message BlobSrc {
+  string blob_url = 1; // URL to the blobs location. i.e. the url to the s3 bucket it is stored in
+  google.type.DateTime datetime_created = 2; // Date blob was created
+  //  google.protobuf.Timestamp time_created = 3 [deprecated=true]; // Time the blob was created
+
+  /* A blob type represented as either an image or video. */
+  oneof blob_type {
+    string image = 3;
+    string video = 4;
+  }
+}

@@ -1,8 +1,27 @@
-# RSS_Client
-A mobile application for the user to upload their captured data
+# rssclient
 
-## Resources: 
-- [Android Protobuf tutorial](https://medium.com/mobile-app-development-publication/simple-android-protobuf-tutorial-with-actual-code-bfb581299f47)
-- [Config gradle for protobuf](https://youtu.be/nB7J6D_IXrA)
-- [Protocol Buffers w/ Java & Gradle](https://youtu.be/CDYoLQR6744)
-- [Upload to Firebase Storage](https://youtu.be/lPfQN-Sfnjw)
+Road Surface Deterioration Mobile Client Application.
+
+## Getting Started
+
+### IMPORTANT:
+
+For projects with Firestore integration, you must first run the following commands to ensure the project compiles:
+
+```
+flutter pub get
+flutter packages pub run build_runner build --delete-conflicting-outputs
+```
+
+This command creates the generated files that parse each Record from Firestore into a schema object.
+
+This project is a starting point for a Flutter application.
+
+A few resources to get you started if this is your first Flutter project:
+
+- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
+- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+
+For help getting started with Flutter development, view the
+[online documentation](https://docs.flutter.dev/), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.
