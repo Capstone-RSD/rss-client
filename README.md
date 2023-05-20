@@ -1,6 +1,6 @@
 # Capstone-RSD/rss-client
 
-Capstone-RSD/rss-client is a Flutter mobile application that allows users to capture road sruface deteriorations they may encounter. It's a part of the Road Surface Deterioration Capstone project at Ontario Tech University.
+Capstone-RSD/rss-client is a Flutter mobile application that allows users to capture road sruface deteriorations they may encounter and upload their payload to an event streaming platform. It's a part of the Road Surface Deterioration Capstone project at Ontario Tech University.
 
 The client is built with Flutter, which is a framework for building high-performance, cross-platform mobile applications. Built using FlutterFlow, it uses  the Provider package for state management and several Flutter plugins to handle things like image capturing and Shared Preferences to save users state.
 
