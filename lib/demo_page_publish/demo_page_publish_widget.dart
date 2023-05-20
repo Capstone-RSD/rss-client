@@ -48,10 +48,10 @@ class _DemoPagePublishWidgetState extends State<DemoPagePublishWidget> {
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {
           _model.longitudeController?.text =
               FFLocalizations.of(context).getText(
-            '0aqbckzi' /* 43.9470 */,
+            '0aqbckzi' /* -78.8965 */,
           );
           _model.latitudeController?.text = FFLocalizations.of(context).getText(
-            'ppja0qpm' /* -78.8965 */,
+            'ppja0qpm' /* 43.9470 */,
           );
         }));
   }
