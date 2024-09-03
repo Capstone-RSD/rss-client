@@ -104,7 +104,7 @@ jobs:
     needs: [android-build]
     steps:
       - name: "Download Artificat"
-        uses: actions/download-artifact@v2.1.1
+        uses: actions/download-artifact@v4.1.7
         with:
           name: app-release
 #           path: build/app/outputs/flutter-apk/*.apk
